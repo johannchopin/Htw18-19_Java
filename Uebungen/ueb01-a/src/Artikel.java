@@ -3,6 +3,7 @@
  * Die Klasse simuliert ein Artikel
  * 
  * @author leparesseux
+ * @version 1.0
  */
 public class Artikel {
 	private int nummer;
