@@ -9,9 +9,9 @@ public class ArtikelDialog {
 	private static final int ENDE        = 0;
 	private static final int ANLEGEN     = 1;
 	private static final int ZUSTAND     = 2;
-	private static final int SET_BESTAND = 4;
-	private static final int ZUGANG      = 5;
-	private static final int ABGANG      = 6;
+	private static final int SET_BESTAND = 3;
+	private static final int ZUGANG      = 4;
+	private static final int ABGANG      = 5;
 	
 	private int einlesen() {
 		System.out.println(ENDE + ": beenden; " +
@@ -26,21 +26,46 @@ public class ArtikelDialog {
 	private void ausfuehrenFunktion(int wahl) {
 		switch(wahl) {
 			case ENDE:
-				break;
+				System.exit(0);
 				
 			case ANLEGEN:
+				System.out.print("Nummer : ");
+				int nummer = input.nextInt(); input.nextLine();
+				System.out.print("\nName des Artikel : ");
+				String name = input.nextLine();
+				System.out.print("\nBestand : ");
+				int bestand = input.nextInt(); input.nextLine();
+				System.out.print("\n");
+				artikel1 = new Artikel(nummer, name, bestand);
 				break;
-				
+			
 			case ZUSTAND:
+				System.out.println(artikel1);
 				break;
 				
 			case SET_BESTAND:
+				System.out.print("neuer Bestand : ");
+				int neuerBestand = input.nextInt(); input.nextLine();
+				System.out.print("\n");
+				artikel1.setBestand(neuerBestand);
 				break;
 				
 			case ZUGANG:
+				System.out.print("Zusatz : ");
+				int zusatz = input.nextInt(); input.nextLine();
+				System.out.print("\n");
+				artikel1.zugang(zusatz);
 				break;
 				
 			case ABGANG:
+				System.out.print("Absatz : ");
+				int absatz = input.nextInt(); input.nextLine();
+				System.out.print("\n");
+				artikel1.zugang(absatz);
+				break;
+				
+			default:
+				System.out.println("Der Nummer ist nicht bekannt.");
 				break;
 		}
 	}
