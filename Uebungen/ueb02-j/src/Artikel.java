@@ -7,16 +7,22 @@
  */
 
 public class Artikel {
+    
+    
+    public static final int MIN_ARTIKEL_NUMMER = 1000;
+    public static final int MAX_ARTIKEL_NUMMER = 9999;
+    public static final int MIN_BESTAND = 0;
+        
 	private int nummer;
 	private String bezeichnung;
 	private int bestand;
 	
 	/**
-	 * IllegalArgumentException mit @msg zurückgesendet, wenn die @bedigung falsch ist
+	 * IllegalArgumentException mit @msg zuruckgesendet, wenn die @bedigung falsch ist
 	 * @param bedigung  Die Bedigung
 	 * @param msg       Die Nachricht der Ausnahme
 	 */
-	public void check(boolean bedigung, String nachricht) {
+	private void check(boolean bedigung, String nachricht) {
 		if (!bedigung)
 			throw new IllegalArgumentException(nachricht);
 	}
@@ -26,9 +32,11 @@ public class Artikel {
 	 * @param bezeichnung Der Bezeichnung muss nicht leer sein
 	 * @param bestand     Der Bestand darf nie kleiner als 0 werden
 	 */
-	Artikel(int nummer, String bezeichnung, int bestand) {
-		check(bezeichnung != null || !bezeichnung.isEmpty(), "Der Bezeichnung muss nicht leer sein");
-		check(999 < nummer && nummer < 10000, "Der Nummer muss 4-stellig sein");
+	public Artikel(int nummer, String bezeichnung, int bestand) {
+		check(bezeichnung != null || !bezeichnung.trim().isEmpty(), "Der Bezeichnung muss nicht leer sein");
+		check( nummer >= MIN_ARTIKEL_NUMMER && nummer <= MAX_ARTIKEL_NUMMER, 
+		       "Der Nummer muss 4-stellig sein"
+		     );
 		
 		this.nummer = nummer;
 		this.bezeichnung = bezeichnung;
@@ -39,8 +47,8 @@ public class Artikel {
 	 * @param nummer      Der Nummer muss 4-stellig sein
 	 * @param bezeichnung Der Bezeichnung muss nicht leer sein
 	 */
-	Artikel(int nummer, String bezeichnung){
-		this(nummer, bezeichnung, 0);
+	public Artikel(int nummer, String bezeichnung){
+		this(nummer, bezeichnung, MIN_BESTAND);
 	}
 	
 	
@@ -63,7 +71,7 @@ public class Artikel {
 	 * @param bestand muss immer >= 0 sein
 	 */
 	public void setBestand(int bestand) {
-		check(bestand >= 0, "Der Bestand darf nicht < 0 werden.");
+		check(bestand >= MIN_BESTAND, "Der Bestand darf nicht < 0 werden.");
 		this.bestand = bestand;
 	}
 	
@@ -91,7 +99,6 @@ public class Artikel {
 			   " Bestand: " + getBestand();
 	}
 	
-	public static void main(String[] args){
-		
-	}
+	// Require to compile class in eclipse
+	public static void main(String[] args){}
 }
