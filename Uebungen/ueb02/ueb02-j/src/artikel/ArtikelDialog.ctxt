@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=ArtikelDialog
+comment0.text=\r\n\ Interaktive\ Testklasse\ f\u00FCr\ die\ Klasse\ Artikel\r\n\r\n\ @author\ Guidoux\ Alexandre\ &&\ Chopin\ Johann\r\n\ @version\ 1.0\r\n
+comment1.params=
+comment1.target=void\ start()
+comment1.text=\r\n\ Hauptschleife\ des\ Testprogramms\r\n
+comment2.params=
+comment2.target=int\ einlesenFunktion()
+comment2.text=\r\n\ @return\ die\ Wahl\ (input)\ des\ Benutzers\r\n
+comment3.params=wahl
+comment3.target=void\ ausfuehrenFunktion(int)
+comment3.text=\r\n\ Lauft\ die\ richtige\ gewaehlte\ Funktion\r\n\ \r\n\ @param\ wahl\ auszuf\u00FChrende\ Funktion\ als\ ganze\ Zahl\r\n
+comment4.params=args
+comment4.target=void\ main(java.lang.String[])
+comment4.text=\r\n\ Main-Methode\ zum\ Erzeugen\ des\ ArtikelDialog-Objektes\ und\ zum\ Anstarten\ der\ Testschleife\r\n
+numComments=5
