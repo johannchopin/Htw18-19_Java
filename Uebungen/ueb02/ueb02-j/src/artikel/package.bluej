@@ -1,8 +1,8 @@
 #BlueJ package file
-dependency1.from=ArtikelDialog
+dependency1.from=ArtikelTst
 dependency1.to=Artikel
 dependency1.type=UsesDependency
-dependency2.from=ArtikelTst
+dependency2.from=ArtikelDialog
 dependency2.to=Artikel
 dependency2.type=UsesDependency
 objectbench.height=86

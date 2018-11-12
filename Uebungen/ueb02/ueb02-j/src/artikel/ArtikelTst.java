@@ -2,10 +2,10 @@ package src.artikel;
 
 
 /**
- * Décrivez votre classe ArtikelTst ici.
+ * Sehr rudimentäres "Testprogramm"
  *
- * @author (votre nom)
- * @version (un numéro de version ou une date)
+ * @author Guidoux Alexandre && Chopin Johann
+ * @version 1.0
  */
 public class ArtikelTst {   
     public static void main(String [] args) {
