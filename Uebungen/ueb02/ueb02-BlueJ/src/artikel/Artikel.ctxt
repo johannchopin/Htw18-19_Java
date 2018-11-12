@@ -1,33 +1,30 @@
 #BlueJ class context
 comment0.target=Artikel
-comment0.text=\n\ \n\ Die\ Klasse\ simuliert\ ein\ Artikel\n\ \n\ @author\ leparesseux\n\ @version\ 1.0\n
+comment0.text=\r\n\ \r\n\ Die\ Klasse\ simuliert\ ein\ Artikel\r\n\ \r\n\ @author\ Guidoux\ Alexandre\ &&\ Chopin\ Johann\r\n\ @version\ 1.0\r\n
 comment1.params=bedigung\ nachricht
 comment1.target=void\ check(boolean,\ java.lang.String)
-comment1.text=\n\ IllegalArgumentException\ mit\ @nachricht\ zur\u00FCckgesendet,\ wenn\ die\ @bedigung\n\ falsch\ ist\n\ \n\ @param\ bedigung\n\ @param\ nachricht\ die\ Nachricht\ der\ Ausnahme\n
-comment10.params=absatz
-comment10.target=void\ abgang(int)
-comment10.text=\n\ \n\ @param\ absatz\ muss\ immer\ >\ 0\ und\ <\=\ this.bestand\ sein\n
-comment11.params=
-comment11.target=java.lang.String\ toString()
+comment1.text=\r\n\ IllegalArgumentException\ mit\ @msg\ zuruckgesendet,\ wenn\ die\ @bedigung\ falsch\ ist\r\n\ @param\ bedigung\ \ Die\ Bedigung\r\n\ @param\ msg\ \ \ \ \ \ \ Die\ Nachricht\ der\ Ausnahme\r\n
+comment10.params=
+comment10.target=java.lang.String\ toString()
 comment2.params=nummer\ bezeichnung\ bestand
 comment2.target=Artikel(int,\ java.lang.String,\ int)
+comment2.text=\r\n\ @param\ nummer\ \ \ \ \ \ Der\ Nummer\ muss\ 4-stellig\ sein\r\n\ @param\ bezeichnung\ Der\ Bezeichnung\ muss\ nicht\ leer\ sein\r\n\ @param\ bestand\ \ \ \ \ Der\ Bestand\ darf\ nie\ kleiner\ als\ 0\ werden\r\n
 comment3.params=nummer\ bezeichnung
 comment3.target=Artikel(int,\ java.lang.String)
+comment3.text=\r\n\ @param\ nummer\ \ \ \ \ \ Der\ Nummer\ muss\ 4-stellig\ sein\r\n\ @param\ bezeichnung\ Der\ Bezeichnung\ muss\ nicht\ leer\ sein\r\n
 comment4.params=
 comment4.target=int\ getNummer()
-comment4.text=\ \ \n\ einfach\ der\ nummer\ zuruecksenden\n
 comment5.params=
 comment5.target=java.lang.String\ getBezeichnung()
-comment5.text=\ \ \n\ einfach\ die\ Bezeichnung\ zuruecksenden\n
 comment6.params=
 comment6.target=int\ getBestand()
-comment6.text=\ \ \n\ einfach\ der\ Bestand\ zuruecksenden\n
 comment7.params=bestand
 comment7.target=void\ setBestand(int)
-comment7.text=\n\ \n\ @param\ bestand\ muss\ immer\ >\=\ 0\ sein\n
-comment8.params=bestand\ bedigung\ nachricht
-comment8.target=void\ setBestand(int,\ boolean,\ java.lang.String)
-comment9.params=zusatz
-comment9.target=void\ zugang(int)
-comment9.text=\n\ \n\ @param\ zusatz\ muss\ immer\ >\ 0\ sein\n
-numComments=12
+comment7.text=\r\n\ @param\ bestand\ muss\ immer\ >\=\ 0\ sein\r\n
+comment8.params=zusatz
+comment8.target=void\ zugang(int)
+comment8.text=\r\n\ @param\ zusatz\ muss\ immer\ >\ 0\ sein\r\n
+comment9.params=absatz
+comment9.target=void\ abgang(int)
+comment9.text=\r\n\ @param\ absatz\ muss\ immer\ >\ 0\ sein\r\n
+numComments=11
