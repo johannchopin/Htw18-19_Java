@@ -38,6 +38,9 @@ public class ArtikelDialog {
             } catch (Exception e) {
                 System.out.println("Irgendeine Ausnahme gefangen: " + e);
                 e.printStackTrace(System.out);
+            } catch (InputMismatchException e) {
+                System.out.println(e);
+                input.nextLine();
             }
 
         }
@@ -108,9 +111,8 @@ public class ArtikelDialog {
                 artikel1.zugang(absatz);
                 break;
                 
-            default:
-            
-            System.out.println("Der Wahl ist nicht bekannt. Bitte versuchen es neu");
+            default:            
+                System.out.println("Der Wahl ist nicht bekannt. Bitte versuchen es neu");
                 break;
         }
     }
