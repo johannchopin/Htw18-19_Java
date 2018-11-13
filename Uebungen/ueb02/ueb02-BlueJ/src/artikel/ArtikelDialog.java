@@ -24,7 +24,7 @@ public class ArtikelDialog {
      * Hauptschleife des Testprogramms
      */
     public void start() {
-        artikel1 = null;
+        artikel1 = artikelAnlegen();
         int funktion = -1;
 
         while (funktion != ENDE) {
@@ -101,10 +101,13 @@ public class ArtikelDialog {
         input.nextLine();
         System.out.print("Name des Artikel : ");
         String name = input.nextLine();
-        System.out.print("Bestand : ");
-        int bestand = input.nextInt(); input.nextLine();
-        System.out.print("\n");
-        return new Artikel(nummer, name, bestand);
+        System.out.print("Bestand (optionnal) : ");
+        String bestand = input.nextLine();
+        System.out.println();
+        if(bestand.trim().isEmpty())
+            return new Artikel(nummer, name);
+        else
+            return new Artikel(nummer, name, Integer.parseInt(bestand));
     }
 
     
