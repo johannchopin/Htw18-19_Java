@@ -1,13 +1,13 @@
 import java.util.Scanner;
 
 /**
- * Interaktive Testklasse für die FuncTools Methoden
+ * Interaktive Testklasse für die FuncTools methoden
  *
  * @author Guidoux Alexandre
  * @version 1.0
  */
 public class FuncToolsDialog {
-    private static FuncTools Methoden;
+    private static FuncTools methoden;
     private Scanner input = new Scanner(System.in);
 
     // Klassenkonstanten : Wahl der Benutzer
@@ -85,10 +85,10 @@ public class FuncToolsDialog {
         System.out.print("Nummer eintragen: ");
         try {
             long n = input.nextLong(); input.reset();
-            long result = Methoden.teilerSumme(n);
+            long result = methoden.teilerSumme(n);
             System.out.println("Result : " + result);
         } catch(Exception e){
-            System.out.println(Methoden.MSG_TEILERSUMME);
+            System.out.println(methoden.MSG_TEILERSUMME);
         }
     }
     
@@ -96,10 +96,10 @@ public class FuncToolsDialog {
         System.out.print("ISBN eintragen: ");
         try {
             long isbn = input.nextLong(); input.reset();
-            String result = Methoden.isbnRechner(isbn);
+            String result = methoden.isbnRechner(isbn);
             System.out.println("\nLetze nummer ausgerechnet: " + result); 
         } catch(IllegalArgumentException e) {
-            System.out.println(Methoden.MSG_ISBNRECHNER);
+            System.out.println(methoden.MSG_ISBNRECHNER);
         }
     }
     
@@ -109,7 +109,7 @@ public class FuncToolsDialog {
             double p = input.nextDouble(); input.reset();
             System.out.print("\nq-Wert: ");
             double q = input.nextDouble(); input.reset();
-            String result = Methoden.quadratischeGleichung(p, q);
+            String result = methoden.quadratischeGleichung(p, q);
             System.out.println("\nNachricht zurueckgegeben: " + result);
         } catch(Exception e){
             System.out.println("Es muss ein nummer sein (" + e + ")");

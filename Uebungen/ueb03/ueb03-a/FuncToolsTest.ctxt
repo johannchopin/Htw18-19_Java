@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=FuncToolsTest
+comment0.text=\n\ The\ test\ class\ FuncToolsTest.\n\n\ @author\ \ Alexandre\n\ @version\ 1.0\n
+comment1.params=
+comment1.target=void\ teilerSummeTest()
+comment2.params=
+comment2.target=void\ isbnRechnerTest()
+comment3.params=
+comment3.target=void\ quadratischeGleichungTest()
+numComments=4

@@ -11,7 +11,7 @@
  */
 public class FuncTools
 {
-    // ! MSG sind Illegal Argument Exception Nachricht !
+    //  MSG Konstanten sind IllegalArgumentException Nachricht
     // teilerSumme Konstanten
     public static final String MSG_TEILERSUMME = "Der nummer muss > 0 sein.";
     // isbnRechner Konstanten
@@ -22,8 +22,8 @@ public class FuncTools
     public static final short ISBN_MOD = 11;
     public static final String MSG_ISBNRECHNER = "Der ISBN muss ein 9-stellige Nummer sein";
     // quadratischeGleichung Konstanten
-    public static final double MIN_FLOAT_UPSILON = -1e-12;
-    public static final double MAX_FLOAT_UPSILON = 1e-12;
+    public static final double MIN_UPSILON = -1e-12;
+    public static final double MAX_UPSILON = 1e-12;
 
     /**
      * Uebuerprueft, ob alle Argumente richtig sind. 
@@ -88,17 +88,15 @@ public class FuncTools
     
     public static String quadratischeGleichung(double p, double q){
         double x1, x2;
-        double v = p/2;
+        double v = -p/2;
         double d = v*v - q;
 
-        System.out.print("v=" + v + " d=" + d + " --> ");
-        if(MIN_FLOAT_UPSILON <= d && d <= MAX_FLOAT_UPSILON){
-            x1 = v + Math.sqrt(d);  
-            return "1 doppelte Nullstelle : " + x1;
+        if(MIN_UPSILON <= d && d <= MAX_UPSILON){
+            return "1 doppelte Nullstelle : " + v;
         }
         if(d > 0){
-            x1 = -v + Math.sqrt(d);
-            x2 = -v - Math.sqrt(d);
+            x1 = v + Math.sqrt(d);
+            x2 = v - Math.sqrt(d);
             return "2 reelle Nulstellen : " + x1 + " " + x2;
         }
         else
