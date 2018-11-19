@@ -116,12 +116,4 @@ public class FuncTools
         else
             return "2 komplexe Nullstellen";
     }
-
-    public static void main(String[] args){
-        System.out.println(teilerSumme(6));
-        System.out.println(isbnRechner(386680192L));
-        System.out.println(isbnRechner(383622862L));
-        System.out.println(quadratischeGleichung(1,2));
-        System.out.println(quadratischeGleichung(20,36));
-    }
 }
