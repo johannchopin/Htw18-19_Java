@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=FuncTools
+comment0.text=\r\n\ Versammlung\ von\ Funktionen\r\n\ \r\n\ Enthaelt\ \:\r\n\ *\ Teilersumme\ eine\ naturliche\ Zahl\r\n\ *\ eine\ Methode,\ die\ eine\ 10-ISBN\ ueberpruefen\ \r\n\ *\ eine\ Methode,\ um\ die\ quadratische\ Gleichungen\ zu\ loesen\ \r\n\r\n\ @author\ Alexandre\r\n\ @version\ 1.0\r\n
+comment1.params=bedigung\ nachricht
+comment1.target=void\ check_arguments(boolean,\ java.lang.String)
+comment1.text=\r\n\ Uebuerprueft,\ ob\ alle\ Argumente\ richtig\ sind.\ \r\n\ Wirft\ eine\ IllegalArgumentException\ mit\ @nachricht\r\n\ \r\n\ @param\ bedigung\ wird\ ueberprueft\r\n\ @param\ nachricht\ wenn\ Fehler\r\n
+comment2.params=n
+comment2.target=long\ teilerSumme(long)
+comment2.text=\r\n\ Berechnet\ die\ Teilersumme\ einer\ naturliche\ Zahl\r\n\ \r\n\ @param\ n\ muss\ einer\ naturliche\ Zahl\ sein\r\n\ \r\n\ @return\ Teilersumme\ einer\ naturliche\ Zahl\r\n
+comment3.params=n
+comment3.target=long\ teilerSumme(int)
+comment4.params=n
+comment4.target=long\ teilerSumme(short)
+comment5.params=isbn
+comment5.target=java.lang.String\ isbnRechner(long)
+comment5.text=\r\n\ Berechnet\ die\ Teilersumme\ einer\ naturliche\ Zahl\r\n\ \r\n\ @param\ isbn\ muss\ einer\ long\ sein\r\n\ \r\n\ @return\ die\ errechnete\ Pr\u00FCfziffer\r\n
+comment6.params=p\ q
+comment6.target=java.lang.String\ quadratischeGleichung(double,\ double)
+comment7.params=args
+comment7.target=void\ main(java.lang.String[])
+numComments=8
