@@ -126,7 +126,8 @@ public class FuncTools
      * @param q muss einer double der > 0 ist sein
      * 
      * @return die Resultat eine mathematische Funktion
-     */public static double undefinierteFunktion(int n, double x) {
+     */
+    public static double undefinierteFunktion(int n, double x) {
         check(x > 0, "variable x have to be > 0");
         double resultat = 0;
         for(int i = 1; i <= n; i++){
