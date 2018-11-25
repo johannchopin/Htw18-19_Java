@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=FuncToolsTest
+comment0.text=\n\ The\ test\ class\ FuncToolsTest.\n\n\ @author\ \ Alexandre\ &&\ Johann\n\ @version\ 1.0\n
+comment1.params=
+comment1.target=void\ testTeilerSumme_with6_result12()
+comment1.text=\n\ Tests\ TeilerSumme\n
+comment2.params=
+comment2.target=void\ isbnRechnerTest_with123456789_resultX()
+comment2.text=\n\ Tests\ IsbnRechner\n
+comment3.params=
+comment3.target=void\ isbnRechnerTest_with386680192_result0()
+comment4.params=
+comment4.target=void\ isbnRechnerTest_with383622862_result9()
+comment5.params=
+comment5.target=void\ quadratischeGleichungTest_with1_2_result_komplexeNullstellen()
+comment5.text=\n\ Tests\ quadratische\ Gleichung\n
+comment6.params=
+comment6.target=void\ quadratischeGleichungTest_with20_36_result_2_18_negative()
+numComments=7
