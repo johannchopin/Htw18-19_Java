@@ -1,34 +1,34 @@
 #BlueJ class context
 comment0.target=FuncTools
-comment0.text=\n\ Versammlung\ von\ Funktionen\n\ \n\ Enthaelt\ \:\n\ *\ Teilersumme\ eine\ naturliche\ Zahl\n\ *\ eine\ Methode,\ die\ eine\ 10-ISBN\ ueberpruefen\ \n\ *\ eine\ Methode,\ um\ die\ quadratische\ Gleichungen\ zu\ loesen\ \n\n\ @author\ Alexandre\ &&\ Johann\n\ @version\ 1.0\n
+comment0.text=\r\n\ Versammlung\ von\ Funktionen\r\n\ \r\n\ Enthaelt\ \:\r\n\ *\ Teilersumme\ eine\ naturliche\ Zahl\r\n\ *\ eine\ Methode,\ die\ eine\ 10-ISBN\ ueberpruefen\ \r\n\ *\ eine\ Methode,\ um\ die\ quadratische\ Gleichungen\ zu\ loesen\ \r\n\r\n\ @author\ Alexandre\ &&\ Johann\r\n\ @version\ 1.0\r\n
 comment1.params=bedigung\ nachricht
 comment1.target=void\ check_arguments(boolean,\ java.lang.String)
-comment1.text=\n\ Uebuerprueft,\ ob\ alle\ Argumente\ richtig\ sind.\ \n\ Wirft\ eine\ IllegalArgumentException\ mit\ @nachricht\n\ \n\ @param\ bedigung\ wird\ ueberprueft\n\ @param\ nachricht\ wenn\ Fehler\n
+comment1.text=\r\n\ Uebuerprueft,\ ob\ alle\ Argumente\ richtig\ sind.\ \r\n\ Wirft\ eine\ IllegalArgumentException\ mit\ @nachricht\r\n\ \r\n\ @param\ bedigung\ wird\ ueberprueft\r\n\ @param\ nachricht\ wenn\ Fehler\r\n
 comment10.params=bound\ x
 comment10.target=double\ mathematischeFolge(long,\ double)
-comment10.text=\n\ Rechnet\ die\ mathematische\ folge\n\ \n\ @param\ bound\ Grenze\ zu\ berechnen\n\ @param\ x\ f(x)\n
+comment10.text=\r\n\ Rechnet\ die\ mathematische\ folge\r\n\ \r\n\ @param\ bound\ Grenze\ zu\ berechnen\r\n\ @param\ x\ f(x)\r\n
 comment11.params=args
 comment11.target=void\ main(java.lang.String[])
 comment2.params=n
 comment2.target=long\ teilerSumme(long)
-comment2.text=\n\ Berechnet\ die\ Teilersumme\ einer\ naturliche\ Zahl\n\ \n\ @param\ n\ muss\ einer\ naturliche\ Zahl\ sein\n\ \n\ @return\ Teilersumme\ einer\ naturliche\ Zahl\n
+comment2.text=\r\n\ Berechnet\ die\ Teilersumme\ einer\ naturliche\ Zahl\r\n\ \r\n\ @param\ n\ muss\ einer\ naturliche\ Zahl\ sein\r\n\ \r\n\ @return\ Teilersumme\ einer\ naturliche\ Zahl\r\n
 comment3.params=n
 comment3.target=long\ teilerSumme(int)
 comment4.params=n
 comment4.target=long\ teilerSumme(short)
 comment5.params=isbn
 comment5.target=java.lang.String\ isbnRechner(long)
-comment5.text=\n\ Berechnet\ die\ Pr\u00FCfziffer\ eines\ isbn\n\ \n\ @param\ isbn\ muss\ einer\ long\ sein\n\ \n\ @return\ die\ errechnete\ Pr\u00FCfziffer\n
+comment5.text=\r\n\ Berechnet\ die\ Pr\u00FCfziffer\ eines\ isbn\r\n\ \r\n\ @param\ isbn\ muss\ einer\ long\ sein\r\n\ \r\n\ @return\ die\ errechnete\ Pr\u00FCfziffer\r\n
 comment6.params=p\ q
 comment6.target=java.lang.String\ quadratischeGleichung(double,\ double)
-comment6.text=\n\ Gibt\ die\ Quadratische\ Gleichungen\ von\ 2\ nummer\n\ \n\ @param\ p\ muss\ einer\ double\ sein\n\ @param\ q\ muss\ einer\ double\ sein\n\ \n\ @return\ der/die\ Nullstellen\n
+comment6.text=\r\n\ Gibt\ die\ Quadratische\ Gleichungen\ von\ 2\ nummer\r\n\ \r\n\ @param\ p\ muss\ einer\ double\ sein\r\n\ @param\ q\ muss\ einer\ double\ sein\r\n\ \r\n\ @return\ der/die\ Nullstellen\r\n
 comment7.params=max
 comment7.target=long[][]\ zahlentripelRechner(int)
-comment7.text=\n\ Gibt\ eine\ matrix\ zurueck,\ die\ {a,b,c}\ Elementen\ enthaelt.\n\ Sowie\ a\u00B3+b\u00B3\ \=\ c\u00B2\n\ \n\ @param\ max\ Die\ Obergrenze\n\ \n\ @return\ die\ Tabelle\n
+comment7.text=\r\n\ Gibt\ eine\ matrix\ zurueck,\ die\ {a,b,c}\ Elementen\ enthaelt.\r\n\ Sowie\ a\u00B3+b\u00B3\ \=\ c\u00B2\r\n\ \r\n\ @param\ max\ Die\ Obergrenze\r\n\ \r\n\ @return\ die\ Tabelle\r\n
 comment8.params=tab
 comment8.target=void\ printTripelArray(long[][])
-comment8.text=\n\ Stellt\ die\ Tabelle\ von\ Tripel\ (@see\ zahlentripelRechner)\ dar\n\ \n\ @param\ tab\ Tabelle\ von\ Tripel\n
+comment8.text=\r\n\ Stellt\ die\ Tabelle\ von\ Tripel\ (@see\ zahlentripelRechner)\ dar\r\n\ \r\n\ @param\ tab\ Tabelle\ von\ Tripel\r\n
 comment9.params=max
 comment9.target=void\ printTripelArray(int)
-comment9.text=\n\ Methode,\ die\ die\ Tabelle\ rechnet\ (@see\ zahlentripelRechner)\ und\ stellt\n\ die\ Tabelle\ dar.\n\ \n\ @param\ max\ (@see\ zahlentripelRechner)\ \n
+comment9.text=\r\n\ Methode,\ die\ die\ Tabelle\ rechnet\ (@see\ zahlentripelRechner)\ und\ stellt\r\n\ die\ Tabelle\ dar.\r\n\ \r\n\ @param\ max\ (@see\ zahlentripelRechner)\ \r\n
 numComments=12

@@ -7,4 +7,6 @@ comment2.params=
 comment2.target=void\ isbnRechnerTest()
 comment3.params=
 comment3.target=void\ quadratischeGleichungTest()
-numComments=4
+comment4.params=
+comment4.target=void\ undefinierteFunktionTest()
+numComments=5

@@ -2,8 +2,11 @@
 comment0.target=FuncTools
 comment0.text=\r\n\ Versammlung\ von\ Funktionen\r\n\ \r\n\ Enthaelt\ \:\r\n\ *\ Teilersumme\ eine\ naturliche\ Zahl\r\n\ *\ eine\ Methode,\ die\ eine\ 10-ISBN\ ueberpruefen\ \r\n\ *\ eine\ Methode,\ um\ die\ quadratische\ Gleichungen\ zu\ loesen\ \r\n\r\n\ @author\ Alexandre\ &&\ Johann\r\n\ @version\ 1.0\r\n
 comment1.params=bedigung\ nachricht
-comment1.target=void\ check(boolean,\ java.lang.String)
+comment1.target=void\ check_arguments(boolean,\ java.lang.String)
 comment1.text=\r\n\ Uebuerprueft,\ ob\ alle\ Argumente\ richtig\ sind.\ \r\n\ Wirft\ eine\ IllegalArgumentException\ mit\ @nachricht\r\n\ \r\n\ @param\ bedigung\ wird\ ueberprueft\r\n\ @param\ nachricht\ wenn\ Fehler\r\n
+comment10.params=n\ x
+comment10.target=double\ mathematischeFolge(long,\ double)
+comment10.text=\r\n\ Rechnet\ die\ mathematische\ folge\r\n\ \r\n\ @param\ bound\ Grenze\ zu\ berechnen,\ muss\ einer\ int\ sein\r\n\ @param\ x\ f(x),\ muss\ einer\ double\ der\ >\ 0\ ist\ sein\r\n\ \r\n\ @return\ die\ Resultat\ die\ mathematische\ folge\r\n
 comment2.params=n
 comment2.target=long\ teilerSumme(long)
 comment2.text=\r\n\ Berechnet\ die\ Teilersumme\ einer\ naturliche\ Zahl\r\n\ \r\n\ @param\ n\ muss\ einer\ naturliche\ Zahl\ sein\r\n\ \r\n\ @return\ Teilersumme\ einer\ naturliche\ Zahl\r\n
@@ -19,8 +22,11 @@ comment6.target=java.lang.String\ quadratischeGleichung(double,\ double)
 comment6.text=\r\n\ Gibt\ die\ Quadratische\ Gleichungen\ von\ 2\ nummer\r\n\ \r\n\ @param\ p\ muss\ einer\ double\ sein\r\n\ @param\ q\ muss\ einer\ double\ sein\r\n\ \r\n\ @return\ der/die\ Nullstellen\r\n
 comment7.params=max
 comment7.target=long[][]\ zahlentripelRechner(int)
-comment7.text=\r\n\ Gibt\ eine\ matrix\ zurueck,\ die\ {a,b,c}\ Elementen\ enthaelt.\r\n\ Sowie\ a\u00B3+b\u00B3\ \=\ c\u00B2\r\n\ \r\n\ @param\ max\ Die\ Obergrenze\r\n\ \r\n\ @return\ die\ Tabelle\r\n
-comment8.params=n\ x
-comment8.target=double\ undefinierteFunktion(int,\ double)
-comment8.text=\r\n\ Gibt\ die\ Resultat\ eine\ mathematische\ Funktion\r\n\ \r\n\ @param\ n\ muss\ einer\ int\ sein\r\n\ @param\ x\ muss\ einer\ double\ der\ >\ 0\ ist\ sein\r\n\ \r\n\ @return\ die\ Resultat\ eine\ mathematische\ Funktion\r\n
-numComments=9
+comment7.text=\r\n\ Gibt\ eine\ matrix\ zurueck,\ die\ {a,b,c}\ Elementen\ enthaelt.\r\n\ Sowie\ a\u00B3+b\u00B3\ \=\ c\u00B2\r\n\ \r\n\ @param\ max\ Die\ Obergrenze,\ muss\ einer\ int\ der\ >\ 0\ ist\ sein\r\n\ \r\n\ @return\ einem\ geeigneten\ Array\r\n
+comment8.params=tab
+comment8.target=void\ printTripelArray(long[][])
+comment8.text=\r\n\ Stellt\ die\ Array\ von\ Tripel\ (@see\ zahlentripelRechner)\ dar\r\n\ \r\n\ @param\ tab\ Array\ von\ Tripel\r\n
+comment9.params=max
+comment9.target=void\ printTripelArray(int)
+comment9.text=\r\n\ Methode,\ die\ die\ Array\ rechnet\ (@see\ zahlentripelRechner)\ und\ stellt\r\n\ die\ Array\ dar.\r\n\ \r\n\ @param\ max\ (@see\ zahlentripelRechner)\ \r\n
+numComments=11

@@ -17,14 +17,16 @@ public class FuncTools
     // isbnRechner Konstanten
     private static final long MAX_ISBN = 999_999_999;
     private static final long MIN_ISBN = 111_111_111;
-    public static final short ISBN_LENGTH = 9;
+    private static final short ISBN_LENGTH = 9;
     private static final int ISBN_SIZE = 100_000_000;
-    public static final short ISBN_MOD = 11;
+    private static final short ISBN_MOD = 11;
     public static final String MSG_ISBNRECHNER = "Der ISBN muss ein 9-stellige Nummer sein";
     // quadratischeGleichung Konstanten
     public static final double MIN_UPSILON = -1e-12;
     public static final double MAX_UPSILON = 1e-12;
-    
+    //
+    public static final String MSG_BOUND = "Das Maximum muss > 0 sein.";
+    public static final String MSG_MAX = MSG_BOUND;
 
     /**
      * Uebuerprueft, ob alle Argumente richtig sind. 
@@ -33,7 +35,7 @@ public class FuncTools
      * @param bedigung wird ueberprueft
      * @param nachricht wenn Fehler
      */
-    private static void check(boolean bedigung, String nachricht){
+    private static void check_arguments(boolean bedigung, String nachricht){
         if(!bedigung)
             throw new IllegalArgumentException(nachricht);
     }
@@ -46,7 +48,7 @@ public class FuncTools
      * @return Teilersumme einer naturliche Zahl
      */
     public static long teilerSumme(long n){
-        check((n >= 1), MSG_TEILERSUMME);
+        check_arguments((n >= 1), MSG_TEILERSUMME);
         long acc = 1;
 
         if(n != 1)
@@ -77,7 +79,7 @@ public class FuncTools
         int divisor = ISBN_SIZE;
         int result;
 
-        check((MIN_ISBN <= isbn && isbn <= MAX_ISBN), 
+        check_arguments((MIN_ISBN <= isbn && isbn <= MAX_ISBN), 
             MSG_ISBNRECHNER);
 
         for(short i=1; i < ISBN_LENGTH + 1; i++){
@@ -118,18 +120,17 @@ public class FuncTools
             return "2 komplexe Nullstellen";
     }
     
-        
     /**
      * Gibt eine matrix zurueck, die {a,b,c} Elementen enthaelt.
      * Sowie a³+b³ = c²
      * 
-     * @param max Die Obergrenze
+     * @param max Die Obergrenze, muss einer int der > 0 ist sein
      * 
-     * @return die Tabelle
+     * @return einem geeigneten Array
      */
     public static long[][] zahlentripelRechner(int max){
         // With strings, we can go upper than integer (size array limit)
-        check(max > 0, "Das Maximum muss > 0 sein.");
+        check_arguments(max > 0, MSG_BOUND);
         long[][] zahlentripel = new long[max][3];
         int found = 0; 
         long[] tripel;
@@ -137,9 +138,11 @@ public class FuncTools
         for(long c=2; c < max; c++){
             square_c = c*c;
             for(long b=1; b <= c; b++){
-                cube_b = b*b*b;  
+                cube_b = b*b*b;
+                if(cube_b > square_c) break;
                 for(long a=1; a <= b; a++){
                     cube_a = a*a*a;
+                    if(cube_a > square_c) break;
                     if(cube_a + cube_b == square_c){
                         tripel = new long[] {a, b, c};
                         zahlentripel[found++] = tripel;
@@ -150,22 +153,55 @@ public class FuncTools
         return zahlentripel;
     }
     
-    
     /**
-     * Gibt die Resultat eine mathematische Funktion
+     * Stellt die Array von Tripel (@see zahlentripelRechner) dar
      * 
-     * @param n muss einer int sein
-     * @param x muss einer double der > 0 ist sein
-     * 
-     * @return die Resultat eine mathematische Funktion
+     * @param tab Array von Tripel
      */
-    public static double undefinierteFunktion(int n, double x) {
-        check(x > 0, "variable x have to be > 0");
-        double resultat = 0;
-        for(int i = 1; i <= n; i++){
-            double calc = Math.pow((x - 1), i) / (i * Math.pow(x, i));
-            resultat += calc;
-        }
-        return resultat;
+    public static void printTripelArray(long[][] tab){
+       String s = "";
+       for(int i=0; i<tab.length; i++){
+           if(tab[i][0] == 0)
+                break;
+           s += "(" + tab[i][0] + "," +
+                      tab[i][1] + "," +
+                      tab[i][2] + "); ";
+       }
+       System.out.println(s.trim());   
     }
+    /**
+     * Methode, die die Array rechnet (@see zahlentripelRechner) und stellt
+     * die Array dar.
+     * 
+     * @param max (@see zahlentripelRechner) 
+     */
+    public static void printTripelArray(int max){
+        printTripelArray(zahlentripelRechner(max)); 
+    }
+       
+    /**
+     * Rechnet die mathematische folge
+     * 
+     * @param bound Grenze zu berechnen, muss einer int sein
+     * @param x f(x), muss einer double der > 0 ist sein
+     * 
+     * @return die Resultat die mathematische folge
+     */
+    public static double mathematischeFolge(long n, double x){
+        check_arguments(n > 0, MSG_BOUND);      
+        double x1 = x-1;
+        double x2 = x;
+        double acc = x1/x2;
+        double acc_x1 = x1;
+        double acc_x2 = x2;
+        
+        for(long i=2; i <= n; i++){
+            acc_x1 *= x1;
+            acc_x2 *= x2;
+            acc += acc_x1 / (i * acc_x2);
+        }
+        return acc;
+    }
+    
 }
+    
