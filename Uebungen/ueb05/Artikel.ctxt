@@ -1,0 +1,30 @@
+#BlueJ class context
+comment0.target=Artikel
+comment0.text=\n\ \n\ Die\ Klasse\ simuliert\ ein\ Artikel\n\ \n\ @author\ Guidoux\ Alexandre\ &&\ Chopin\ Johann\n\ @version\ 1.0\n
+comment1.params=nummer\ bezeichnung\ bestand
+comment1.target=Artikel(int,\ java.lang.String,\ int)
+comment1.text=\n\ @param\ nummer\ \ \ \ \ \ Der\ Nummer\ muss\ 4-stellig\ sein\n\ @param\ bezeichnung\ Der\ Bezeichnung\ muss\ nicht\ leer\ sein\n\ @param\ bestand\ \ \ \ \ Der\ Bestand\ darf\ nie\ kleiner\ als\ 0\ werden\n
+comment2.params=nummer\ bezeichnung
+comment2.target=Artikel(int,\ java.lang.String)
+comment2.text=\n\ @param\ nummer\ \ \ \ \ \ Der\ Nummer\ muss\ 4-stellig\ sein\n\ @param\ bezeichnung\ Der\ Bezeichnung\ muss\ nicht\ leer\ sein\n
+comment3.params=
+comment3.target=int\ getNummer()
+comment3.text=\n\ Gibt\ einfach\ der\ Nummer\ zurueck.\n\ \n\ @return\ nummer\n
+comment4.params=
+comment4.target=java.lang.String\ getBezeichnung()
+comment4.text=\n\ Gibt\ einfach\ die\ Bezeichnung\ zurueck.\n\ \n\ @return\ bezeichnung\n
+comment5.params=
+comment5.target=int\ getBestand()
+comment5.text=\n\ Git\ einfach\ der\ Bestand\ zurueck.\n\ \n\ @return\ bestand\n
+comment6.params=bestand
+comment6.target=void\ setBestand(int)
+comment6.text=\n\ @param\ bestand\ muss\ immer\ >\=\ 0\ sein\n
+comment7.params=zusatz
+comment7.target=void\ zugang(int)
+comment7.text=\n\ @param\ zusatz\ muss\ immer\ >\ 0\ sein\n
+comment8.params=absatz
+comment8.target=void\ abgang(int)
+comment8.text=\n\ @param\ absatz\ muss\ immer\ >\ 0\ sein\n
+comment9.params=
+comment9.target=java.lang.String\ toString()
+numComments=10
