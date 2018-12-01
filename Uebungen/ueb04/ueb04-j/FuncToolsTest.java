@@ -38,4 +38,9 @@ public class FuncToolsTest
                     "2 reelle Nulstellen : -2.0 -18.0");
        
     }    
+    
+    @Test
+    public final void undefinierteFunktionTest() {
+        assertTrue("undefinierteFunktion(3, 2.0) ~= 0.6666666", ft.undefinierteFunktion(3, 2.0) - 0.6666666 > 0.00000001);
+    }
 }
