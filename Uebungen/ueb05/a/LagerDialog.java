@@ -139,7 +139,7 @@ public class LagerDialog
         try{
             lager.anlegen(nummer, bezeichnung, bestand, preis);
             System.out.println("Artikel: %s mit der Kennung %d hinzugefuegt"
-                                .format(bezeichnung, nummer);
+                                .format(bezeichnung, nummer));
         } catch(ArrayStoreException|ArrayIndexOutOfBoundsException e){
             System.out.println(e);
         }   
