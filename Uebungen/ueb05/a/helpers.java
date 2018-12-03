@@ -40,6 +40,7 @@ public class helpers
             } catch(InputMismatchException e){System.out.println(e + "\n");}
         }
     }
+    
     public static double readDouble(Scanner sc, String nachricht){
         while(true){
             System.out.println(nachricht);
@@ -49,6 +50,7 @@ public class helpers
             } catch(InputMismatchException e){System.out.println(e + "\n");}
         }
     }
+    
     public static String readLine(Scanner sc, String nachricht){
         while(true){
             System.out.println(nachricht);
@@ -58,6 +60,7 @@ public class helpers
             } catch(InputMismatchException e){System.out.println(e + "\n");}
         } 
     }
+    
     public static boolean isInputTrue(Scanner sc, String nachricht, char is_true){
         while(true){
             System.out.println(nachricht);
@@ -66,5 +69,8 @@ public class helpers
                 return read == is_true;
             } catch (InputMismatchException e){System.out.println(e + "\n");}
         }
+    }
+    public static boolean isInputTrue(Scanner sc, String nachricht){
+        return isInputTrue(sc, nachricht, 'j');
     }
 }
