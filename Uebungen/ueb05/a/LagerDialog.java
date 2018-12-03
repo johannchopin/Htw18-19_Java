@@ -26,6 +26,11 @@ public class LagerDialog
     public void start() {
         int funktion = -1;
         
+        if (!(lager instanceof Lager)){
+            System.out.println("Ein Lager muss geschaffen sein.");
+            ruf_lager();
+        }
+        
         while (funktion != ENDE) {
             try {
                 funktion = einlesenFunktion();
@@ -64,7 +69,7 @@ public class LagerDialog
      * @param wahl fur die auszuführende Funktion
      */
     private void ausfuehrenFunktion(int wahl) {
-        switch(wahl) {
+          switch(wahl) {            
             case ENDE:
                 System.out.println("Auf Wiedersehen <3");
                 System.exit(0);
@@ -78,6 +83,7 @@ public class LagerDialog
                 break;
                
             case RUF_ARTIKEL_ZUGANG:
+                ruf_artikelZugang();
                 break;
                
             case RUF_ARTIKEL_ABGANG:
@@ -125,6 +131,15 @@ public class LagerDialog
         } catch(ArrayStoreException|ArrayIndexOutOfBoundsException e){
             System.out.println(e);
         }   
+    }
+    
+    public void ruf_artikelZugang(){
+        int id = helpers.readInt(input, "Kennung des Artikels: ");
+        int zusatz = helpers.readInt(input, "Zusatz des Artikels: ");
+        
+        try{
+           lager.artikelZugang(id, zusatz);
+        } catch (ArrayStoreException e) {System.out.println(e);}
     }
     
     public void ruf_lagerDarstellung(){
