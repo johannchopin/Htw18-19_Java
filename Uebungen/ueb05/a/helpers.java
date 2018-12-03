@@ -8,27 +8,21 @@ import java.util.InputMismatchException;
  * @version 1.0
  */
 public class helpers
-{
-    /**
-     * IllegalArgumentException mit @msg zuruckgesendet, wenn die @bedigung falsch ist
-     * @param bedigung  Die Bedigung
-     * @param msg       Die Nachricht der Ausnahme
-    */
-   
+{   
     // error constants
-    public final static int illegalArgumentException = 1;
-    public final static int arrayIndexOutOfBoundsException = 2;
+    public final static int ILLEGAL_ARGUMENT_EXCEPTION = 1;
+    public final static int ARRAY_OUT_OF_BOUND_EXCEPTION = 2;
    
     public static void check(boolean bedigung, String nachricht) {
-        check(bedigung, nachricht, illegalArgumentException);
+        check(bedigung, nachricht, ILLEGAL_ARGUMENT_EXCEPTION);
     }
     public static void check(boolean bedigung, String nachricht, int exceptionId){
         if (!bedigung){
             switch(exceptionId){
-                case illegalArgumentException:
+                case ILLEGAL_ARGUMENT_EXCEPTION:
                     throw new IllegalArgumentException(nachricht);
                 
-                case arrayIndexOutOfBoundsException:
+                case ARRAY_OUT_OF_BOUND_EXCEPTION:
                     throw new ArrayIndexOutOfBoundsException(nachricht);
             }
         }

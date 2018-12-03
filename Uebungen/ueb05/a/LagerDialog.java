@@ -7,10 +7,7 @@ import java.util.Scanner;
  * @version 1.0
  */
 public class LagerDialog
-{
-    private Scanner input = new Scanner(System.in);
-    private Lager lager;
-    
+{    
     // Klassenkonstanten : Wahl der Benutzer
     private static final int ENDE                        = 0;
     private static final int RUF_LAGER                   = 1;
@@ -20,6 +17,13 @@ public class LagerDialog
     private static final int RUF_ARTIKEL_PREIS_ANDERN    = 5;
     private static final int RUF_LAGER_DARSTELLUNG       = 6;
 
+    private Scanner input;
+    private Lager lager;
+    
+    public LagerDialog(){
+         input = new Scanner(System.in);
+         lager = ruf_anlegen();
+    }
     
     /**
      * Hauptschleife des Testprogramms
@@ -56,11 +60,7 @@ public class LagerDialog
             RUF_ARTIKEL_ABGANG       + " : Abgang\n" +
             RUF_ARTIKEL_PREIS_ANDERN + " : Preis eines Artikels aendern\n" +
             RUF_LAGER_DARSTELLUNG    + " : Der Lager darstellen");
-        try{ return input.nextInt(); }
-        catch (Exception e) {
-            System.out.println("Die eingabe ist nicht korrekt.");
-            return -1;
-        }
+        return input.nextInt();
     }
     
     /**
@@ -116,8 +116,7 @@ public class LagerDialog
         
         try{
             lager.anlegen(nummer, bezeichnung, bestand, preis);
-        }
-        catch(ArrayStoreException|ArrayIndexOutOfBoundsException e){           {System.out.println(e);} 
+        } catch(ArrayStoreException|ArrayIndexOutOfBoundsException e){
             System.out.println(e);
         }   
     }
