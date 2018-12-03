@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=LagerDialog
+comment0.text=\n\ Ermoeglicht\ die\ Lager-Klasse\ zu\ benutzen\n\n\ @author\ Alexandre\ Guidoux\n\ @version\ 1.0\n
+comment1.params=
+comment1.target=void\ start()
+comment1.text=\n\ Hauptschleife\ des\ Testprogramms\n
+comment2.params=
+comment2.target=int\ einlesenFunktion()
+comment2.text=\n\ Men\u00FC\ ausgeben\ und\ Wahl\ einlesen.\n\ \n\ @return\ eingelesene\ Funktion\ als\ ganzzahliger\ Wert\n
+comment3.params=wahl
+comment3.target=void\ ausfuehrenFunktion(int)
+comment3.text=\n\ Ausf\u00FChren\ der\ ausgewahlten\ Funktion\n\ \n\ @param\ wahl\ fur\ die\ auszuf\u00FChrende\ Funktion\n
+comment4.params=
+comment4.target=void\ ruf_anlegen()
+comment5.params=args
+comment5.target=void\ main(java.lang.String[])
+comment5.text=\n\ Main-Methode\ \:\ Erzeuget\ des\ LagerDialog-Objekts\ und\ start\ der\n\ Hauptschleife.\n
+numComments=6

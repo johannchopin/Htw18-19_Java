@@ -1,3 +1,5 @@
+import static java.lang.Math.round;
+
 /**
  * 
  * Die Klasse simuliert ein Artikel
@@ -7,20 +9,24 @@
  */
 
 public class Artikel {
-    public static final int MIN_ARTIKEL_NUMMER = 1000;
-    public static final int MAX_ARTIKEL_NUMMER = 9999;
+    private static final int MIN_ARTIKEL_NUMMER = 1000;
+    private static final int MAX_ARTIKEL_NUMMER = 9999;
     public static final int MIN_BESTAND = 0;
+    public static final int ZAHL_NULL = 0;
+    public static final double STANDARTMAESSIGER_PREIS = 1;
         
     private int nummer;
     private String bezeichnung;
     private int bestand;
+    private double preis; 
     
     /**
      * @param nummer      Der Nummer muss 4-stellig sein
      * @param bezeichnung Der Bezeichnung muss nicht leer sein
      * @param bestand     Der Bestand darf nie kleiner als 0 werden
+     * @param preis       Der Preis muss > 0 sein
      */
-    public Artikel(int nummer, String bezeichnung, int bestand) {
+    public Artikel(int nummer, String bezeichnung, int bestand, double preis) {
         helpers.check(bezeichnung != null || !bezeichnung.trim().isEmpty(), "Der Bezeichnung muss nicht leer sein");
         helpers.check(nummer >= MIN_ARTIKEL_NUMMER && nummer <= MAX_ARTIKEL_NUMMER, 
                "Der Nummer muss 4-stellig sein"
@@ -29,14 +35,16 @@ public class Artikel {
         this.nummer = nummer;
         this.bezeichnung = bezeichnung.trim();
         setBestand(bestand);
+        setPreis(preis);
     }
-    
-    /**
-     * @param nummer      Der Nummer muss 4-stellig sein
-     * @param bezeichnung Der Bezeichnung muss nicht leer sein
-     */
     public Artikel(int nummer, String bezeichnung){
-        this(nummer, bezeichnung, MIN_BESTAND);
+        this(nummer, bezeichnung, MIN_BESTAND, STANDARTMAESSIGER_PREIS);
+    }
+    public Artikel(int nummer, String bezeichnung, int bestand){
+        this(nummer, bezeichnung, bestand, STANDARTMAESSIGER_PREIS);
+    }
+    public Artikel(int nummer, String bezeichnung, double preis){
+        this(nummer, bezeichnung, MIN_BESTAND, preis);
     }
     
     /**
@@ -58,21 +66,59 @@ public class Artikel {
     }
     
     /**
-     * Git einfach der Bestand zurueck.
+     * Gibt einfach der Bestand zurueck.
      * 
      * @return bestand
      */
     public int getBestand() {
         return bestand;
     }
+        
+    /**
+     * Gibt einfach der Preis zurueck.
+     * 
+     * @return preis
+     */
+    public double getPreis() {
+        return this.preis;
+    }
     
     /**
+     * Stellt der Bestand ein.
+     * 
      * @param bestand muss immer >= 0 sein
      */
     private void setBestand(int bestand) {
-        helpers.check(bestand >= MIN_BESTAND, 
+        helpers.check(bestand >= ZAHL_NULL, 
                       "Der Bestand darf nicht < 0 werden.");
         this.bestand = bestand;
+    }
+    
+    /**
+     * Stellt der Preis ein.
+     * 
+     * @param preis muss immer > 0 sein
+     */
+    private void setPreis(double preis){
+        preis = (double)round(preis * 100) / 100 ;
+        helpers.check(preis > ZAHL_NULL,
+                      "Der Preis darf nicht < 0 werden.");
+        this.preis = preis;
+    }
+    private void setPreis(int preis){
+        setPreis((double)preis);
+    }
+    
+    /**
+     * Veraendert den Preis mit einem bestimmten prozensatz
+     * 
+     * @param prozensatz 
+     */
+    public void ChangePreis(double prozentsatz){
+        setPreis((1 + prozentsatz) * preis);
+    }
+    public void ChangePreis(int prozentsatz){
+        ChangePreis((double)prozentsatz);
     }
     
 
@@ -80,7 +126,7 @@ public class Artikel {
      * @param zusatz muss immer > 0 sein
      */
     public void zugang(int zusatz) {
-        helpers.check(zusatz > MIN_BESTAND, 
+        helpers.check(zusatz > ZAHL_NULL, 
                       "Der Zusatz darf nicht <= 0 sein.");
         setBestand(this.bestand + zusatz);
     }
@@ -89,7 +135,7 @@ public class Artikel {
      * @param absatz muss immer > 0 sein
      */
     public void abgang(int absatz) {
-        helpers.check(absatz > MIN_BESTAND, 
+        helpers.check(absatz > ZAHL_NULL, 
                       "Der Abgang darf nicht <= 0 sein.");
         setBestand(this.bestand - absatz);
     }
@@ -98,6 +144,7 @@ public class Artikel {
     public String toString() {
         return "Artikel : "     + getNummer() +
                " Bezeichnung: " + getBezeichnung() + 
-               " Bestand: "     + getBestand();
+               " Bestand: "     + getBestand() + 
+               " Preis : "      + getPreis();
     }
 }
