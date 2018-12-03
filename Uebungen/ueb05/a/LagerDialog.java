@@ -17,8 +17,10 @@ public class LagerDialog
     private static final int RUF_ARTIKEL_ABGANG         = 5;
     private static final int RUF_ARTIKEL_PREIS_AENDERN  = 6;
     private static final int RUF_LAGER_DARSTELLUNG      = 7;
-;    private static final int RUF_ARTIKEL_DARSTELLUNG   = 8;
-
+    private static final int RUF_ARTIKEL_DARSTELLUNG    = 8;
+    // Konstanten
+    private static final String KENNUNG_ARTIKEL_MSG = "Kennung des Artikels: ";
+    
     private Scanner input = new Scanner(System.in);
     private Lager lager;
     
@@ -112,6 +114,9 @@ public class LagerDialog
         }
     }
     
+    /**
+     * ruft den Kontruktor des Lagers
+     */
     private void ruf_lager(){
         int groesse = helpers.readInt(input, "Groesse des Lagers: ");
         if(this.lager != null &&
@@ -123,6 +128,9 @@ public class LagerDialog
         System.out.println("Lager ist erzeugt.");
     }
     
+    /**
+     * ruf die "anlegen" Methode des Lagers
+     */
     private void ruf_anlegen(){
         int bestand = Artikel.MIN_BESTAND; 
         double preis = Artikel.STANDARTMAESSIGER_PREIS;
@@ -145,8 +153,11 @@ public class LagerDialog
         }   
     }
     
+    /**
+     * ruft die "loeschen" Methode des Lagers
+     */
     private void ruf_loeschtArtikel(){
-        int id = helpers.readInt(input, "Kennung des Artikels: ");
+        int id = helpers.readInt(input, KENNUNG_ARTIKEL_MSG);
         
         try{
             lager.loeschen(id);
@@ -156,43 +167,57 @@ public class LagerDialog
         }
     }
     
+    /**
+     * ruft die "Zugang" methode des Lagers
+     */
     private void ruf_artikelZugang(){
-        int id = helpers.readInt(input, "Kennung des Artikels: ");
+        int id = helpers.readInt(input, KENNUNG_ARTIKEL_MSG);
         int zusatz = helpers.readInt(input, "Zusatz des Artikels: ");
         
         try{
             lager.artikelZugang(id, zusatz);
+            System.out.println(id + "sind hinzugefuegt");
         } catch (ArrayStoreException|IllegalArgumentException e){
             System.out.println(e);
         }
     }
     
+    /**
+     * ruft die "Abgang" Methode des Lagers
+     */
     private void ruf_artikelAbgang(){
-        int id = helpers.readInt(input, "Kennung des Artikels: ");
+        int id = helpers.readInt(input, KENNUNG_ARTIKEL_MSG);
         int absatz = helpers.readInt(input, "Absatz des Artikels: ");
         
         try{
             lager.artikelAbgang(id, absatz);
+            System.out.println(absatz + "sind weggenommen.");
         } catch (ArrayStoreException|IllegalArgumentException e){
             System.out.println(e);
         }
     }
     
+    /**
+     * ruft die "ChangePreis" Methode des Lagers
+     */
     private void ruf_artikelPreisAendern(){
-       int id = helpers.readInt(input, "Kennung des Artikels: ");
+       int id = helpers.readInt(input, KENNUNG_ARTIKEL_MSG);
        double prozentsatz = helpers.readDouble(input, "Prozensatz: ");
        
        try{
            lager.artikelPreisAendern(id, prozentsatz);
+           System.out.println("gemacht");
        } catch(ArrayStoreException|IllegalArgumentException e){
            System.out.println(e);
        }
     }
     
+    /**
+     * Stellt die String-Darstellung des Lagers dar.
+     */
     private void ruf_lagerDarstellung(){
         System.out.println(lager);
     }
-    
     
     /**
      * Main-Methode : Erzeuget des LagerDialog-Objekts und start der
