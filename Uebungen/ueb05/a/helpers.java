@@ -37,7 +37,10 @@ public class helpers
             try{
                 int rv = sc.nextInt(); sc.nextLine();
                 return rv;
-            } catch(InputMismatchException e){System.out.println(e + "\n");}
+            } catch(InputMismatchException e){
+                sc.nextLine();
+                System.out.println(e + "\n");
+            }
         }
     }
     
@@ -47,7 +50,10 @@ public class helpers
             try{
                 double rv = sc.nextDouble(); sc.nextLine();
                 return rv;
-            } catch(InputMismatchException e){System.out.println(e + "\n");}
+            } catch(InputMismatchException e){
+                sc.nextLine();
+                System.out.println(e + "\n");
+            }
         }
     }
     
@@ -57,7 +63,10 @@ public class helpers
             try{
                 String rv = sc.nextLine();
                 return rv;
-            } catch(InputMismatchException e){System.out.println(e + "\n");}
+            } catch(InputMismatchException e){
+                sc.nextLine();
+                System.out.println(e + "\n");
+            }
         } 
     }
     
@@ -67,7 +76,10 @@ public class helpers
             try{
                 char read = sc.nextLine().charAt(0);
                 return read == is_true;
-            } catch (InputMismatchException e){System.out.println(e + "\n");}
+            } catch (InputMismatchException e){
+                sc.nextLine();
+                System.out.println(e + "\n");
+            }
         }
     }
     public static boolean isInputTrue(Scanner sc, String nachricht){
