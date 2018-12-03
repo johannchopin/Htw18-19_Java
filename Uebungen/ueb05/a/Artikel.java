@@ -115,7 +115,8 @@ public class Artikel {
      * @param prozensatz 
      */
     public void ChangePreis(double prozentsatz){
-        setPreis((1 + prozentsatz) * preis);
+        System.out.println((prozentsatz/100 + 1) * preis);
+        setPreis((prozentsatz/100 + 1) * preis);
     }
     public void ChangePreis(int prozentsatz){
         ChangePreis((double)prozentsatz);
