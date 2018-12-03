@@ -174,7 +174,7 @@ public class Lager
         
         strBuffer.append(String.format(
              "#Lager\nGroesse: %d, Artikel gelagert: %d\n",
-             this.lager.length, this.lager.totalItems);
+             this.lager.length, this.totalItems));
              
         for(int i = 0; i < this.totalItems; i++){
             ItemBuffer = this.lager[i].toString() + "\n";
