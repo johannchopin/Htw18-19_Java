@@ -39,7 +39,7 @@ public class helpers
                 return rv;
             } catch(InputMismatchException e){
                 sc.nextLine();
-                System.out.println(e + "\n");
+                System.out.println(e + " : Ein Integer ist erwartet.\n");
             }
         }
     }
@@ -52,7 +52,7 @@ public class helpers
                 return rv;
             } catch(InputMismatchException e){
                 sc.nextLine();
-                System.out.println(e + "\n");
+                System.out.println(e + ": ein Dezimalzahl ist erwartet.\n");
             }
         }
     }
@@ -65,7 +65,7 @@ public class helpers
                 return rv;
             } catch(InputMismatchException e){
                 sc.nextLine();
-                System.out.println(e + "\n");
+                System.out.println(e + ": eine Zeichenkette ist erwartet.\n");
             }
         } 
     }
@@ -78,7 +78,7 @@ public class helpers
                 return read == is_true;
             } catch (InputMismatchException e){
                 sc.nextLine();
-                System.out.println(e + "\n");
+                System.out.println(e + ": ein character ist erwartet\n");
             }
         }
     }

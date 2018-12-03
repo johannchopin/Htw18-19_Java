@@ -87,6 +87,7 @@ public class LagerDialog
                 break;
          
             case RUF_LAGER_DARSTELLUNG:
+                ruf_lagerDarstellung();
                 break;
             
             default:            
@@ -126,6 +127,9 @@ public class LagerDialog
         }   
     }
     
+    public void ruf_lagerDarstellung(){
+        System.out.println(lager);
+    }
     
     /**
      * Main-Methode : Erzeuget des LagerDialog-Objekts und start der

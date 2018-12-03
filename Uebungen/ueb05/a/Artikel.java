@@ -142,7 +142,7 @@ public class Artikel {
     
     
     public String toString() {
-        return "Artikel : "     + getNummer() +
+        return "Artikel: "     + getNummer() +
                " Bezeichnung: " + getBezeichnung() + 
                " Bestand: "     + getBestand() + 
                " Preis : "      + getPreis();

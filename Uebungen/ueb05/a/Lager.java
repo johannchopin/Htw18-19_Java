@@ -122,9 +122,12 @@ public class Lager
     }
     
     /**
-     * TODO JAVADOC
+     * Fuegue der Abstatz zum Artikel mit der Kennung hinzu
+     * 
+     * @param id_artikel die Kennung des Artikels (o. Nummer)
+     * @param absatz     dem Absatz den Bestand hinzufuegen
      */
-    public void artikelZusatz(int id_artikel, int zusatz){
+    public void artikelZugang(int id_artikel, int zusatz){
         int index = searchPositionById(id_artikel);
         if(index != -1)
             this.lager[index].zugang(zusatz);
@@ -133,7 +136,10 @@ public class Lager
     }
     
     /**
-     * TODO JAVADOC
+     * Loescht der Absatz von einem Artikel mit der Kennung.
+     *
+     * @param id_artikel die Kennung des Artikels (o. Nummer)
+     * @param absatz     dem Absatz den Bestand hinzufuegen
      */
     public void artikelAbgang(int id_artikel, int absatz){
         int index = searchPositionById(id_artikel);
@@ -144,7 +150,10 @@ public class Lager
     }
     
     /**
-     * TODO JAVADOC
+     * Veraendert den Preis eines Artikels mit einem prozentsatz
+     * 
+     * @param id_artikel die Kennung des Artikels (o. Nummer)
+     * @param prozensatz 
      */
     public void artikelPreisAendern(int id_artikel, double prozentsatz){
         int index = searchPositionById(id_artikel);
@@ -163,6 +172,10 @@ public class Lager
         String ItemBuffer = new String();
         StringBuffer strBuffer = new StringBuffer(DEFAULT_BUFFER_STR_SIZE);
         
+        strBuffer.append(String.format(
+             "#Lager\nGroesse: %d, Artikel gelagert: %d\n",
+             this.lager.length, this.lager.totalItems);
+             
         for(int i = 0; i < this.totalItems; i++){
             ItemBuffer = this.lager[i].toString() + "\n";
             
