@@ -59,10 +59,10 @@ public class LagerDialog
             RUF_LAGER                 + " : ein Lager erzeugen\n" +
             RUF_ANLEGEN               + " : ein Artikel im Lager speichern\n" +
             RUF_LOESCHT_ARTIKEL       + " : loescht ein Artikel\n" +
-            RUF_ARTIKEL_ZUGANG        + " : Zusatz zu einem Artikel\n" +
+            RUF_ARTIKEL_ZUGANG        + " : Zusatz\n" +
             RUF_ARTIKEL_ABGANG        + " : Abgang\n" +
             RUF_ARTIKEL_PREIS_AENDERN + " : Preis eines Artikels aendern\n" +
-            RUF_LAGER_DARSTELLUNG     + " : Der Lager darstellen" +
+            RUF_LAGER_DARSTELLUNG     + " : Der Lager darstellen\n" +
             RUF_ARTIKEL_DARSTELLUNG   + " : Ein Artikel darstellen");
         return input.nextInt();
     }
@@ -138,6 +138,8 @@ public class LagerDialog
         
         try{
             lager.anlegen(nummer, bezeichnung, bestand, preis);
+            System.out.println("Artikel: %s mit der Kennung %d hinzugefuegt"
+                                .format(bezeichnung, nummer);
         } catch(ArrayStoreException|ArrayIndexOutOfBoundsException e){
             System.out.println(e);
         }   
@@ -167,7 +169,7 @@ public class LagerDialog
     
     private void ruf_artikelAbgang(){
         int id = helpers.readInt(input, "Kennung des Artikels: ");
-        int absatz = helpers.readInt(input, "Zusatz des Artikels: ");
+        int absatz = helpers.readInt(input, "Absatz des Artikels: ");
         
         try{
             lager.artikelAbgang(id, absatz);
