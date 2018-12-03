@@ -14,4 +14,6 @@ comment5.params=sc\ nachricht
 comment5.target=java.lang.String\ readLine(java.util.Scanner,\ java.lang.String)
 comment6.params=sc\ nachricht\ is_true
 comment6.target=boolean\ isInputTrue(java.util.Scanner,\ java.lang.String,\ char)
-numComments=7
+comment7.params=sc\ nachricht
+comment7.target=boolean\ isInputTrue(java.util.Scanner,\ java.lang.String)
+numComments=8

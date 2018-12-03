@@ -59,7 +59,7 @@ public class Lager
      * @param neuerArtikel Der Artikel, der gelagert wird
      */
     public void anlegen(Artikel neuerArtikel){
-        helpers.check(this.totalItems >= this.lager.length, 
+        helpers.check(this.totalItems < this.lager.length, 
                       ERR_LAGER_VOLL, 
                       helpers.ARRAY_OUT_OF_BOUND_EXCEPTION);
         // Check if an artikel has the same ID

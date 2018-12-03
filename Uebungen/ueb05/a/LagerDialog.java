@@ -17,13 +17,8 @@ public class LagerDialog
     private static final int RUF_ARTIKEL_PREIS_ANDERN    = 5;
     private static final int RUF_LAGER_DARSTELLUNG       = 6;
 
-    private Scanner input;
+    private Scanner input = new Scanner(System.in);
     private Lager lager;
-    
-    public LagerDialog(){
-         input = new Scanner(System.in);
-         lager = ruf_anlegen();
-    }
     
     /**
      * Hauptschleife des Testprogramms
@@ -75,8 +70,7 @@ public class LagerDialog
                 System.exit(0);
            
             case RUF_LAGER:
-                int groesse = helpers.readInt(input, "Groesse des Lagers: ");
-                lager = new Lager(groesse);
+                ruf_lager();
                 break;
         
             case RUF_ANLEGEN:
@@ -101,17 +95,28 @@ public class LagerDialog
         }
     }
     
+    private void ruf_lager(){
+        int groesse = helpers.readInt(input, "Groesse des Lagers: ");
+        if(this.lager != null &&
+           helpers.isInputTrue(input, 
+                               "Wollen Sie wirklich den alten loeschen (j/n) ?"))
+            lager = new Lager(groesse);
+        else
+            lager = new Lager(groesse);
+        System.out.println("Lager ist erzeugt.");
+    }
+    
     private void ruf_anlegen(){
         int bestand = Artikel.MIN_BESTAND; 
         double preis = Artikel.STANDARTMAESSIGER_PREIS;
         int nummer = helpers.readInt(input, "Nummer: ");
-        String bezeichnung = helpers.readLine(input, "Name des Artikel: ");
+        String bezeichnung = helpers.readLine(input, "Name des Artikels: ");
         
-        if(helpers.isInputTrue(input, "Bestand einstellen? (j/n): ", 'j')){
+        if(helpers.isInputTrue(input, "Bestand einstellen? (j/n): ")){
             bestand = helpers.readInt(input, "Bestand: ");
         }
-        if(helpers.isInputTrue(input, "Preis einstellen? (j/n): ", 'j')){
-             preis = helpers.readDouble(input, "Preis (optionnal): ");
+        if(helpers.isInputTrue(input, "Preis einstellen? (j/n): ")){
+             preis = helpers.readDouble(input, "Preis: ");
         }
         
         try{

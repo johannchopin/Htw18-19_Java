@@ -35,7 +35,7 @@ public class helpers
         while(true){
             System.out.println(nachricht);
             try{
-                int rv = sc.nextInt(); sc.reset();
+                int rv = sc.nextInt(); sc.nextLine();
                 return rv;
             } catch(InputMismatchException e){System.out.println(e + "\n");}
         }
@@ -45,7 +45,7 @@ public class helpers
         while(true){
             System.out.println(nachricht);
             try{
-                double rv = sc.nextDouble(); sc.reset();
+                double rv = sc.nextDouble(); sc.nextLine();
                 return rv;
             } catch(InputMismatchException e){System.out.println(e + "\n");}
         }
@@ -55,7 +55,7 @@ public class helpers
         while(true){
             System.out.println(nachricht);
             try{
-                String rv = sc.nextLine(); sc.reset();
+                String rv = sc.nextLine();
                 return rv;
             } catch(InputMismatchException e){System.out.println(e + "\n");}
         } 
@@ -65,7 +65,7 @@ public class helpers
         while(true){
             System.out.println(nachricht);
             try{
-                char read = sc.nextLine().charAt(0); sc.reset();
+                char read = sc.nextLine().charAt(0);
                 return read == is_true;
             } catch (InputMismatchException e){System.out.println(e + "\n");}
         }
