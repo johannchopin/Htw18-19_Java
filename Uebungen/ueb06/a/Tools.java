@@ -1,5 +1,5 @@
-import static java.lang.Math.abs;
-import static java.util.Arrays.parallelSort;
+import java.lang.Math;
+import java.util.Arrays;
 
 /**
  * Implementiert ein paar Methoden 
@@ -13,20 +13,27 @@ public class Tools
     final private static double MIN_UPSILON = 1e-15;
     final private static double MAX_UPSILON = 1e-15;
     
+    private static double amNaechstenVon(double goal, double n1, double n2){
+        goal = Math.abs(goal);
+        double candidate1 = Math.abs(goal - n1);
+        double candidate2 = Math.abs(goal - n2);
+        return (candidate1 < candidate2) ? candidate1: candidate2;
+    }
+    
     
     /**
      * Rechnet die arithmetische Mittel einer Tabelle
      * 
      * @param tab
      */
-    // TODO : BinarySearch in tab to find the 2 values :
-    // - the most distant value
-    // - the closest value
+    // TODO : Use BinarySearch to find the closest value
     public static void matheRechner(double[] tab){
-        double average;
+        double average, closestToAverage, farthestToAverage;
         double summe = 0;
-        parallelSort(tab);
+        double candidate1, candidate2;
+        Arrays.parallelSort(tab);
         
+        // The average
         for(double n : tab){     
             summe += n;
         }
@@ -34,9 +41,23 @@ public class Tools
         if(MIN_UPSILON <= average && average <= MAX_UPSILON)
             average = 0.0;
         
-        // Need to find the closest value
+        // The farthest value
+        farthestToAverage = amNaechstenVon(average, tab[0], tab[tab.length-1]);
         
-        System.out.println("arithmetisches Mittel : " + average);
+        // The closest value
+        candidate1 = tab[0]; // stupid value
+        candidate2 = tab[tab.length-1]; // stupid value
+        for(double v: tab){
+            if(v < average)
+                candidate1 = v;
+            else
+                candidate2 = v;
+                break;
+        }
+        closestToAverage = amNaechstenVon(average, candidate1, candidate2);
+        
+        System.out.printf("average: %f ; closest : %f ; farthest: %f\n", 
+                          average, closestToAverage, farthestToAverage);
     }
     
     /**
