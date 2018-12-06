@@ -17,7 +17,7 @@ public class Tools
         goal = Math.abs(goal);
         double candidate1 = Math.abs(goal - n1);
         double candidate2 = Math.abs(goal - n2);
-        return (candidate1 < candidate2) ? candidate1: candidate2;
+        return (candidate1 <= candidate2) ? n1: n2;
     }
     
     
@@ -48,7 +48,7 @@ public class Tools
         candidate1 = tab[0]; // stupid value
         candidate2 = tab[tab.length-1]; // stupid value
         for(double v: tab){
-            if(v < average)
+            if(v <= average)
                 candidate1 = v;
             else
                 candidate2 = v;
@@ -79,5 +79,10 @@ public class Tools
                 rv[1]++;
         }
         return rv;
+    }
+    
+    public static void main(String[] args){
+        double[] tab1 = {5,6,7,8,9};
+        matheRechner(tab1);
     }
 }
