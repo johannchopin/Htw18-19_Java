@@ -17,9 +17,17 @@ public class MatheRechnerTest
 {
     private final static String REGEX_EXTRACT_RESULT = "[^\\d\\.]+";
     
+    /**
+     * Gibt die double-Werten von Tools.matheRechner zurueck
+     * 
+     * @param byteArray die umwegende Standardausgabe
+     * @return 3 double-Werten der Methode Tools.matheRechner
+     */
+    // Use PrintWriter object rather than ByteArrayOuputStream
     private static double[] extractResult(ByteArrayOutputStream byteArray){
         double[] rv = new double[3];
         String[] str = byteArray.toString().split(REGEX_EXTRACT_RESULT);
+        byteArray.reset();
         for(int i = 0; i < rv.length; i++){
             rv[i] = Double.valueOf(str[i]);
         }
@@ -32,12 +40,13 @@ public class MatheRechnerTest
     @Before
     public void setUp(){
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        ByteArrayOutputStream outErr     = new ByteArrayOutputStream();
+        //ByteArrayOutputStream outErr     = new ByteArrayOutputStream();
         
         PrintStream catchOut = new PrintStream(outContent);
-        PrintStream catchErr = new PrintStream(outErr);
+        //PrintStream catchErr = new PrintStream(outErr);
         
         System.setOut(catchOut);
-        System.setErr(catchErr);
+        //System.setErr(catchErr);
     }
+    
 }
