@@ -45,14 +45,15 @@ public class Tools
         farthestToAverage = amNaechstenVon(average, tab[0], tab[tab.length-1]);
         
         // The closest value
-        candidate1 = tab[0]; // stupid value
-        candidate2 = tab[tab.length-1]; // stupid value
+        candidate1 = tab[0];
+        candidate2 = tab[tab.length-1];
         for(double v: tab){
             if(v <= average)
                 candidate1 = v;
-            else
+            else{
                 candidate2 = v;
                 break;
+            }
         }
         closestToAverage = amNaechstenVon(average, candidate1, candidate2);
         
