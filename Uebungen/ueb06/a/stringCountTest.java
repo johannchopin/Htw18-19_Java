@@ -63,7 +63,7 @@ public class stringCountTest
     public void good_value2(){
        String[] tab = {"elixir", "clojure", "rust", "go"};
        int[] result = {0, tab.length};
-       assertArrayEquals("Strings",
+       assertArrayEquals("Strings mit Kleinbuchstaben",
                          Tools.stringCount(tab),
                          result);  
     }

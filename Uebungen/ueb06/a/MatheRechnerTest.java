@@ -1,11 +1,6 @@
 import static org.junit.Assert.*;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import java.util.regex.Pattern;
+import java.util.Arrays;
 
 /**
  * Teste die Methode Tools.matheRechner
@@ -14,39 +9,50 @@ import java.util.regex.Pattern;
  * @version 1.0
  */
 public class MatheRechnerTest
-{
-    private final static String REGEX_EXTRACT_RESULT = "[^\\d\\.]+";
-    
-    /**
-     * Gibt die double-Werten von Tools.matheRechner zurueck
-     * 
-     * @param byteArray die umwegende Standardausgabe
-     * @return 3 double-Werten der Methode Tools.matheRechner
-     */
-    // Use PrintWriter object rather than ByteArrayOuputStream
-    private static double[] extractResult(ByteArrayOutputStream byteArray){
-        double[] rv = new double[3];
-        String[] str = byteArray.toString().split(REGEX_EXTRACT_RESULT);
-        byteArray.reset();
-        for(int i = 0; i < rv.length; i++){
-            rv[i] = Double.valueOf(str[i]);
-        }
-        return rv;
+{   
+    @Test
+    public void MatheRechner1(){
+        double[] array = {0.0, 0.0, 0.0 ,1.0, -1.0};
+        double[] expected = {0.0, 0.0, -1.0};
+        final String text = "0.0, 0.0, -1.0:"   + 
+                            "average == 0 and " +
+                            "closest is the average";
+        
+        assertTrue(text, 
+                   Arrays.equals(Tools.matheRechnerAlgo(array), expected));
     }
     
-    /**
-     * Catch the system.out.println() into a ByteArrayOutputStream.
-     */
-    @Before
-    public void setUp(){
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        //ByteArrayOutputStream outErr     = new ByteArrayOutputStream();
+    @Test
+    public void MatheRechner2(){
+        double[] array = {5,6,7,8,9};
+        double[] expected = {7.0, 7.0, 9.0};
+        final String text = "7.0, 7.0, 9.0 : " +
+                            "closest value is the average";
         
-        PrintStream catchOut = new PrintStream(outContent);
-        //PrintStream catchErr = new PrintStream(outErr);
-        
-        System.setOut(catchOut);
-        //System.setErr(catchErr);
+        assertTrue(text, 
+                   Arrays.equals(Tools.matheRechnerAlgo(array), expected));
     }
     
+    @Test
+    public void MatheRechner3(){
+        double[] array = {-1,-6,-10,-24,41};
+        double[] expected = {0.0, -1, 41};
+        final String text = "0.0, -1, 41: "     + 
+                            "average == 0 and " +
+                            "farthest value is the lonely positive value";
+        
+        assertTrue(text, 
+                   Arrays.equals(Tools.matheRechnerAlgo(array), expected));
+    }
+    
+    @Test
+    public void MatheRechner4(){
+        double[] array = {-10, -50, -40, -100, -200}; // sum = -400
+        double[] expected = {-80, -50, -200};
+        final String text = "-80, -50, -200: "  + 
+                            "negative values ";
+        
+        assertTrue(text, 
+                   Arrays.equals(Tools.matheRechnerAlgo(array), expected));
+    }
 }

@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Tools
+comment0.text=\n\ Implementiert\ ein\ paar\ Methoden\ \n\n\ @author\ Alexandre\ Guidoux\ &\ Johann\ Chopin\n\ @version\ 1.0\n
+comment1.params=tab
+comment1.target=double[]\ matheRechnerAlgo(double[])
+comment1.text=\n\ Rechnet\ die\ arithmetische\ Mittel\ einer\ Tabelle\n\ Wenn\ die\ Extremwerte\ im\ gleichen\ Abstand\ liegen,\ \n\ wird\ der\ kleinste\ Wert\ gew\u00E4hlt.\n
+comment2.params=tab
+comment2.target=void\ matheRechner(double[])
+comment2.text=\n\ Oeffentliche\ methode\ von\ matheRechnerAlgo,\ die\ das\ Ergebnis\ darstellt\n\ \n
+comment3.params=tab
+comment3.target=int[]\ stringCount(java.lang.String[])
+comment3.text=\n\ Zaehlt\ wie\ viele\ Strings\ enthaelt\ diese\ Eigenschaften\ \:\n\ *\ Nur\ Gro\u00DFbuchstaben\n\ *\ Nur\ Kleinbuchstaben\n\ \n\ @param\ tab\n\ @return\ {Gro\u00DFbuchstaben\ Ergebnis,\ Kleinbuchstaben\ Ergebnis}\n
+comment4.params=tab
+comment4.target=void\ insertionSort(int[])
+comment4.text=\n\ Sortiert\ eine\ Tabelle\ "in\ place"\ mit\ dem\ Insertionsort-Algorithmus\ an.\n
+numComments=5

@@ -9,44 +9,22 @@ import java.util.Arrays;
  */
 public class Tools
 {
-    
-    final private static double MIN_UPSILON = 1e-15;
-    final private static double MAX_UPSILON = 1e-15;
-    
-    private static double amNaechstenVon(double goal, double n1, double n2){
-        goal = Math.abs(goal);
-        double candidate1 = Math.abs(goal - n1);
-        double candidate2 = Math.abs(goal - n2);
-        return (candidate1 <= candidate2) ? n1: n2;
-    }
-    
-    
     /**
      * Rechnet die arithmetische Mittel einer Tabelle
-     * 
-     * @param tab
+     * Wenn die Extremwerte im gleichen Abstand liegen, 
+     * wird der kleinste Wert gewählt.
      */
     // TODO : Use BinarySearch to find the closest value
-    public static void matheRechner(double[] tab){
+    static double[] matheRechnerAlgo(double[] tab){
         double average, closestToAverage, farthestToAverage;
-        double summe = 0;
-        double candidate1, candidate2;
         Arrays.parallelSort(tab);
         
-        // The average
-        for(double n : tab){     
-            summe += n;
-        }
-        average = summe / tab.length;
-        if(MIN_UPSILON <= average && average <= MAX_UPSILON)
-            average = 0.0;
-        
-        // The farthest value
-        farthestToAverage = amNaechstenVon(average, tab[0], tab[tab.length-1]);
+        average = Helpers.durschnitt(tab);
+        farthestToAverage = Helpers.amWeitestenVon(average, tab[0], tab[tab.length-1]);
         
         // The closest value
-        candidate1 = tab[0];
-        candidate2 = tab[tab.length-1];
+        double candidate1 = tab[0];
+        double candidate2 = tab[tab.length-1];
         for(double v: tab){
             if(v <= average)
                 candidate1 = v;
@@ -55,10 +33,20 @@ public class Tools
                 break;
             }
         }
-        closestToAverage = amNaechstenVon(average, candidate1, candidate2);
+        closestToAverage = Helpers.amNaechstenVon(average, candidate1, candidate2);
         
-        System.out.printf("average: %f ; closest : %f ; farthest: %f\n", 
-                          average, closestToAverage, farthestToAverage);
+        return new double[] {average, closestToAverage, farthestToAverage};               
+    }
+    
+    /**
+     * Oeffentliche methode von matheRechnerAlgo, die das Ergebnis darstellt
+     * 
+     */
+    public static void matheRechner(double[] tab){
+       double[] rv = matheRechnerAlgo(tab);
+       System.out.println("average: "   + rv[0] +
+                          " closest: "  + rv[1] +
+                          " farthest: " + rv[2]); 
     }
     
     /**
@@ -72,8 +60,6 @@ public class Tools
     public static int[] stringCount(String[] tab){
         int[] rv = {0, 0}; // {Großbuchstaben, Kleinbuchstaben}
         for(String str: tab){
-            // Les lettres accentuées ?
-            // Chaines de caractères avec 1 char ?
             if(str.matches("^[A-Z]+$"))
                 rv[0]++;
             else if(str.matches("^[a-z]+$"))
@@ -82,8 +68,19 @@ public class Tools
         return rv;
     }
     
-    public static void main(String[] args){
-        double[] tab1 = {5,6,7,8,9};
-        matheRechner(tab1);
+    /**
+     * Sortiert eine Tabelle "in place" mit dem Insertionsort-Algorithmus an.
+     */
+    public static void insertionSort(int[] tab){
+        int i, j, cur; 
+        for(i=1; i < tab.length; i++){
+            j = i;
+            cur = tab[i];
+            while(j > 0 && tab[j-1] > cur){
+                tab[j] = tab[j - 1];
+                j--;
+            }
+            tab[j] = cur;
+        }
     }
 }
