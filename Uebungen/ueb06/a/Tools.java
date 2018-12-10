@@ -1,5 +1,7 @@
 import java.lang.Math;
 import java.util.Arrays;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 /**
  * Implementiert ein paar Methoden 
@@ -9,20 +11,25 @@ import java.util.Arrays;
  */
 public class Tools
 {
+    // Used to match a string full of letters only
+    private final static Pattern LETTERS_PATTERN = Pattern.compile("\\A\\p{L}+\\Z");
+    
     /**
      * Rechnet die arithmetische Mittel einer Tabelle
-     * Wenn die Extremwerte im gleichen Abstand liegen, 
+     * Wenn die Extrem-oder nahwerte im gleichen Abstand liegen, 
      * wird der kleinste Wert gewählt.
+     * 
+     * @return {average, closestToAverage, farthestToAverage}
      */
-    // TODO : Use BinarySearch to find the closest value
     static double[] matheRechnerAlgo(double[] tab){
         double average, closestToAverage, farthestToAverage;
         Arrays.parallelSort(tab);
         
-        average = Helpers.durschnitt(tab);
+        average = Helpers.durchschnitt(tab);
         farthestToAverage = Helpers.amWeitestenVon(average, tab[0], tab[tab.length-1]);
         
         // The closest value
+        // improvement : binarySearch for the closest value
         double candidate1 = tab[0];
         double candidate2 = tab[tab.length-1];
         for(double v: tab){
@@ -55,15 +62,12 @@ public class Tools
      * * Nur Kleinbuchstaben
      * 
      * @param tab
-     * @return {Großbuchstaben Ergebnis, Kleinbuchstaben Ergebnis}
      */
-    public static int[] stringCount(String[] tab){
-        int[] rv = {0, 0}; // {Großbuchstaben, Kleinbuchstaben}
+    public static int stringCount(String[] tab){
+        int rv = 0;
         for(String str: tab){
-            if(str.matches("^[A-Z]+$"))
-                rv[0]++;
-            else if(str.matches("^[a-z]+$"))
-                rv[1]++;
+            if(LETTERS_PATTERN.matcher(str).matches())
+                rv++;
         }
         return rv;
     }
