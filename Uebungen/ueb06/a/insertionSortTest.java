@@ -16,7 +16,7 @@ public class insertionSortTest
      * @param text  Beschreibung der Testmethode
      * @param array Tabelle, die das Insertionsort-Algorithmus testet
      */
-    public static void prueft(String text, int[] array){
+    private static void prueft(String text, int[] array){
         int[] expected = Arrays.copyOf(array, array.length);
         Arrays.sort(expected);
         
