@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=ArrayHelpers
+comment0.text=\n\ Some\ functions\ that\ helps\ to\ write\ better\ code\ with\ arrays\n\n\ @author\ Alexandre\ Guidoux\n\ @version\ 1.0\n
+comment1.params=array\ value
+comment1.target=java.lang.String[]\ add(java.lang.String[],\ java.lang.String)
+comment1.text=\n\ Copy\ the\ specified\ array\ and\ add\ the\ value\ to\ this\ new\ Array.\n\ \!\ Not\ safe\ if\ the\ array\ is\ new\ or\ not\ initialized.\n\ \n\ @param\ tab\ old\ array\n\ @param\ str\ value\ added\ to\ the\ new\ array\n\ @return\ array\ with\ the\ added\ value\n
+comment2.params=array\ value
+comment2.target=java.lang.String[]\ insertEnd(java.lang.String[],\ java.lang.String)
+comment2.text=\n\ Return\ a\ copy\ with\ the\ value\ of\ the\ array\ given\ in\ argument.\ \n\ Patch\ the\ safety\ problem\ of\ ArrayHelpers.add\ \n\ \n\ @param\ array\ \n\ @param\ value\ will\ be\ inserted\ at\ the\ end\ of\ the\ array\n\ @return\ new\ array\ with\ the\ new\ value\n
+comment3.params=array
+comment3.target=int\ max(java.lang.String[])
+comment3.text=\n\ Return\ the\ biggest\ length\ of\ the\ strings\ in\ the\ array\n
+numComments=4

@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=InputToString
+comment0.text=\n\ Convert\ input\ content\ into\ a\ string\ \n\n\ @author\ Alexandre\ Guidoux\ &&\ Johann\ Chopin\n\ @version\ 1.0\n
+comment1.params=sc
+comment1.target=java.lang.String\ scannerToString(java.util.Scanner)
+comment1.text=\n\ Read\ the\ content\ passed\ into\ the\ scanner\n\ \n\ @param\ sc\ Scanner\ with\ a\ source\n\ @return\ content\ of\ the\ scanner\n
+comment2.params=
+comment2.target=java.lang.String\ bashHandler()
+comment2.text=\n\ Used\ when\ file\ is\ passed\ by\ a\ pipe\ |\ or\ by\ a\ <\n\ \n\ @return\ content\ of\ the\ file\n
+comment3.params=filename
+comment3.target=java.lang.String\ fileHandler(java.lang.String)
+comment3.text=\n\ Try\ to\ read\ the\ file\ and\ put\ the\ content\ into\ a\ string.\n\ If\ errors,\ return\ an\ empty\ string\ and\ print\ an\ error\ message.\n\ \n\ @param\ filename\ path\ to\ the\ file\n\ @return\ content\ of\ the\ file\n
+numComments=4
