@@ -10,8 +10,10 @@ import java.util.Arrays;
  */
 public class Extractor
 {
+    // Regex will match all <a> tag and group the url and the description 
+    // (can contain other html tag) 
     private static final Pattern REGEX = Pattern.compile(
-              "<a href=\"(?<url>.+?)\".*?>(?<description>.*?)</a>");
+              "<a href=\"(?<url>.*?)\"(?:.*?)>(?<description>.*?)</a>");
     
     /**
      * Find all content of href tags and the text inside a tag.
@@ -38,7 +40,7 @@ public class Extractor
      * @param 2 Arrays in one : array[0] is the urls 
      *          and array[1][] is the descriptions
      */
-    public static void printUrls(String[][] urlInfos){
+    private static void printUrls(String[][] urlInfos){
         int maxLengthDescriptions = ArrayHelpers.max(urlInfos[1]);
         
         for(int i=0; i < urlInfos[0].length; i++){
