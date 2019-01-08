@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=FuncHelpers
+comment0.text=\n\ Some\ helpful\ functions\n\n\ @author\ Alexandre\ Guidoux\n\ @version\ 1.0\n
+comment1.params=bedigung\ nachricht
+comment1.target=void\ checkArguments(boolean,\ java.lang.String)
+comment2.params=bedigung\ nachricht
+comment2.target=void\ checkIndexBounds(boolean,\ java.lang.String)
+numComments=3

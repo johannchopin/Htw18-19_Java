@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=Queue
+comment0.text=\n\ A\ simple\ Queue\n\n\ @author\ Alexandre\ Guidoux\n\ @version\ 1.0\n
+comment1.params=size
+comment1.target=Queue(int)
+comment2.params=i
+comment2.target=void\ shift(int)
+comment3.params=
+comment3.target=int\ length()
+comment4.params=
+comment4.target=int\ getCount()
+comment5.params=element
+comment5.target=void\ add(java.lang.Object)
+comment6.params=i
+comment6.target=java.lang.Object\ remove(int)
+comment7.params=
+comment7.target=java.lang.Object\ pop()
+comment8.params=header
+comment8.target=java.lang.String\ toString(java.lang.String)
+comment9.params=
+comment9.target=java.lang.String\ toString()
+numComments=10
