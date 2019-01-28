@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=Helpers
+comment0.text=\n\ Some\ useful\ functions\n\n\ @author\ Alexandre\ Guidoux\n\ @version\ 1.0\n
+comment1.params=condition\ msg
+comment1.target=void\ checkArgs(boolean,\ java.lang.String)
+comment2.params=integers
+comment2.target=int\ max(int[])
+numComments=3

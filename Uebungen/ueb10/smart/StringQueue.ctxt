@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=StringQueue
+comment0.text=\n\ A\ simple\ Queue\ of\ Strings\n\n\ @author\ Alexandre\ Guidoux\n\ @version\ 2.0\n
+comment1.params=size
+comment1.target=StringQueue(int)
+comment2.params=
+comment2.target=java.lang.String\ removeFirst()
+comment3.params=o
+comment3.target=void\ addLast(java.lang.Object)
+comment4.params=i
+comment4.target=java.lang.String\ get(int)
+numComments=5

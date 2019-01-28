@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=ArrayHelpers
+comment0.text=\n\ Functions\ for\ manipulating\ arrays\ structure\n\n\ @author\ Alexandre\ Guidoux\n\ @version\ 1.0\n
+comment1.params=arr\ pos
+comment1.target=void\ removeItem(java.lang.Object[],\ int)
+numComments=2
