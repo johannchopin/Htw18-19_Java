@@ -1,9 +1,0 @@
-#BlueJ class context
-comment0.target=QueueDialogAbstract
-comment0.text=\n\ Ein\ Dialog\ um\ die\ Queue\ Klasse\ zu\ testen\n\n\ @author\ Alexandre\ Guidoux\n\ @version\ 1.0\n
-comment1.params=
-comment1.target=Queue\ createInstance()
-comment2.params=
-comment2.target=java.lang.String\ printlnMenu()
-comment2.text=\n\ @return\ String\ Darstellung\ des\ Menues\n
-numComments=3

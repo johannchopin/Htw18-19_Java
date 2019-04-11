@@ -191,7 +191,7 @@ public class ArtikelLager
                  .append(String.format(Helpers.repeat("-",ZEILE_FORMAT_SIZE) + '\n'));
              
         for(int i = 0; i < this.totalItems; i++)
-            strBuffer.append(this.lager[i].toString() + '\n');
+            strBuffer.append(this.lager[i].getBeschreibung() + '\n');
         
         strBuffer.append(String.format(Helpers.repeat("-", ZEILE_FORMAT_SIZE) + '\n'))
                  .append(String.format("Gesamtwert: %69.2f\n", lagerSumme()));

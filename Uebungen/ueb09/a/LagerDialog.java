@@ -4,6 +4,8 @@ import java.lang.StringBuffer;
 /**
  * Ermoeglicht die Lager-Klasse zu benutzen
  *
+ * ! Code ruf_artikel_darstellung
+ *
  * @author Alexandre Guidoux && Johann Chopin
  * @version 1.0
  */
@@ -159,6 +161,10 @@ public class LagerDialog
 
             case RUF_LAGER_DARSTELLUNG:
             ruf_lagerDarstellung();
+            break;
+            
+            case RUF_ARTIKEL_DARSTELLUNG:
+                rufArtikelDarstellung();
             break;
 
             default:            
@@ -318,6 +324,10 @@ public class LagerDialog
      */
     private void ruf_lagerDarstellung(){
         System.out.println(this.lager);
+    }
+    
+    private String rufArtikelDarstellung(){
+        return "NOT IMPLEMENTED";
     }
 
     /**

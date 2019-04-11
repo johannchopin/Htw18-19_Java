@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.target=StringQueue
-comment0.text=\n\ Simple\ Queue\ with\ Strings\n\n\ @author\ Alexandre\ Guidoux\n\ @version\ 1.0\n
-comment1.params=size
-comment1.target=StringQueue(int)
-comment2.params=o
-comment2.target=void\ addLast(java.lang.Object)
-numComments=3
