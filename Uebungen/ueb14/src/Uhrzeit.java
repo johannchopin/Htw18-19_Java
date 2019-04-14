@@ -4,9 +4,10 @@
  * @author Guidoux Alexandre
  * @version 1.0
  */
-public class Uhrzeit
+public class Uhrzeit implements Comparable<Uhrzeit>
 {
     public int stunde, minute;
+    private static int HoursToMinutes = 60;
     
     /**
      * Create a Uhrzeit object with hours and minutes
@@ -20,7 +21,26 @@ public class Uhrzeit
         this.minute = minute;
     }
     
+    private int getStunde() {
+    	return this.stunde;
+    }
+    
+    private int getMinute() {
+    	return this.minute;
+    }			
+    
     public String toString(){
         return new String(this.stunde + ":" + this.minute + " Uhr"); 
     }
+    
+    /**
+     * Compare the sum of the minutes of the two Uhrzeit objects
+     * @return int a negative integer, zero, or a positive integer as this Uhrzeit is less than, equal to, or greater than the specified Uhrzeit.
+     */
+    @Override
+    public int compareTo(Uhrzeit other) {
+    	return Integer.compare(this.getStunde()  * HoursToMinutes + this.getMinute(),
+    						   other.getStunde() * HoursToMinutes + other.getMinute());
+    }
 }
+

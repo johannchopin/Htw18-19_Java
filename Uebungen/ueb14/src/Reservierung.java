@@ -17,6 +17,7 @@ public class Reservierung
      */
     public Reservierung(Uhrzeit beginn, Uhrzeit ende)
     {
+    	h.checkArgs(beginn.compareTo(ende) == -1, "The first Uhrzeit can't be after or at the same time of the second one");
         this.beginn = beginn;
         this.ende = ende;
     }
