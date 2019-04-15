@@ -33,6 +33,66 @@ public class Test
         System.out.println(r);
         System.out.println("---");
         System.out.println(r1);
+
+
+        System.out.println("\n" + ">> Not valid hour in 'Uhrzeit' :");
+        try {
+            Uhrzeit u = new Uhrzeit(-12, 54);
+        } catch(Exception e) {
+            System.out.println("Exception catched : " + e);
+        }
+        
+        System.out.println("\n" + ">> Not valid minutes in 'Uhrzeit' :");
+        try {
+            Uhrzeit u = new Uhrzeit(12, -54);
+        } catch(Exception e) {
+            System.out.println("Exception catched : " + e);
+        }
+        
+        System.out.println("\n" + ">> Not valid Gebaude in 'Raum' :");
+        try {
+            Raum rTest = new Raum(-18, 0, 1);
+        } catch(Exception e) {
+            System.out.println("Exception catched : " + e);
+        }
+
+        System.out.println("\n" + ">> Not valid Nummer in 'Raum' :");
+        try {
+            Raum rTest = new Raum(18, -1, 1);
+        } catch(Exception e) {
+            System.out.println("Exception catched : " + e);
+        }
+
+        System.out.println("\n" + ">> testest Not valid Etage in 'Raum' :");
+        try {
+            Raum rTest = new Raum(18, 1, -1);
+        } catch(Exception e) {
+            System.out.println("Exception catched : " + e);
+        }
+        
+
+        System.out.println("\n" + ">> 'Mitarbeiter' without 'firstname' :");
+        try {
+            Mitarbeiter mTest = new Mitarbeiter("", "", "");
+        } catch(Exception e) {
+            System.out.println("Exception catched : " + e);
+        }
+
+
+        System.out.println("\n" + ">> 'Mitarbeiter' without 'lastname' :");
+        try {
+            Mitarbeiter mTest = new Mitarbeiter("test", "", "");
+        } catch(Exception e) {
+            System.out.println("Exception catched : " + e);
+        }
+
+
+        System.out.println("\n" + ">> 'reservierung' without 'Bemerkung' :");
+        try {
+           m1.reserviere(r1, new Uhrzeit(12, 30), new Uhrzeit(14, 30), "");
+        } catch(Exception e) {
+            System.out.println("Exception catched : " + e);
+        }
     }
 
 }
