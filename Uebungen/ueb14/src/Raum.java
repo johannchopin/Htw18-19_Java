@@ -29,7 +29,6 @@ public class Raum
     }
 
     void addReservierung(Reservierung r){
-        System.out.println(r);
         reservierungen.add(r);
     }
 

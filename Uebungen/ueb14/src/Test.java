@@ -25,7 +25,6 @@ public class Test
         m1.reserviere(r2, new Uhrzeit(14, 30), new Uhrzeit(16, 30), "WebTech");
         m2.reserviere(r2, new Uhrzeit(12, 30), new Uhrzeit(13, 30), "Prog II");
         m2.reserviere(r3, new Uhrzeit(10, 30), new Uhrzeit(11, 30), "ITM");
-
     }
 
 }

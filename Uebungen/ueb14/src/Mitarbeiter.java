@@ -21,8 +21,7 @@ public class Mitarbeiter extends Person
     }
 
     public String toString(){
-        String person = super.toString();
-        return new String(person + " (" + this.email + ")"); 
+        return new String(super.toString() + " (" + this.email + ")"); 
     }
     
     /**
