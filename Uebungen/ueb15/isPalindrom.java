@@ -1,5 +1,4 @@
 // Could be in other classe(s)
-// TODO: Write benchmarks
 // TODO: Save results of the different speed in files
 // TODO: Erzeugung des Diagramms (Ascii or Gnuplot)
 // TODO: ? Write JUnit
