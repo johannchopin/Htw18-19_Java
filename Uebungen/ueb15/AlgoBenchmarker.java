@@ -19,4 +19,12 @@ public abstract class AlgoBenchmarker extends Algorithmus {
         }
         return Helpers.mean(results);
     }
+
+    public long ntimesRekursiv(int n){
+        long[] results = new long[n];
+        while(--n >= 0){
+            results[n] = timeRekursiv();
+        }
+        return Helpers.mean(results);
+    }
 }
