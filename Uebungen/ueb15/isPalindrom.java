@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.util.List;
 
-public class isPalindrom {
+public class isPalindrom extends AlgoBenchmarker {
     private String sequence;
     private int length;
 
@@ -60,13 +60,10 @@ public class isPalindrom {
     }
 
     public static void main(String[] args) throws FileNotFoundException, IOException{
-        String input = args[0];
-
-        if(input != null && input.length() > 0){
+        String input;
+        if(args.length > 0 && (input = args[0]).length() > 0){
                 if(new File(input).canRead()){
-                    System.out.println("File detected :)");
                     String content = Helpers.readFile(input);
-                    System.out.println("Content: " + content);
                     System.out.println(new isPalindrom(content).iterativ());
                 }
                 else
