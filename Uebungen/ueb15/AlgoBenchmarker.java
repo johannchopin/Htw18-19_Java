@@ -1,9 +1,5 @@
 public abstract class AlgoBenchmarker extends Algorithmus {
 
-    //TODO: ? Using composition for benchmarking ?
-    //TODO: ? Instanciation better than inheritance ?
-    private Algorithmus Algo;
-
     public long timeIterativ(){
         long before = System.nanoTime();
         this.iterativ();
