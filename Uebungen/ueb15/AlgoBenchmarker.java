@@ -12,11 +12,11 @@ public abstract class AlgoBenchmarker extends Algorithmus {
         return System.nanoTime() - before;
     }
 
-    public long[] ntimes(int n){
+    public long ntimesIterativ(int n){
         long[] results = new long[n];
-        while(n-- > 0){
+        while(--n >= 0){
             results[n] = timeIterativ();
         }
-        return results;
+        return Helpers.mean(results);
     }
 }

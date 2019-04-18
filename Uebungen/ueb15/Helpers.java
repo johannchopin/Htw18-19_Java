@@ -27,4 +27,15 @@ public class Helpers{
         return sb.substring(0, sb.length()-1); // Remove the last lineSeparator
     }
 
+    public static long sum(long[] tab){
+        long acc = 0;
+        for(long e: tab)
+            acc += e;
+        return acc;
+    }
+
+    public static long mean(long[] tab){
+        return sum(tab) / tab.length;
+    }
+
 }
