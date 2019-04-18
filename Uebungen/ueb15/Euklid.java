@@ -1,3 +1,4 @@
+// TODO: Implement main method for passing Integers
 public class Euklid {
 	private int n1;
 	private int n2;
