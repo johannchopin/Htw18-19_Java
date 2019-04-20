@@ -9,7 +9,6 @@ import java.io.FileNotFoundException;
 
 public class isPalindrom extends AlgoBenchmarker {
     private String sequence;
-    private int length;
 
     public isPalindrom(String sequence, boolean caseSensitive) {
         Helpers.check(sequence != null, "The sequence can't be empty !");
