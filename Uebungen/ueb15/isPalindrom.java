@@ -51,15 +51,16 @@ public class isPalindrom extends AlgoBenchmarker {
         return this.sequence;
     }
 
-    public static void main(String[] args) throws FileNotFoundException, IOException{
+    public static void main(String[] args) throws FileNotFoundException, IOException {
         String input;
-        if(args.length > 0 && (input = args[0]).length() > 0){
-                if(new File(input).canRead()){
-                    String content = Helpers.readFile(input);
-                    System.out.println(new isPalindrom(content).iterativ());
-                }
-                else
-                    System.out.println(new isPalindrom(input).iterativ());
+        if(args.length <= 0 || (input = args[0]).length() <= 0){
+            throw new IllegalArgumentException("A file or a string must be provided.");
         }
+        if(new File(input).canRead()){
+            String content = Helpers.readFile(input);
+            System.out.println(new isPalindrom(content).iterativ());
+        }
+        else
+            System.out.println(new isPalindrom(input).iterativ());
     }
 }
