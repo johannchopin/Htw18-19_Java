@@ -10,11 +10,11 @@ def readCsv(filename):
 
 lines = readCsv(FILENAME)
 
-x = plt.plot(lines[1], label="Iterativ")
-y = plt.plot(lines[2], label="Rekursiv")
+iterative = plt.plot(lines[0], lines[1], label="Iterativ")
+recursive = plt.plot(lines[0], lines[2], label="Rekursiv")
 
 plt.title("Time execution of recursive and iterative algorithm")
-plt.xlabel("Size of the string (2^n)")
+plt.xlabel("Size of the string\nBenchmarks tested on the 2^n values with 1 <= n <= 16")
 plt.ylabel("Time (in ns)")
 plt.legend(loc="upper left")
 plt.grid()
