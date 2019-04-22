@@ -19,4 +19,5 @@ plt.ylabel("Time (in ns)")
 plt.legend(loc="upper left")
 plt.grid()
 
+plt.savefig("graphic.png")
 plt.show()
