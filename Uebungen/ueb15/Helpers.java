@@ -47,10 +47,16 @@ public class Helpers{
     public static void writeInFile(String filename, String s) throws IOException {
         Files.write(Paths.get(filename), s.getBytes());
     }
+    /**
+    * Append the string <code>s</code> at the end of the file <code>filename</code>
+    */
     public static void appendInFile(String filename, String s) throws IOException {
         Files.write(Paths.get(filename), s.getBytes(), StandardOpenOption.APPEND);
     }
 
+    /**
+    * Sum all the element of a long[] array
+    */
     public static long sum(long[] tab){
         long acc = 0;
         for(long e: tab)
@@ -58,6 +64,10 @@ public class Helpers{
         return acc;
     }
 
+    /**
+    * Use the sum method
+    * @return the mean of the sum of the elements in the arrays
+    */
     public static long mean(long[] tab){
         return sum(tab) / tab.length;
     }
@@ -71,6 +81,9 @@ public class Helpers{
         return String.join("", Collections.nCopies(n, s));
     }
 
+    /**
+    * @return the comma-separated values in the array
+    */
     public static String longArrToString(long[] arr){
         StringBuilder sb = new StringBuilder();
         for(long el: arr)

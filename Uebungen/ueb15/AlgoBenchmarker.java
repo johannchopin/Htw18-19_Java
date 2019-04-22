@@ -1,3 +1,7 @@
+/**
+* High class used for benchmarks herited classes.
+* Implement Algorithmus (ensure iterative and recursive methods)
+*/
 public abstract class AlgoBenchmarker implements Algorithmus {
     /**
     * Timeit the iterativ algorithm

@@ -1,6 +1,15 @@
 import matplotlib.pyplot as plt
 import csv
 
+"""
+From a 3 lines in the file FILENAME, create a graph results with
+- first line as the x-coordinates
+- second line contain the result of the iterative algorithm
+- third line contain the result of the recursive algorithm
+
+FORMAT : integers separated with commas
+"""
+
 FILENAME = "benchmarks.txt"
 
 def readCsv(filename):

@@ -1,15 +1,20 @@
-// Could be in other classe(s)
-// TODO: ? Write JUnit
-// TODO: ? Write a command with flags ?
-
 import java.lang.StringBuilder;
 import java.io.IOException;
 
+/**
+* Wrapper around the real class. 
+* Implement useful and general methods for the class isPalindromic
+*
+* @author Alexandre Guidoux
+* @version 1.0
+*/
 public abstract class isPalindromAbstract extends AlgoBenchmarker {
-    protected final static String BENCH_FILENAME = "benchmarks.txt";
-    private final static int BENCH_ACC = 2;
-    protected final static int BENCH_REPETITION = 10000;
-    protected final static int BENCH_BOUND = 16;
+    // Constants for testing
+    protected final static String BENCH_FILENAME = "benchmarks.txt"; // Results written in file
+    protected final static int BENCH_BOUND = 16; // Number of iterations
+    private final static int BENCH_ACC = 2; // indicate the growth of the string on each iteration
+    protected final static int BENCH_REPETITION = 10000; // Number of test on each iteration (avoid extrems values)
+    // Main container
     protected String sequence;
 
     public isPalindromAbstract(String sequence) {
@@ -20,6 +25,10 @@ public abstract class isPalindromAbstract extends AlgoBenchmarker {
         return this.sequence;
     }
 
+    /**
+    * The string can't be empty (or null)
+    * @throws IllegalArgumentException
+    */
     public void setSequence(String sequence) {
         Helpers.check(sequence != null, "The sequence can't be empty !");
         Helpers.check(sequence.length() > 0, "The sequence can't be empty !");
@@ -28,6 +37,9 @@ public abstract class isPalindromAbstract extends AlgoBenchmarker {
 
     /**
     * Arbitrary benchmark
+    * Output is written in file BENCH_FILENAME
+    * BENCH_BOUND 
+    * BENCH_ACC 
     */
     public void PalindromBenchmark(){
         long timing;
