@@ -13,23 +13,14 @@ public class NumberCruncher
     
     /**
      * Create an array and fill it with random float number .
-     * Used for testing.
      * @param size fo the array
      */
-    NumberCruncher(int size, int seed)
+    NumberCruncher(int size)
     {
         this.array = new float[size];
-        this.randomizer = new Random(seed);
+        this.randomizer = new Random();
         for(int i=0; i<size; i++)
             this.array[i] = randomizer.nextFloat();
-    }
-    
-    /**
-     * Alias if seed not provided. Used for production.
-     */
-    public NumberCruncher(int size)
-    {
-        this(size, 0);
     }
     
     /**
@@ -39,17 +30,26 @@ public class NumberCruncher
         return this.array;
     }
     
-    private interface Operation{
-        public float[] run(float[] arr);
+    public interface Operation{
+        public void doIt();
     }
     
     /**
      * TODO: Comment this 
      */
     public void crunch(String[] operations){
-        for(String op: operations){
-            switch(op){
+        Operation op;
+        for(String opName: operations){
+            switch(opName){
                 case "sum":
+                    op = new Operation(){
+                        public void doIt(){
+                            int i = 1;
+                            while(i < array.length)
+                                array[i] += array[i++-1];
+                        }
+                    };
+                    op.doIt();
                     break;
                     
                 case "swirl":
@@ -65,13 +65,14 @@ public class NumberCruncher
                     break;
                     
                 default:
-                    throw new IllegalArgumentException(op + " is not a valid operation");
+                    throw new IllegalArgumentException(opName + " is not a valid operation");
             }
         }
     }
     
     public static void main(String[] args){
-        NumberCruncher nb = new NumberCruncher(10);
+        NumberCruncher nb = new NumberCruncher(15);
+        nb.crunch(new String[] {"sum"});
         for(float el: nb.getArray())
             System.out.println(el);
     }
