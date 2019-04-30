@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=Queue
+comment0.text=\n\ \ \ \ <H1>\ Das\ Interface\:\ \ <B>Queue.java</B></H1>\n\ \ \ \ ist\ eine\ sehr\ einfache\ SchnittstellenBeschreibung\ fuer\ eine\ Queue-Klasse\n\n\ @version\t1.0\ Beta\ 2019-01-22\ \ \n\ @author\tWolfgang\ Pauly\n\n
+comment1.params=o
+comment1.target=void\ addLast(java.lang.Object)
+comment1.text=\n\ \ \ \ addLast\ ->\ haengt\ Object\ an\ Queue\ an\n\n\ \ \ \ Vorbedingung\ \!full()\n\n\ \ \ \ @param\ o\ \ \ das\ aufzunehmende\ Object\n
+comment2.params=
+comment2.target=java.lang.Object\ removeFirst()
+comment2.text=\n\ \ \ \ removeFirst\ ->\ entfernt\ ein\ Object\ von\ der\ Spitze\ der\n\ \ \ \ Queue\ und\ gibt\ dieses\ zurueck.\ \ \n\n\ \ \ \ Vorbedingung\ \!empty()\n
+comment3.params=i
+comment3.target=java.lang.Object\ get(int)
+comment3.text=\n\ \ \ \ get\ ->\ gebe\ das\ i'te\ E$lement\ zur\u00FCck\n\n\ \ \ \ Vorbedingung\ \!empty()\n\ \ \ \ \n\ \ \ \ @return\ das\ i'te\ Element\n
+comment4.params=
+comment4.target=boolean\ empty()
+comment4.text=\n\ \ \ \ empty\ ->\ ist\ Queue\ LEER\ ???\n\n\ \ \ \ @return\ \ \ \ true\ wenn\ Queue\ LEER,\ sonst\ false\n
+comment5.params=
+comment5.target=boolean\ full()
+comment5.text=\n\ \ \ \ full\ ->\ ist\ Queue\ VOLL\ ???\n\n\ \ \ \ @return\ \ \ \ true\ wenn\ Queue\ VOLL,\ sonst\ false\n
+comment6.params=
+comment6.target=int\ size()
+comment6.text=\n\ \ \ \ size\ ->\ Anzahl\ der\ Elemente\ in\ Queue\n\n\ \ \ \ @return\ \ \ \ Anzahl\ der\ Elemente\n
+numComments=7
