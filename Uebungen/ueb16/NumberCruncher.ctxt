@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=NumberCruncher
+comment0.text=\n\ The\ implementation\ of\ the\ 2.\ Aufgabe\n\n\ @author\ Alexandre\ Guidoux\n\ @version\ 1.0\n
+comment1.params=size\ seed
+comment1.target=NumberCruncher(int,\ int)
+comment1.text=\n\ Create\ an\ array\ and\ fill\ it\ with\ random\ float\ number\ .\n\ Used\ for\ testing.\n\ @param\ size\ fo\ the\ array\n
+comment2.params=size
+comment2.target=NumberCruncher(int)
+comment2.text=\n\ Alias\ if\ seed\ not\ provided.\ Used\ for\ production.\n
+comment3.params=
+comment3.target=float[]\ getArray()
+comment3.text=\n\ @return\ the\ float\ array\n
+comment4.params=operations
+comment4.target=void\ crunch(java.lang.String[])
+comment4.text=\n\ TODO\:\ Comment\ this\ \n
+comment5.params=args
+comment5.target=void\ main(java.lang.String[])
+numComments=6

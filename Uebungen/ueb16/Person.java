@@ -10,18 +10,23 @@ public class Person
     private String name;
     private String vorname;
     
+    public static void checkArgs(boolean bedigung, String msg){
+        if(!bedigung)
+            throw new IllegalArgumentException(msg);
+    }
+    
     /**
      * Person auf die Standardausgabe ausgeben
      *
      */
     public Person(String name, String vorname){
-        Checker.checkArgs(!(name == null), 
+        checkArgs(!(name == null), 
                           "Der Name ist nicht definiert (NullPointerException)");
-        Checker.checkArgs(!(name.isEmpty()), 
+        checkArgs(!(name.isEmpty()), 
                           "Der Name darf nicht leer sein.");
-        Checker.checkArgs(!(vorname == null), 
+        checkArgs(!(vorname == null), 
                           "Der Vorname ist nicht definiert (NullPointerException)");
-        Checker.checkArgs(!(vorname.isEmpty()), 
+        checkArgs(!(vorname.isEmpty()), 
                           "Der Vorname darf nicht leer sein.");
         this.name = name;
         this.vorname = vorname;
