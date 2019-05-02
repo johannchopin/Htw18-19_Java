@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Average
+comment0.text=\n\ Implement\ the\ average\ Operation\:\n\ Bestimmt\ den\ Durchschnitt\ aller\ Werte\ im\ Array\ und\ \n\ speichert\ den\ Durchschnittswert\ im\ Datenfeld\ mit\ dem\ gr\u00F6\u00DFten\ Wert.\n\n\ @author\ Alexandre\ Guidoux\n\ @version\ 1.0\n
+comment1.params=array
+comment1.target=float[]\ doIt(float[])
+numComments=2

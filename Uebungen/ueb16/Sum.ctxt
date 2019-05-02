@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Sum
+comment0.text=\n\ Implement\ the\ sum\ Operation\ \:\ \n\ Summiert\ die\ Elemente\ des\ Arrays\ paarweise\ von\ links\ nach\ rechts\ auf\ \n\ und\ speichertden\ neuen\ Wert\ in\ dem\ jeweils\ rechten\ Datenfeld.\n\ \n\ @author\ Alexandre\ Guidoux\n\ @version\ 1.0\n
+comment1.params=array
+comment1.target=float[]\ doIt(float[])
+numComments=2

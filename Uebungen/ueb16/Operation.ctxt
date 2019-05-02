@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Operation
+comment0.text=\n\ Top-level\ interface.\ Each\ implementation\ have\ a\ doIt\ method\ which\n\ do\ something\ on\ the\ float[]\n
+comment1.params=array
+comment1.target=float[]\ doIt(float[])
+numComments=2

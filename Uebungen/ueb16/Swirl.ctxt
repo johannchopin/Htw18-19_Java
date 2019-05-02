@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Swirl
+comment0.text=\n\ Implement\ the\ swirl\ Operation\ \:\n\ F\u00FChrt\ n\ zuf\u00E4llige\ Vertauschungen\ der\ Datenfelder\ durch;\n\ n\ ist\ durch\ die\ L\u00E4nge\ des\ float-Arrays\ gegeben.\n\n\ @author\ Alexandre\ Guidoux\n\ @version\ 1.0\n
+comment1.params=array
+comment1.target=float[]\ doIt(float[])
+numComments=2

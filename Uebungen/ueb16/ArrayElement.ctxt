@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=ArrayElement
+comment0.text=\n\ Simulate\ an\ element\ in\ a\ array.\ That\ is\ to\ say\ a\ value\ with\ an\ index.\n\ \n\ @author\ Alexandre\ Guidoux\n\ @version\ 1.0\n
+comment1.params=index\ value
+comment1.target=ArrayElement(int,\ float)
+comment2.params=el1\ el2
+comment2.target=int\ compare(ArrayElement,\ ArrayElement)
+comment3.params=other
+comment3.target=int\ compareTo(ArrayElement)
+numComments=4

@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Substract
+comment0.text=\n\ Implement\ the\ substract\ Operation\ \:\n\ Analog\ zu\ sum\ nur\ mit\ Substraktion\n\ \n\ @author\ Alexandre\ Guidoux\n\ @version\ 1.0\n
+comment1.params=array
+comment1.target=float[]\ doIt(float[])
+numComments=2

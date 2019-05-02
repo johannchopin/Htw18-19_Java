@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Divide
+comment0.text=\n\ Implement\ the\ divide\ Operation\ \:\n\ Teilt\ die\ n/2\ gr\u00F6\u00DFten\ Werte\ im\ Array\ durch\ die\ n/2\ Kleinsten\ \n\ und\ speichert\ den\ neuenWert\ im\ Datenfeld\ des\ jeweils\ gr\u00F6\u00DFeren\ Wertes.\ \n\ D.h.\ der\ gr\u00F6\u00DFte\ Wert\ wird\ durch\ den\ Kleinsten\ geteilt.\ \n\ Der\ Zweitgr\u00F6\u00DFte\ durch\ den\ Zweitkleinsten\ usw.\n\ \n\ @author\ Alexandre\ Guidoux\n\ @version\ 1.0\n
+comment1.params=array
+comment1.target=float[]\ doIt(float[])
+numComments=2
