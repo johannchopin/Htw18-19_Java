@@ -50,10 +50,10 @@ public class PersonQueue extends ObjectQueue implements Iterable<Person>
    public Person get ( int i ) {
        return (Person)super.get(i);
    }
-
+   
    /**
     * A simple iterator for the queue. Begin at the head of the queue 
-    * (index 0) and end with the last added Person
+    * (index 0) and end with the last added Object
     */
    private class PersonIterator implements Iterator<Person>{
        int i = 1; // First element in the queue
@@ -111,9 +111,9 @@ public class PersonQueue extends ObjectQueue implements Iterable<Person>
    
    public static void main(String[] args){
        PersonQueue q = new PersonQueue();
+       q.addLast(new Person("Chopin", "Johann"));
        q.addLast(new Person("Guidoux", "Alexandre"));
-       q.addLast(new Person("Guidoux", "Fabrice"));
-       q.addLast(new Person("Guidoux", "Aurore"));
+       q.addLast(new Person("Jobs", "Steve"));
        System.out.println("Smallest: " + q.smallest());
        System.out.print("Queue : ");
        q.print();

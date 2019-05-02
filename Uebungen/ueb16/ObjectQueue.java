@@ -124,7 +124,6 @@ public class ObjectQueue
      return size;
    }
 
-
    /** die Std-Methode toString
     *
     */
