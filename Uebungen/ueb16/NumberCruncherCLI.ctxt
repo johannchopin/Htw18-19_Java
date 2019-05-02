@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=NumberCruncherCLI
+comment0.text=\n\ A\ CLI\ for\ the\ object\ NumberCruncher\n\n\ @author\ Alexandre\ Guidoux\n\ @version\ 1.0\n
+comment1.params=options
+comment1.target=org.apache.commons.cli.Options\ setOptions(org.apache.commons.cli.Options)
+comment2.params=args
+comment2.target=void\ main(java.lang.String[])
+numComments=3
