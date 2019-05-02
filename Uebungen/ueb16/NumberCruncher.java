@@ -12,11 +12,11 @@ public class NumberCruncher
 {
     private float[] array;
     private Random randomizer;
-    
+
     // Used to check if floats number are to close to 0
     public static final double lowBound = +0.1e-10;
     public static final double highBound = -0.1e-10;
-    
+
     /**
      * TESTING constructor
      * Add the seed parameter to fix randomness
@@ -28,7 +28,7 @@ public class NumberCruncher
         for(int i=0; i<size; i++)
             this.array[i] = randomizer.nextFloat() * 100;
     }
-    
+
     /**
      * Create an array and fill it with random float number.
      * @param size fo the array
@@ -41,46 +41,48 @@ public class NumberCruncher
             this.array[i] = randomizer.nextFloat() * 100;
     }
     
-    
-    
+    public NumberCruncher(){
+        this(10);
+    }
+
     /**
      * @return the float array
      */
     public float[] getArray(){
         return this.array;
     }
-    
+
     /**
      * Top-level interface. Each implementation have a doIt method which
      * do something on the float[]
-    */
+     */
     public interface Operation{
         public void doIt();
     }
-    
+
     /**
      * Simulate an element in a array. That is to say a value with an index.
      */
     class ArrayElement 
-              implements Comparator<ArrayElement>, Comparable<ArrayElement> {
+    implements Comparator<ArrayElement>, Comparable<ArrayElement> {
         int   index;
         float value;
-        
+
         ArrayElement(int index, float value){
             this.index = index;
             this.value = value;
         }
-        
+
         public int compare(ArrayElement el1, ArrayElement el2){
             return Float.compare(el1.value, el2.value);
         }
-        
+
         @Override
         public int compareTo(ArrayElement other){
             return compare(this, other); // Because already implemented
         }
     }
-    
+
     /**
      * Select the operation that has to be done. Then run it *in place*
      */
@@ -89,32 +91,32 @@ public class NumberCruncher
         for(String opName: operations){
             switch(opName){
                 case "sum":
-                    op = sum();
-                    break;
-                    
+                op = sum();
+                break;
+
                 case "swirl":
-                    op = swirl();
-                    break;
-                    
+                op = swirl();
+                break;
+
                 case "divide":
-                    op = divide();
-                    break;
-                    
+                op = divide();
+                break;
+
                 case "substract":
-                    op = substract();
-                    break;
-                    
+                op = substract();
+                break;
+
                 case "average":
-                    op = average();
-                    break;
-                    
+                op = average();
+                break;
+
                 default:
-                    throw new IllegalArgumentException(opName + " is not a valid operation");
+                throw new IllegalArgumentException(opName + " is not a valid operation");
             }
             op.doIt();
         }
     }
-    
+
     /**
      * Implement the sum Operation : 
      * Summiert die Elemente des Arrays paarweise von links nach rechts auf 
@@ -129,7 +131,7 @@ public class NumberCruncher
             }
         };
     }
-    
+
     /**
      * Implement the substract Operation :
      * Analog zu sum nur mit Substraktion
@@ -143,7 +145,7 @@ public class NumberCruncher
             }
         };
     }
-    
+
     /**
      * Implement the swirl Operation :
      * Führt n zufällige Vertauschungen der Datenfelder durch;
@@ -164,7 +166,7 @@ public class NumberCruncher
             }
         };
     }
-    
+
     /**
      * Implement the divide Operation :
      * Teilt die n/2 größten Werte im Array durch die n/2 Kleinsten 
@@ -180,7 +182,7 @@ public class NumberCruncher
                 for(int i=0; i < array.length; i++)
                     arrayCp[i] = new ArrayElement(i, array[i]);
                 Arrays.sort(arrayCp);
-                
+
                 // Divide the lowest values by the highest
                 for(int j=0; j < array.length/2; j++){
                     if(lowBound <= arrayCp[j].value && arrayCp[j].value <= highBound)
@@ -188,14 +190,14 @@ public class NumberCruncher
                     else
                         arrayCp[array.length - 1 - j].value /= arrayCp[j].value;
                 }
-                
+
                 // Rearrange the elements in good order (like the beginning)
                 for(ArrayElement el: arrayCp)
                     array[el.index] = el.value;
             }
         };
     }
-    
+
     /**
      * Implement the average Operation:
      * Bestimmt den Durchschnitt aller Werte im Array und 
@@ -207,18 +209,18 @@ public class NumberCruncher
                 double acc = 0;
                 ArrayElement biggestSoFar = 
                     new ArrayElement(-1, Float.MIN_VALUE);
-                
+
                 for(int i=0; i<array.length; i++){
                     acc += array[i];
                     if(array[i] >= biggestSoFar.value)
                         biggestSoFar = new ArrayElement(i, array[i]);                  
                 }
-                
+
                 array[biggestSoFar.index] = (float)acc / array.length;
             }
         };
     }
-    
+
     public static void main(String[] args){
         NumberCruncher nb = new NumberCruncher(1000_000);
         for(float el: nb.getArray())
