@@ -1,0 +1,34 @@
+#BlueJ class context
+comment0.target=MyFunctionImplementation
+comment0.text=\n\n\ @author\ Alexandre\ Guidoux\n\ @version\ 1.0\n
+comment1.params=
+comment1.target=MyFunction\ iLambda()
+comment10.params=n
+comment10.target=int\ apply(int)
+comment11.params=
+comment11.target=MyFunction\ ivLambda()
+comment11.text=\n\ f(x)\ \=\ fib(x)\ (Fibonacci-Folge)\n\n\ @param\ start\n\ @param\ stop\n
+comment12.params=
+comment12.target=MyFunction\ ivAnon()
+comment13.params=n
+comment13.target=int\ apply(int)
+comment14.params=args
+comment14.target=void\ main(java.lang.String[])
+comment2.params=
+comment2.target=MyFunction\ iAnon()
+comment3.params=i
+comment3.target=int\ apply(int)
+comment4.params=
+comment4.target=MyFunction\ iiLambda()
+comment5.params=
+comment5.target=MyFunction\ iiAnon()
+comment6.params=n
+comment6.target=int\ apply(int)
+comment7.params=
+comment7.target=MyFunction\ iiStatic()
+comment8.params=
+comment8.target=MyFunction\ iiiLambda()
+comment8.text=\n\ f(x)\ \=\ x^(x+1)\n\ @param\ start\ bound\n\ @param\ stop\ bound\n
+comment9.params=
+comment9.target=MyFunction\ iiiAnon()
+numComments=15

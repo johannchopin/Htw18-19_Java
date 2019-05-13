@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=ConditionateCLI
+comment1.params=
+comment1.target=Conditionate\ iLambdaConditionate()
+comment2.params=
+comment2.target=Conditionate\ iiLambda()
+comment3.params=args
+comment3.target=void\ main(java.lang.String[])
+comment4.params=n
+comment4.target=boolean\ test(int)
+numComments=5

@@ -1,5 +1,3 @@
-package ueb17;
-
 public class TopLevelFactorial implements MyFunction {
 	final static String MAN = "Execute java TopLevelFactorial START END\n"
 			+ "  with START and END two integers";

@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=Conditionate
+comment1.params=predicate
+comment1.target=Conditionate\ conditionateInput(java.util.function.IntPredicate)
+comment1.text=\n\ @param\ predicate\n\ @return\ an\ implementation\ of\ MyFunction\n
+comment2.params=predicate
+comment2.target=Conditionate\ conditionateOutput(java.util.function.IntPredicate)
+numComments=3

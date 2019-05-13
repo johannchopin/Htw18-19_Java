@@ -1,5 +1,3 @@
-package ueb17;
-
 import java.lang.FunctionalInterface;
 
 @FunctionalInterface

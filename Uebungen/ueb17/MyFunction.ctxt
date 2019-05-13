@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=MyFunction
+comment1.params=i
+comment1.target=int\ apply(int)
+comment2.params=mf\ i\ j
+comment2.target=void\ applyAndPrint(MyFunction,\ int,\ int)
+comment2.text=\n\ \n\ @param\ i\ A\ bound\n\ @param\ j\ A\ bound\n\ @throws\ ArithmeticException\ if\ the\ result\ of\ apply\ become\ negative\n
+comment3.params=i\ j
+comment3.target=void\ applyAndPrint(int,\ int)
+comment4.params=condition\ msg
+comment4.target=void\ checkArgs(boolean,\ java.lang.String)
+numComments=5

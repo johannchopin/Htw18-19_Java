@@ -1,5 +1,3 @@
-package ueb17;
-
 /**
  *
  * @author Alexandre Guidoux
