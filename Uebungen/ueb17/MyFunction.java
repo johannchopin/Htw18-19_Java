@@ -2,6 +2,7 @@ import java.lang.FunctionalInterface;
 
 @FunctionalInterface
 /**
+ * Implement the 1.a Aufgabe
  * 
  * @author Alexandre Guidoux
  * @version 1.0
@@ -25,7 +26,7 @@ public interface MyFunction {
 		checkArgs(stop <= Integer.MAX_VALUE, 
 					"Number too big for an integer. Must be under " + Integer.MAX_VALUE);
 		int result;
-		for(int n=start; n < stop; n++) {
+		for(int n=start; n <= stop; n++) {
 			result = apply(n);
 			if(result >= 0)
 				System.out.println(result);

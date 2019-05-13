@@ -1,3 +1,7 @@
+/**
+ * Implement the 1.b Aufgabe : the factorial implementation of MyFunction
+ * as Top Level Class
+ */
 public class TopLevelFactorial implements MyFunction {
 	final static String MAN = "Execute java TopLevelFactorial START END\n"
 			+ "  with START and END two integers";

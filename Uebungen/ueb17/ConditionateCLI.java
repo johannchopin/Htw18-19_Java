@@ -1,12 +1,16 @@
 import java.util.function.IntPredicate;
 
-public class ConditionateCLI {
-    public static final String MAN = "";
+public class ConditionateCLI{
+    public static final String MAN = "Use : java ConditionateCLI [FUNCTION] [START] [END]\n"
+        + "  with \n"
+        + "\tFUNCTION: String is \"EvenSquareNumber\" or \"OddFactorialNumber\"\n"
+        + "\tSTART   : Integer\n"
+        + "\tEND     : Integer\n";
 
     public static Conditionate iLambdaConditionate() {
         return (int n) -> n * n;
     }
-    
+
     public static Conditionate iiLambda() {
         return (int n) -> {
             int acc = 1;
@@ -15,13 +19,13 @@ public class ConditionateCLI {
             return acc;
         };
     }
-    
+
     public static void main(String[] args) {
         int ARGS_NEEDED = 3;
-        
+
         if(args.length != ARGS_NEEDED) {
             if(args.length != 0 
-               && (args[0].contentEquals("-h") || args[0].contentEquals("--help"))) {
+            && (args[0].contentEquals("-h") || args[0].contentEquals("--help"))) {
                 System.out.println(MAN);
                 System.exit(0);
             }
@@ -32,35 +36,34 @@ public class ConditionateCLI {
         // MAIN CODE IMPLEMENTATION
         IntPredicate isEven = (int n) -> n%2 == 0;
         IntPredicate isOdd = new IntPredicate() {
-            public boolean test(int n) {
-                return !isEven.test(n);
-            }
-        };
-        
+                public boolean test(int n) {
+                    return !isEven.test(n);
+                }
+            };
+
         Conditionate isEvenSquareNumber = ConditionateCLI.iLambdaConditionate()
-                                            .conditionateInput(isEven);
-                                               Conditionate isOddFactorialNumber = ConditionateCLI.iiLambda()
-                                            .conditionateOutput(isOdd);
-       // END CODE IMPLEMENTATION
-       
-       
+            .conditionateInput(isEven);
+        Conditionate isOddFactorialNumber = ConditionateCLI.iiLambda()
+            .conditionateOutput(isOdd);
+        // END CODE IMPLEMENTATION
+
        
         try {
             String method = args[0];
             int start = Integer.parseInt(args[1]);
             int stop = Integer.parseInt(args[2]);
-            
+
             Conditionate c = null;
             switch(method) {
                 case "EvenSquareNumber":
-                    c = isEvenSquareNumber; break;
-                    
+                c = isEvenSquareNumber; break;
+
                 case "OddFactorialNumber":
-                    c = isOddFactorialNumber; break;
-                
+                c = isOddFactorialNumber; break;
+
                 default:
-                    System.out.println("Unrecognized method. See --help for available methods.");
-                    System.exit(1);
+                System.out.println("Unrecognized method. See --help for available methods.");
+                System.exit(1);
             }
             c.applyAndPrint(start, stop);
         } catch(NumberFormatException e) {
