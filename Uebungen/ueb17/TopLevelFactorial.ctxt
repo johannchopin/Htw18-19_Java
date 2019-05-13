@@ -1,5 +1,6 @@
 #BlueJ class context
 comment0.target=TopLevelFactorial
+comment0.text=\n\ Implement\ the\ 1.b\ Aufgabe\ \:\ the\ factorial\ implementation\ of\ MyFunction\n\ as\ Top\ Level\ Class\n
 comment1.params=start\ stop
 comment1.target=TopLevelFactorial(int,\ int)
 comment2.params=n

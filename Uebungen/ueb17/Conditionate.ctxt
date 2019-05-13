@@ -1,5 +1,6 @@
 #BlueJ class context
 comment0.target=Conditionate
+comment0.text=\n\ Extends\ the\ MyFunction\ interface\ with\ 2\ filter\ methods.\n\ They\ filter\ apply\ or\ the\ argument\ with\ a\ predicate\ \n\ and\ create\ a\ new\ object\ Conditionate\n
 comment1.params=predicate
 comment1.target=Conditionate\ conditionateInput(java.util.function.IntPredicate)
 comment1.text=\n\ @param\ predicate\n\ @return\ an\ implementation\ of\ MyFunction\n
