@@ -7,7 +7,7 @@
  */
 public class MyFunctionImplementation{
     public final static String MAN = 
-        "Use : java MyFunctionImplementation [FUNCTION] [START] [END]\n"
+        "Use : java MyFunctionImplementation FUNCTION START END\n"
         + "  with \n"
         + "\t[FUNCTION: String in \"[i|ii|iii|iv]Lambda\" or \"[i|ii|iii|iv]Anon\" or \"iiStatic\"jobs\n"
         + "\t with\n"

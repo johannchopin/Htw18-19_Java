@@ -1,7 +1,7 @@
 import java.util.function.IntPredicate;
 
 public class ConditionateCLI{
-    public static final String MAN = "Use : java ConditionateCLI [FUNCTION] [START] [END]\n"
+    public static final String MAN = "Use : java ConditionateCLI FUNCTION START END\n"
         + "  with \n"
         + "\tFUNCTION: String is \"EvenSquareNumber\" or \"OddFactorialNumber\"\n"
         + "\tSTART   : Integer\n"
