@@ -1,7 +1,7 @@
 import java.util.Random;
 
 /**
- * Décrivez votre classe Aufgabe1 ici.
+ * Implement the Aufgabe 1
  *
  * @author Guidoux Alexandre & Chopin Johann
  * @version 1.0.0
