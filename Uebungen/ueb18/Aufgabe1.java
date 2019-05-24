@@ -8,6 +8,7 @@ import java.util.Random;
  */
 public class Aufgabe1
 {
+    protected static double rndDouble = new Random().nextDouble();
     
     public void iterate(double x0, int n, FunctionInterface fn) {
         double end = x0 + n;
@@ -28,8 +29,7 @@ public class Aufgabe1
     }
     
     public FunctionInterface iiiLambda() {
-        Random rand = new Random();
-        float a = rand.nextFloat();
+        double a = rndDouble;
         return (double n) -> a * n * (n - 1);
     }
     
@@ -42,7 +42,7 @@ public class Aufgabe1
         System.out.println("\niiLambda (0.5x) :");
         test.iterate(2.0, 10, test.iiLambda());
         
-        System.out.println("\niiiLambda (ax(x − 1)) :");
+        System.out.println("\niiiLambda (ax(x − 1)) || a = " + rndDouble + " :");
         test.iterate(2.0, 10, test.iiiLambda());
     }
     
