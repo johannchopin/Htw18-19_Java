@@ -10,14 +10,14 @@ public class Aufgabe1
 {
     protected static double rndDouble = new Random().nextDouble();
     
-    public void iterate(double x0, int n, FunctionInterface fn) {
-        double end = x0 + n;
+    public double iterate(double x0, int n, FunctionInterface fn) {
+        double result = x0;
         
-        for(double i = x0; i<=end; i++) {
-            double result = fn.apply(i);
-            
-            System.out.println(i + " -> " + result);
-        }
+        for(int i = 0; i < n; i++){
+            result = fn.apply(x0);
+            x0 = result;}
+
+        return result;
     }
     
     public FunctionInterface iLambda() {
@@ -34,16 +34,14 @@ public class Aufgabe1
     }
     
     protected void run() {
-        Aufgabe1 test = new Aufgabe1();
+        System.out.println("\niLambda (2x) with x0=2.0 and n=2 :");
+        System.out.println(this.iterate(2.0, 2, this.iLambda()));
         
-        System.out.println("\niLambda (2x) :");
-        test.iterate(2.0, 10, test.iLambda());
+        System.out.println("\niiLambda (0.5x) with x0=2.0 and n=2 :");
+        System.out.println(this.iterate(2.0, 2, this.iiLambda()));
         
-        System.out.println("\niiLambda (0.5x) :");
-        test.iterate(2.0, 10, test.iiLambda());
-        
-        System.out.println("\niiiLambda (ax(x − 1)) || a = " + rndDouble + " :");
-        test.iterate(2.0, 10, test.iiiLambda());
+        System.out.println("\niiiLambda (ax(x − 1)) || a = " + rndDouble + " with x0=2.0 and n=2 :");
+        System.out.println(this.iterate(2.0, 2, this.iiiLambda()));
     }
     
     public static void main(String[] args) {
