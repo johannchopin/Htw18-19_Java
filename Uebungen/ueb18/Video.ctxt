@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Video
+comment0.text=\n\ Unterklasse\ Video\ der\ Obereklasse\ Artikel\n\n\ @author\ Alexandre\ Guidoux\ &&\ Johann\ Chopin\n\ @version\ 1.0\n
+comment1.params=nummer\ titel\ bestand\ preis\ spieldauer\ erscheinungsjahr
+comment1.target=Video(int,\ java.lang.String,\ int,\ double,\ double,\ int)
+comment1.text=\n\ @see\ Artikel\#Artikel(int,\ String,\ int,\ double)\n\ @param\ spieldauer\ in\ Minuten\ und\ muss\ >\=\ 1\ sein.\n\ @param\ erscheinungsjahr\ muss\ zwischen\ 1950\ und\ 2014\ sein.\n
+comment2.params=
+comment2.target=java.lang.String\ getBeschreibung()
+numComments=3

@@ -6,12 +6,11 @@
  */
 public class FakultaetTopLevel
   {
-    public int berechne(int x)
-      {
+    public int berechne(int x){
         int erg = 1;
         for ( int i = 2; i<=x; i++ ){
             erg *= i;
         }
         return erg;
-      }
+    }
   }

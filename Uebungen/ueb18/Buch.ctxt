@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Buch
+comment0.text=\n\ Unterklasse\ Buch\ der\ Obereklasse\ Artikel\n\n\ @author\ Alexandre\ Guidoux\ &&\ Johann\ Chopin\n\ @version\ 1.0\n
+comment1.params=nummer\ titel\ bestand\ preis\ autor\ verlag
+comment1.target=Buch(int,\ java.lang.String,\ int,\ double,\ java.lang.String,\ java.lang.String)
+comment1.text=\n\ @see\ Artikel\#Artikel(int,\ String,\ int,\ double)\n\ @param\ autor\ Autor\ des\ Buchs\n\ @param\ verlag\ Verlag\ des\ Buchs\n
+comment2.params=
+comment2.target=java.lang.String\ getAuthor()
+comment3.params=
+comment3.target=java.lang.String\ getBeschreibung()
+numComments=4

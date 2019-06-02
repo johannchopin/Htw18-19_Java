@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=MyFunction
+comment0.text=\n\ A\ simple\ fonctionnal\ interface\n\ \n\ @author\ Alexandre\ Guidoux\ &\ Johann\ Chopin\n\ @version\ 1.0\n
+comment1.params=i
+comment1.target=int\ apply(int)
+numComments=2

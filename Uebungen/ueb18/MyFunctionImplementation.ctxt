@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=MyFunctionImplementation
+comment0.text=\n\ Implement\ MyFunction\n\n\ @author\ W.Pauly\n\ @version\ 1.0\n
+comment1.params=myFunction\ i\ j
+comment1.target=void\ applyAndPrint(MyFunction,\ int,\ int)
+comment2.params=
+comment2.target=void\ run()
+comment3.params=args
+comment3.target=void\ main(java.lang.String[])
+numComments=4

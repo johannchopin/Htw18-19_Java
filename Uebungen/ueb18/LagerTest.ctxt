@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=LagerTest
+comment0.text=\n\ A\ implementation\ for\ the\ Aufgabe\ 2.d\ bis\ 2.h\n\n\ @author\ Guidoux\ Alexandre\n\ @version\ 1.0\n
+comment1.params=size
+comment1.target=LagerTest(int)
+comment1.text=\n\ Constructor\n\ @param\ size\ groesse\ des\ Lagers\n
+comment2.params=
+comment2.target=void\ actions1()
+comment3.params=
+comment3.target=void\ actions2()
+comment4.params=args
+comment4.target=void\ main(java.lang.String[])
+numComments=5

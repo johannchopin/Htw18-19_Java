@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=CD
+comment0.text=\n\ Unterklasse\ CD\ der\ Klasse\ Artikel\n\n\ @author\ Alexandre\ Guidoux\ &&\ Johann\ Chopin\n\ @version\ 1.0\n
+comment1.params=nummer\ bezeichnung\ bestand\ preis\ interpret\ anzahlMusiktitel
+comment1.target=CD(int,\ java.lang.String,\ int,\ double,\ java.lang.String,\ int)
+comment2.params=
+comment2.target=java.lang.String\ getBeschreibung()
+numComments=3

@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Aufgabe1
+comment0.text=\n\ D\u00E9crivez\ votre\ classe\ Aufgabe1\ ici.\n\n\ @author\ Guidoux\ Alexandre\ &\ Chopin\ Johann\n\ @version\ 1.0.0\n
+comment1.params=x0\ n
+comment1.target=double\ iterate(double,\ int)
+numComments=2
