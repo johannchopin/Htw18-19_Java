@@ -1,7 +1,3 @@
-import static org.junit.Assert.*;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import java.util.Random;
 
 /**
@@ -102,12 +98,12 @@ public class LagerFabric
     private CD[] musik = {
         new CD(3001, "Thunder", 10, 50, "Imagine Dragons", 14),
         new CD(3002, "Believer", 10, 51, "Imagine Dragons", 14),
-        new CD(3003, "Bad Liar", 10, 52, "Imagine Dragons", 14),
-        new CD(3004, "Radioactive", 10, 53, "Imagine Dragons", 14),
+        new CD(3003, "Bad Liar", 10, 10, "Imagine Dragons", 14),
+        new CD(3004, "Radioactive", 10, 10, "Imagine Dragons", 14),
         new CD(3005, "Whatever It Takes", 10, 54, "Imagine Dragons", 14),
-        new CD(3006, "Venom Theme", 10, 55, "Eminem", 14),
-        new CD(3007, "Darkside", 10, 56, "Alan Walker", 14),
-        new CD(3008, "Faded", 10, 57, "Alan Walker", 14),
+        new CD(3006, "Venom Theme", 10, 10, "Eminem", 14),
+        new CD(3007, "Darkside", 10, 10, "Alan Walker", 14),
+        new CD(3008, "Faded", 10, 10, "Alan Walker", 14),
         new CD(3009, "Alone", 10, 58, "Alan Walker", 14),
         new CD(3010, "The Spectre", 10, 59, "Alan Walker", 14),
     };

@@ -223,9 +223,9 @@ public class ArtikelLager
     }
 
     // ----------------------------------------------------------------------
-    //  2.a implementation sort
+    //  18-2.a implementation sort
     // ----------------------------------------------------------------------
-    private Artikel[] getSorted(BiPredicate predicate, Artikel[] arr){                
+    private Artikel[] getSorted(BiPredicate<Artikel, Artikel> predicate, Artikel[] arr){                
         int size = arr.length-1;
         Artikel swapArtikel = null;
         for(int i=1; i<size; i++){
@@ -252,7 +252,7 @@ public class ArtikelLager
      * @param BiPredicate<Artikel, Artikel> Das Sortierkriteriums fuer 2 Artikels
      * @return List<Artikel> Sortierte Lager
      */
-    public Artikel[] getSorted(BiPredicate predicate){
+    public Artikel[] getSorted(BiPredicate<Artikel, Artikel> predicate){
         return getSorted(predicate, lager.clone());
     }
     
@@ -283,7 +283,7 @@ public class ArtikelLager
     // ----------------------------------------------------------------------
     //  18-2.c implementation ApplyToArticles
     // ----------------------------------------------------------------------
-    public void applyToArticles(Consumer c){
+    public void applyToArticles(Consumer<Artikel> c){
         int artikelInLager = getArtikelNumber();
         for(int i=0; i<artikelInLager; i++){
             c.accept(lager[i]);
@@ -304,7 +304,7 @@ public class ArtikelLager
     // ----------------------------------------------------------------------
     // 18-2.f implementation getArticles 
     // ---------------------------------------------------------------------
-    public Artikel[] getArticles(Predicate filterCriterion,
+    public Artikel[] getArticles(Predicate<Artikel> filterCriterion,
                                 BiPredicate sortCriterion){
         return getSorted(sortCriterion, filter(filterCriterion));
     }
@@ -312,7 +312,7 @@ public class ArtikelLager
     // ----------------------------------------------------------------------
     // 18-2.g implementation filterAll
     // ---------------------------------------------------------------------
-    public Artikel[] filterAll(Predicate ...filterCriteria){
+    public Artikel[] filterAll(Predicate<Artikel> ...filterCriteria){
         Artikel[] arr = lager.clone();
         for(Predicate<Artikel> criterion: filterCriteria){
             arr = filter(criterion, arr);

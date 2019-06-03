@@ -12,7 +12,7 @@ import java.util.function.Supplier;
 public class LagerTest
 {
     public ArtikelLager lager;
-    private final static int DEFAULT_LAGER_SIZE = 30;
+    private final static int DEFAULT_LAGER_SIZE = 20;
     
     /**
      * Constructor
@@ -89,7 +89,7 @@ public class LagerTest
         // v
         Predicate<Artikel> isBuch = x -> x instanceof Buch;
         BiPredicate<Buch, Buch> byAuthor = 
-                 (x, y) -> x.getAuthor().compareTo(y.getAuthor()) == 0;
+                 (x, y) -> x.getAuthor().compareTo(y.getAuthor()) == 1;
         // Test v
         System.out.println("****Liste aller Buecher und nach Autor sortiert\n");
         Helpers.printArtikelArray(lager.getArticles(isBuch, byAuthor));
