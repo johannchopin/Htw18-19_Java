@@ -69,10 +69,14 @@ public class LagerTest
         System.out.println(lager + "\n");
         
         // iii
-        Predicate<Buch> isAuthorRowling = x -> x.getAuthor().equals("J.K. Rowling");
+        Predicate<Artikel> isBuch = x -> x instanceof Buch;
+        Predicate<Artikel> isAuthorRowling = isBuch.and(
+            x -> ((Buch) x).getAuthor().equals("J.K. Rowling")
+        );
+
         // Test iii
         System.out.println("****-5% Rabatt auf J.K. Rowlings Buecher");
-        lager.applyToSomeArticle(remainMoreThanOne, rabatt5);
+        lager.applyToSomeArticle(isAuthorRowling, rabatt5);
         System.out.println(lager + "\n");
         
         // iv (implemented as a procedure)
@@ -87,7 +91,6 @@ public class LagerTest
         System.out.println(lager + "\n");
         
         // v
-        Predicate<Artikel> isBuch = x -> x instanceof Buch;
         BiPredicate<Buch, Buch> byAuthor = 
                  (x, y) -> x.getAuthor().compareTo(y.getAuthor()) == 1;
         // Test v

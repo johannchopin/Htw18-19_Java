@@ -294,12 +294,17 @@ public class ArtikelLager
     // 18-2.e implementation applyToSomeArticle
     // ---------------------------------------------------------------------
     public void applyToSomeArticle(Predicate predicate, Consumer consumer){
+        for(Artikel a: filter(predicate)){
+                consumer.accept(a);
+        }
+    }
+    /*public void applyToSomeArticle(Predicate predicate, Consumer consumer){
         int artikelInLager = getArtikelNumber();
         for(int i=0; i<artikelInLager; i++){
             if(predicate.test(lager[i]))
                 consumer.accept(lager[i]);
         }
-    }
+    }*/
     
     // ----------------------------------------------------------------------
     // 18-2.f implementation getArticles 
