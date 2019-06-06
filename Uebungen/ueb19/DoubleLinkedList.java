@@ -51,10 +51,13 @@ public class DoubleLinkedList<T> implements Iterable<T>
         Node<T> cursor;
         int     index;
 
-        public FullIterator() {
+        public FullIterator(int index) {
             this.cursor = new Node(null); // Init node (before the head)
             this.cursor.next = (Node<T>)head;
-            this.index = 0;
+            this.index = index;
+            // Position the cursor at the right index
+            while(index-- != 0)
+                this.cursor = this.cursor.next;
         }
 
         @Override
@@ -132,15 +135,16 @@ public class DoubleLinkedList<T> implements Iterable<T>
     }
 
     private void addHead(Node node){
-        if(this.head != null){
-            this.head.previous = node;
-            node.next = this.head; 
-        }
+        this.head.previous = node;
+        node.next = this.head; 
         this.head = node;
-        if(this.tail == null)
-            this.tail = node;
     }
 
+    private void addFirstHead(Node node){
+        this.head = node;
+        this.tail = node;
+    }
+    
     private void addTail(Node node){
         Node aux = this.tail;
         aux.next = node;
@@ -206,9 +210,8 @@ public class DoubleLinkedList<T> implements Iterable<T>
             a[count++] = it.next(); // Why type-casting is necessary ?
         }
 
-        for( ; count < a.length; count++){
+        for( ; count < a.length; count++)
             a[count] = null;
-        }
 
         return a;
     }
@@ -216,7 +219,7 @@ public class DoubleLinkedList<T> implements Iterable<T>
     public boolean add(T e){
         Node node = new Node(e);
         if(isEmpty())
-            addHead(node);
+            addFirstHead(node);
         else
             addTail(node);
         this.size++;
@@ -288,6 +291,10 @@ public class DoubleLinkedList<T> implements Iterable<T>
     public Iterator<T> iterator() {
         return new SimpleIterator();
     }
+    
+    public ListIterator<T> listIterator(int index){
+        return new FullIterator(index);
+    }
 
     // TODO: transfer to test class, just used for debug
     public String printList(){
@@ -338,7 +345,6 @@ public class DoubleLinkedList<T> implements Iterable<T>
 
     public static void main(String[] main){
         DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>();
-
         list.add(1);
         list.add(2);
         list.add(3);
@@ -376,5 +382,23 @@ public class DoubleLinkedList<T> implements Iterable<T>
 
         System.out.println("indexOf(42): " + list.indexOf(42));
         System.out.print("List: " + list.printList());
+        
+        System.out.println("----------ListIterator----------");
+        ListIterator<Integer> fullIt = list.listIterator(6);
+        System.out.println("ListIterator at index 6: " + fullIt.next());
+        System.out.println("hasPrevious(): " + fullIt.hasPrevious());
+        if(fullIt.hasPrevious())
+            System.out.println("previous(): " + fullIt.previous());
+        System.out.println("hasNext(): " + fullIt.hasNext());
+        if(fullIt.hasNext())
+            System.out.println("next() : " + fullIt.next());
+            
+        fullIt.add(100);
+        System.out.print("add(100) via listIterator: " + list.printList());
+        if(!fullIt.hasNext())
+            System.out.println("Link broken");
+        System.out.println("add(100) using next to print: " + fullIt.previous());
+        System.out.println("The value after the insertion is: " + fullIt.next());
+
     }
 }
