@@ -1,5 +1,6 @@
 import java.util.Iterator;
 import java.lang.Iterable;
+import java.util.List;
 import java.util.ListIterator;
 import java.util.Collection;
 
@@ -11,6 +12,11 @@ import java.util.Collection;
  */
 public class DoubleLinkedList<T> implements Iterable<T>
 {
+    private int size;
+    private Node<T> head;
+    private Node<T> tail;
+    private Iterator<T> it;
+
     private class Node<T> {
         T value;
         Node<T> next;
@@ -40,62 +46,62 @@ public class DoubleLinkedList<T> implements Iterable<T>
             return el;
         }
     }
-    
+
     public class FullIterator<T> implements ListIterator<T> {
         Node<T> cursor;
         int     index;
-        
+
         public FullIterator() {
             this.cursor = new Node(null); // Init node (before the head)
             this.cursor.next = (Node<T>)head;
             this.index = 0;
         }
-        
+
         @Override
         public void add(T e){
             insertNode(cursor, new Node(e));
         }
-        
+
         @Override
         public boolean hasNext(){
             return cursor.next != null;
         }
-        
+
         @Override
         public boolean hasPrevious(){
             return cursor.previous != null;
         }
-        
+
         @Override
         public T next(){
             cursor = cursor.next;
             index++;
             return cursor.value;
         }
-        
+
         @Override
         public int nextIndex(){   
             return index;
         }
-        
+
         @Override
         public T previous(){
             cursor = cursor.previous;
             index--;
             return cursor.value;
         }
-        
+
         @Override
         public int previousIndex(){
             return index-1;    
         }
-        
+
         @Override
         public void remove(){
             removeNode(cursor);
             DoubleLinkedList.this.size--;
         }
-        
+
         @Override
         public void set(T e){
             DoubleLinkedList.this.set(this.index, e);
@@ -109,11 +115,6 @@ public class DoubleLinkedList<T> implements Iterable<T>
                 " but it must be between 0 and "+ (this.size-1)
             );
     }
-
-    private int size;
-    private Node<T> head;
-    private Node<T> tail;
-    private Iterator<T> it;
 
     private void removeNode(Node node){
         if(node == this.head){
@@ -305,11 +306,36 @@ public class DoubleLinkedList<T> implements Iterable<T>
         return count;
     }
 
-    /**
-     * Method main
-     *
-     * @param main A parameter
-     */
+    // --------------------------
+    // Not Implemented methods
+    // --------------------------
+    public boolean addAll(int index, Collection<? extends T> c )
+    {throw new java.lang.UnsupportedOperationException("addAll not implemented");}
+
+    public boolean containsAll(Collection<?> c)
+    {throw new java.lang.UnsupportedOperationException("containsAll not implemented");}
+
+    public boolean equals(Object o)
+    {throw new java.lang.UnsupportedOperationException("equals not implemented");}
+
+    public int hashCode()
+    {throw new java.lang.UnsupportedOperationException("hashCode not implemented");}
+
+    public int lastIndexOf(Object o)
+    {throw new java.lang.UnsupportedOperationException("lastIndexOf not implemented");}
+
+    public boolean removeAll(Collection<?> c)
+    {throw new java.lang.UnsupportedOperationException("removeAll not implemented");}
+
+    public boolean retainAll(Collection<?> c)
+    {throw new java.lang.UnsupportedOperationException("retainAll not implemented");}
+
+    public List<T> subList(int fromIndex, int toIndex)
+    {throw new java.lang.UnsupportedOperationException("subList not implemented");}
+
+    public Object[] toArray()
+    {throw new java.lang.UnsupportedOperationException("toArray not implemented");}
+
     public static void main(String[] main){
         DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>();
 
@@ -340,7 +366,7 @@ public class DoubleLinkedList<T> implements Iterable<T>
         list.set(1, 42);
         System.out.print("set(1, 42): " + list.printList());
         System.out.println("contains(42): " + list.contains(42));
-        
+
         list.add(0, 0);
         System.out.print("add(0,0): " + list.printList());
         list.add(3, 80);
