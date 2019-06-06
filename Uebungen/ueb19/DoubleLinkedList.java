@@ -10,7 +10,7 @@ import java.util.Collection;
  * @author Alexandre Guidoux
  * @version 1.0
  */
-public class DoubleLinkedList<T> implements Iterable<T>
+public class DoubleLinkedList<T> implements Iterable<T>, List<T>
 {
     private int size;
     private Node<T> head;
@@ -23,11 +23,11 @@ public class DoubleLinkedList<T> implements Iterable<T>
         Node<T> previous;
 
         public Node(T value){
-            this.value  = value;
+            this.value = value;
         }
     }
 
-    public class SimpleIterator<T> implements Iterator<T> {
+    public class SimpleIterator implements Iterator<T>{
         Node<T> node;
 
         public SimpleIterator(){
@@ -47,14 +47,18 @@ public class DoubleLinkedList<T> implements Iterable<T>
         }
     }
 
-    public class FullIterator<T> implements ListIterator<T> {
+    public class FullIterator implements ListIterator<T> {
         Node<T> cursor;
         int     index;
 
-        public FullIterator(int index) {
+        public FullIterator(){
             this.cursor = new Node(null); // Init node (before the head)
             this.cursor.next = (Node<T>)head;
             this.index = index;
+        }
+
+        public FullIterator(int index) {
+            this();
             // Position the cursor at the right index
             while(index-- != 0)
                 this.cursor = this.cursor.next;
@@ -119,21 +123,6 @@ public class DoubleLinkedList<T> implements Iterable<T>
             );
     }
 
-    private void removeNode(Node node){
-        if(node == this.head){
-            this.head = this.head.next;
-            this.head.previous = null;
-        }
-        else if(node == this.tail){
-            this.tail = this.tail.previous;
-            this.tail.next = null;
-        } 
-        else {
-            node.previous.next = node.next;
-            node.next.previous = node.previous;
-        }
-    }
-
     private void addHead(Node node){
         this.head.previous = node;
         node.next = this.head; 
@@ -159,6 +148,21 @@ public class DoubleLinkedList<T> implements Iterable<T>
         // Config previous and next node to refer to the new node
         node.previous.next = inserted;
         node.previous = inserted;
+    }
+
+    private void removeNode(Node node){
+        if(node == this.head){
+            this.head = this.head.next;
+            this.head.previous = null;
+        }
+        else if(node == this.tail){
+            this.tail = this.tail.previous;
+            this.tail.next = null;
+        } 
+        else {
+            node.previous.next = node.next;
+            node.next.previous = node.previous;
+        }
     }
 
     private Node<T> getNode(int index){
@@ -198,16 +202,16 @@ public class DoubleLinkedList<T> implements Iterable<T>
         return false;
     }
 
-    public T[] toArray(T[] a){
+    public <T> T[] toArray(T[] a){
         int listSize = size();
-        Iterator<T> it = iterator();
+        Iterator it = iterator();
         int count = 0;
 
         if(a.length < listSize)
             a = (T[]) new Object[listSize];
 
         while(it.hasNext()){
-            a[count++] = it.next(); // Why type-casting is necessary ?
+            a[count++] = (T)it.next(); // Why type-casting is necessary ?
         }
 
         for( ; count < a.length; count++)
@@ -226,6 +230,7 @@ public class DoubleLinkedList<T> implements Iterable<T>
         return true;
     }
 
+    @Override
     public boolean remove(Object o){
         Node node = this.head;
         while(!o.equals(node.value)){
@@ -270,11 +275,18 @@ public class DoubleLinkedList<T> implements Iterable<T>
         this.size++;
     }
 
-    public <T> T set(int index, T value){
+    public T set(int index, T value){
         Node node = getNode(index);
         T oldValue = (T)node.value;
         node.value = value;
         return oldValue;
+    }
+
+    public T remove(int index){
+        checkIndex(index);
+        Node<T> node = getNode(index);
+        removeNode(node);
+        return node.value;
     }
 
     public int indexOf(Object o){
@@ -294,6 +306,10 @@ public class DoubleLinkedList<T> implements Iterable<T>
     
     public ListIterator<T> listIterator(int index){
         return new FullIterator(index);
+    }
+
+    public ListIterator<T> listIterator(){
+        return new FullIterator();
     }
 
     // TODO: transfer to test class, just used for debug
@@ -381,8 +397,8 @@ public class DoubleLinkedList<T> implements Iterable<T>
         System.out.println("get(3): " + list.get(3));
 
         System.out.println("indexOf(42): " + list.indexOf(42));
+        System.out.println("Remove index 1: " + list.remove((int) 1));
         System.out.print("List: " + list.printList());
-        
         System.out.println("----------ListIterator----------");
         ListIterator<Integer> fullIt = list.listIterator(6);
         System.out.println("ListIterator at index 6: " + fullIt.next());
@@ -399,6 +415,5 @@ public class DoubleLinkedList<T> implements Iterable<T>
             System.out.println("Link broken");
         System.out.println("add(100) using next to print: " + fullIt.previous());
         System.out.println("The value after the insertion is: " + fullIt.next());
-
     }
 }
