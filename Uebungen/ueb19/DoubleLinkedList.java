@@ -13,10 +13,9 @@ import java.util.LinkedList;
  */
 public class DoubleLinkedList<T> implements Iterable<T>, List<T>
 {
-    private int size;
+    private int size; // number of elements in the list
     private Node<T> head;
     private Node<T> tail;
-    private Iterator<T> it;
 
     private class Node<T> {
         T value;
@@ -248,7 +247,7 @@ public class DoubleLinkedList<T> implements Iterable<T>, List<T>
         if(c == null || c.size() == 0)
             return false;
         // Old and easiest way
-        //for(T el: c)
+        // for(T el: c)
         //    add(el);
         Iterator it = c.iterator();
         Node firstNodeChain = new Node(it.next());
@@ -327,7 +326,7 @@ public class DoubleLinkedList<T> implements Iterable<T>, List<T>
 
     // TODO: transfer to test class, just used for debug
     public String printList(){
-        it = this.iterator();
+        Iterator it = this.iterator();
         String acc = "";
         while(it.hasNext())
             acc += it.next() + ", ";
