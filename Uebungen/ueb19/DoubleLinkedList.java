@@ -244,7 +244,6 @@ public class DoubleLinkedList<T> implements Iterable<T>, List<T>
         return true;
     }
 
-    // TODO: Improve the algorithm (new List then concatenate the two lists)
     public boolean addAll(Collection<? extends T> c){
         if(c == null || c.size() == 0)
             return false;
