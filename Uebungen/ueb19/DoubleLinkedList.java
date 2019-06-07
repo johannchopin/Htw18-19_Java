@@ -3,6 +3,7 @@ import java.lang.Iterable;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Collection;
+import java.util.LinkedList;
 
 /**
  * Write a description of class DoubleLinkedList here.
@@ -245,8 +246,21 @@ public class DoubleLinkedList<T> implements Iterable<T>, List<T>
 
     // TODO: Improve the algorithm (new List then concatenate the two lists)
     public boolean addAll(Collection<? extends T> c){
-        for(T el: c)
-            add(el);
+        if(c == null || c.size() == 0)
+            return false;
+        // Old and easiest way
+        //for(T el: c)
+        //    add(el);
+        Iterator it = c.iterator();
+        Node firstNodeChain = new Node(it.next());
+        Node chain = firstNodeChain;
+        while(it.hasNext()){
+            chain.next = new Node(it.next());
+            chain.next.previous = chain;
+            chain = chain.next;
+        }
+        
+        this.addTail(firstNodeChain);
         return true;
     }
 
@@ -399,8 +413,14 @@ public class DoubleLinkedList<T> implements Iterable<T>, List<T>
         System.out.println("indexOf(42): " + list.indexOf(42));
         System.out.println("Remove index 1: " + list.remove((int) 1));
         System.out.print("List: " + list.printList());
+        
+        LinkedList<Integer> linked = new LinkedList<Integer>();
+        linked.add(50); linked.add(51); linked.add(52);
+        list.addAll(linked);
+        System.out.print("Added a linkedList (50,51,52) : " + list.printList());
+        
         System.out.println("----------ListIterator----------");
-        ListIterator<Integer> fullIt = list.listIterator(6);
+        ListIterator<Integer> fullIt = list.listIterator();
         System.out.println("ListIterator at index 6: " + fullIt.next());
         System.out.println("hasPrevious(): " + fullIt.hasPrevious());
         if(fullIt.hasPrevious())
