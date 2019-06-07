@@ -17,16 +17,25 @@ public class DoubleLinkedList<T> implements Iterable<T>, List<T>
     private Node<T> head;
     private Node<T> tail;
 
+    /**
+     * A node contains 3 variables :
+     * - previous is a reference to the left side node
+     * - value    is the element of the node
+     * - next     is a reference to the right side node
+     */
     private class Node<T> {
         T value;
         Node<T> next;
-        Node<T> previous;
+        Node<T> previous; 
 
         public Node(T value){
             this.value = value;
         }
     }
 
+    /**
+     * A simple iterator on the DoubleLinkedList (iterate from left to right)
+     */
     public class SimpleIterator implements Iterator<T>{
         Node<T> node;
 
@@ -47,6 +56,10 @@ public class DoubleLinkedList<T> implements Iterable<T>, List<T>
         }
     }
 
+    /**
+     * Implementation of the ListIterator with all available methods
+     * {@inheritDoc ListIterator 
+     */
     public class FullIterator implements ListIterator<T> {
         Node<T> cursor;
         int     index;
@@ -115,7 +128,12 @@ public class DoubleLinkedList<T> implements Iterable<T>, List<T>
         }
     }
 
-    private void checkIndex(int index){
+    
+    /**
+     * Check if the 0 <= index <= size 
+     * (avoid error during manipulation of the list)
+     */
+    private void checkIndex(int index) throws ArrayIndexOutOfBoundsException{
         if(0 > index || index >= size)
             throw new ArrayIndexOutOfBoundsException(
                 "Incorrect Index - got "+ index + 
@@ -123,17 +141,28 @@ public class DoubleLinkedList<T> implements Iterable<T>, List<T>
             );
     }
 
+    /**
+     * Add a new node as head of the list
+     * 
+     * @param node will become the head of the list
+     */
     private void addHead(Node node){
         this.head.previous = node;
         node.next = this.head; 
         this.head = node;
     }
 
+    /**
+     * Add the first node in the list
+     */
     private void addFirstHead(Node node){
         this.head = node;
         this.tail = node;
     }
     
+    /**
+     * Add a node at the end of the list
+     */
     private void addTail(Node node){
         Node aux = this.tail;
         aux.next = node;
@@ -141,6 +170,12 @@ public class DoubleLinkedList<T> implements Iterable<T>, List<T>
         this.tail = node;
     }
 
+    /**
+     * Add a node before the node "marker"
+     * 
+     * @node node as marker in the list
+     * @inserted node which wil be inserted
+     */
     private void insertNode(Node node, Node inserted){
         // Config new node reference
         inserted.previous = node.previous;
@@ -150,6 +185,9 @@ public class DoubleLinkedList<T> implements Iterable<T>, List<T>
         node.previous = inserted;
     }
 
+    /**
+     * Remove a node in the list
+     */
     private void removeNode(Node node){
         if(node == this.head){
             this.head = this.head.next;
@@ -165,6 +203,11 @@ public class DoubleLinkedList<T> implements Iterable<T>, List<T>
         }
     }
 
+    /**
+     * Parse the list to get the node at the index position
+     * 
+     * @param index must be 0 <= index < size() else throw ArrayIndexOutOfBoundsException
+     */
     private Node<T> getNode(int index){
         checkIndex(index);
         Node<T> node;
@@ -287,14 +330,14 @@ public class DoubleLinkedList<T> implements Iterable<T>, List<T>
         this.size++;
     }
 
-    public T set(int index, T value){
+    public T set(int index, T value) throws ArrayIndexOutOfBoundsException{
         Node node = getNode(index);
         T oldValue = (T)node.value;
         node.value = value;
         return oldValue;
     }
 
-    public T remove(int index){
+    public T remove(int index) throws ArrayIndexOutOfBoundsException{
         checkIndex(index);
         Node<T> node = getNode(index);
         removeNode(node);
