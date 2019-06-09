@@ -236,12 +236,7 @@ public class DoubleLinkedList<T> implements Iterable<T>, List<T>
     }
 
     public boolean contains(Object o){
-        Iterator it = iterator();
-        while(it.hasNext()){
-            if(o.equals(it.next()))
-                return true;
-        }
-        return false;
+        return indexOf(o) >= 0;
     }
 
     public <T> T[] toArray(T[] a){
@@ -272,7 +267,6 @@ public class DoubleLinkedList<T> implements Iterable<T>, List<T>
         return true;
     }
 
-    @Override
     public boolean remove(Object o){
         Node node = this.head;
         while(!o.equals(node.value)){
