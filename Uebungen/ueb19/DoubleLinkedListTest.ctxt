@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=DoubleLinkedListTest
+comment0.text=\n\ A\ test\ class\ for\ the\ DoubleLinkedList\ data\ structure\n\n\ @author\ Alexandre\ Guidoux\n\ @version\ 1.0\n
+comment1.params=l
+comment1.target=java.lang.String\ printList(DoubleLinkedList)
+comment2.params=l
+comment2.target=int\ testSize(DoubleLinkedList)
+comment3.params=main
+comment3.target=void\ main(java.lang.String[])
+numComments=4
