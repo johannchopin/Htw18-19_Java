@@ -11,10 +11,10 @@ import java.util.Iterator;
  */
 public class minHeap<T extends Comparable> implements Queue<T>
 {       
-    private static final int HEAD_INDEX = 0; // Index of the head of the heap
+    private static final int ROOT_INDEX = 0; // Index of the head of the heap
     private final int maxsize; // Upper bound number of items in the heap
     
-    private GenericArray tree; // Array storage for the heap
+    private GenericArray<T> tree; // Array storage for the heap
     private int size;          // Current number of items in the heap
 
     /**
@@ -25,7 +25,7 @@ public class minHeap<T extends Comparable> implements Queue<T>
      * array[i]     --> obj.get(i)
      * array[i] = n --> obj.set(i, n)
      */
-    private class GenericArray{
+    private class GenericArray<T>{
         private Object[] array;
         
         public GenericArray(int size){
@@ -42,7 +42,7 @@ public class minHeap<T extends Comparable> implements Queue<T>
         }
         
         /**
-         * Trick : type-cast the object to simulate a array<T>
+         * Trick : type-cast the object to simulate an array<T>
          */
         private T get(int i){
             return (T)array[i];
@@ -108,21 +108,22 @@ public class minHeap<T extends Comparable> implements Queue<T>
     }
     
     /**
-     * 
+     * Place the old item at the good place in the heap
      */
     private void heapifyDown(int i){
         int left = leftIndex(i);
         int right = rightIndex(i);
-        int biggest = i;
+        int biggestIndexSoFar = i;
+
+        if(left < size() && isElementLowerAtThan(left, i))
         
-        if(left < size() && isElementLowerAtThan(left, right))
-            biggest = left;
-        if(right < size() && isElementLowerAtThan(right, biggest))
-            biggest = right;
+            biggestIndexSoFar = left;
+        if(right < size() && isElementLowerAtThan(right, biggestIndexSoFar))
+            biggestIndexSoFar = right;
             
-        if(biggest != i){
-            tree.swap(i, biggest);
-            heapifyDown(biggest);
+        if(biggestIndexSoFar != i){
+            tree.swap(i, biggestIndexSoFar);
+            heapifyDown(biggestIndexSoFar);
         }
     }
     
@@ -156,11 +157,13 @@ public class minHeap<T extends Comparable> implements Queue<T>
             return null;
             
         int tailIndex = size() - 1;
-        T root = tree.get(HEAD_INDEX);
-        tree.swap(HEAD_INDEX, tailIndex);
+        T root = tree.get(ROOT_INDEX);
+        tree.set(ROOT_INDEX, tree.get(tailIndex));
         tree.set(tailIndex, null);
         
         this.size--;
+        
+        heapifyDown(ROOT_INDEX);
         return root;
     }
     
@@ -177,8 +180,9 @@ public class minHeap<T extends Comparable> implements Queue<T>
     }
 
     public void clear(){
-        for(int i = 0; i < maxsize; i++)
+        for(int i = 0; i < size; i++)
             tree.set(i, null);
+        this.size = 0;
     }
     
     public String toString(){
@@ -245,5 +249,10 @@ public class minHeap<T extends Comparable> implements Queue<T>
             heap.offer(n);
         
         System.out.println(heap);
+        System.out.println(heap.poll());
+        System.out.println(heap);
+        System.out.println(heap.poll());
+        System.out.println(heap);
+        System.out.println(heap.poll());
     }
 }
