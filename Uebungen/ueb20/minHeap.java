@@ -242,17 +242,4 @@ public class minHeap<T extends Comparable> implements Queue<T>
     
     public boolean contains(Object o)
     {throw new java.lang.UnsupportedOperationException("contains not implemented");}
-    
-    public static void main(String[] args){
-        minHeap<Integer> heap = new minHeap(10);
-        for(int n = 9; n >= 0; n--)
-            heap.offer(n);
-        
-        System.out.println(heap);
-        System.out.println(heap.poll());
-        System.out.println(heap);
-        System.out.println(heap.poll());
-        System.out.println(heap);
-        System.out.println(heap.poll());
-    }
 }
