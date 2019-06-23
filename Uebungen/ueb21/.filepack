@@ -1,523 +1,193 @@
-import static java.lang.Math.round;
+import java.util.Random;
+import java.util.NoSuchElementException;
 
 /**
- * Die Klasse simuliert ein Artikel
- * 
- * @author Guidoux Alexandre && Chopin Johann
- * @version 1.0
- */
-
-public class Artikel {
-    private static final int    MIN_ARTIKEL_NUMMER = 1000;
-    private static final int    MAX_ARTIKEL_NUMMER = 9999;
-    public  static final int    MIN_BESTAND = 0;
-    public  static final int    ZAHL_NULL = 0;
-    public  static final double STANDARTMAESSIGER_PREIS = 1;
-
-    protected int    nummer;
-    protected String bezeichnung;
-    protected int    bestand;
-    protected double preis; 
-
-    /**
-     * @param nummer      Der Nummer muss 4-stellig sein
-     * @param bezeichnung Der bezeichnung muss nicht leer sein
-     * @param bestand     Der Bestand darf nie kleiner als 0 werden
-     * @param preis       Der Preis muss > 0 sein
-     */
-    public Artikel(int nummer, String bezeichnung, int bestand, double preis) {
-        Helpers.check(bezeichnung != null || !bezeichnung.trim().isEmpty(), "Der bezeichnung muss nicht leer sein");
-        Helpers.check(nummer >= MIN_ARTIKEL_NUMMER && nummer <= MAX_ARTIKEL_NUMMER, 
-            "Der Nummer muss 4-stellig sein"
-        );
-
-        this.nummer = nummer;
-        this.bezeichnung = bezeichnung.trim();
-        setBestand(bestand);
-        setPreis(preis);
-    }
-
-    public Artikel(int nummer, String bezeichnung){
-        this(nummer, bezeichnung, MIN_BESTAND, STANDARTMAESSIGER_PREIS);
-    }
-
-    public Artikel(int nummer, String bezeichnung, int bestand){
-        this(nummer, bezeichnung, bestand, STANDARTMAESSIGER_PREIS);
-    }
-
-    public Artikel(int nummer, String bezeichnung, double preis){
-        this(nummer, bezeichnung, MIN_BESTAND, preis);
-    }
-
-    /**
-     * @return nummer
-     */
-    public int getNummer() {
-        return nummer;
-    }
-
-    /**
-     * @return bezeichnung
-     */
-    public String getBezeichnung() {
-        return bezeichnung;
-    }
-    
-    public void setBezeichnung(String bezeichnung){
-        Helpers.check(bezeichnung != null && bezeichnung.trim().length() > 0, "Die bezeichnung darf nicht leer sein.");
-        this.bezeichnung = bezeichnung;
-    }
-
-    /** 
-     * @return bestand
-     */
-    public int getBestand() {
-        return bestand;
-    }
-
-    /**
-     * @return preis
-     */
-    public double getPreis() {
-        return this.preis;
-    }
-
-    /** 
-     * @param bestand muss immer >= 0 sein
-     */
-    private void setBestand(int bestand) {
-        Helpers.check(bestand >= ZAHL_NULL, 
-            "Der Bestand darf nicht < " + MIN_BESTAND + " werden.");
-        this.bestand = bestand;
-    }
-
-    /**
-     * @param preis muss immer > 0 sein
-     */
-    private void setPreis(double preis){
-        preis = (double)round(preis * 100) / 100 ;
-        Helpers.check(preis > ZAHL_NULL,
-            "Der Preis darf nicht < " + MIN_BESTAND + " werden.");
-        this.preis = preis;
-    }
-
-    private void setPreis(int preis){
-        setPreis((double)preis);
-    }
-
-    /**
-     * Veraendert den Preis mit einem bestimmten prozensatz
-     * 
-     * @param prozensatz 
-     */
-    public void changePreis(double prozentsatz){
-        setPreis((prozentsatz + 1) * preis);
-    }
-
-    /**
-     * Veraendert den Preis mit 
-     * einem bestimmten prozensatz
-     * 
-     * @param prozensatz 0 <= arg <= 100
-     */
-    public void changePreis(int prozentsatz){
-        changePreis((double)prozentsatz/100);
-    }
-
-    /**
-     * @param zusatz muss immer > 0 sein
-     */
-    public void zugang(int zusatz) {
-        Helpers.check(zusatz > ZAHL_NULL, 
-            "Der Zusatz darf nicht <= 0 sein.");
-        setBestand(this.bestand + zusatz);
-    }
-
-    /**
-     * @param absatz muss immer > 0 sein
-     */
-    public void abgang(int absatz) {
-        Helpers.check(absatz > ZAHL_NULL, 
-            "Der Abgang darf nicht <= 0 sein.");
-        setBestand(this.bestand - absatz);
-    }
-    
-    public String toString(){
-        return String.format("%-5s  %-50.50s  %-5s  %-7s  %6.2f",
-                this.nummer, this.getBezeichnung(), 
-                this.preis, this.bestand, this.bestand*this.preis);
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import java.lang.StringBuffer;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
-import java.util.function.Consumer;
-
-/**
- * Ermoglicht, verschiedene Artikel-Objekten in einer Tabelle zu lagern.
+ * A Test class for the Integer Producer and Consumer
  *
  * @author Alexandre Guidoux
  * @version 1.0
  */
-public class ArtikelLager
+public class DialogTest
 {
-    // Konstanten
-    private final static int    MAX_LAGER_SIZE          = 9999;
-    private final static int    DEFAULT_BUFFER_STR_SIZE = 1024;
-    private final static String DEFAULT_ORT             = "Alt-Saarbrucken";
-    private final static int    ZEILE_FORMAT_SIZE       =  81;
-    // Error nachrichten
-    public final static String ERR_LAGER_SIZE = 
-                       "Der Groesse des Lagers muss > 0 und <= 9999 sein." +
-                       "(Anmerkung: Artikels Nummer sind 4-stellig)";
-    public final static String ERR_LAGER_VOLL =
-                       "Der Lager ist voll. Nichts wird hinzugefuegt";
-    public final static String ERR_ARTIKEL_NICHT_GEFUNDEN = 
-                       "Artikel wurde nicht im Lager gefunden.";
+    private IntegerConsumer consumer;
+    private IntegerProducer producer;
+    private Random rand;
     
-    private Artikel[] lager;
-    private int totalItems;
-    private String lagerOrt;
-    
-    
-    /**
-     * Erzeugt ein Lager
-     * 
-     * @param lagerSize Groesse der Lager
-     */
-    public ArtikelLager(int lagerSize, String lagerOrt){
-        Helpers.check(0 < lagerSize && lagerSize <= MAX_LAGER_SIZE, 
-                      ERR_LAGER_SIZE);
-        this.lager = new Artikel[lagerSize];
-        this.totalItems = 0;
-        this.lagerOrt = lagerOrt;
-    }
-    public ArtikelLager(int lagerSize){
-        this(lagerSize, DEFAULT_ORT);
-    }
-    /**
-     * Erzeugt ein Lager ohne Parameter 
-     * Standartmaessig wird das Objekt mit der MAX_LAGER_SIZE und DEFAULT_ORT erzeugt
-     */
-    public ArtikelLager(){
-        this(MAX_LAGER_SIZE, DEFAULT_ORT);
-    }
-
-    /**
-     * Sucht die Stellung eines Artikels dank seiner Kennung
-     * 
-     * @param id_artikel die Kennung des Artikels
-     */
-    private int searchPositionById(int id_artikel){
-        for(int i=0; i < this.totalItems; i++){
-            if(id_artikel == this.lager[i].getNummer())
-                return i;
-        }
-        return -1;
+    public DialogTest(boolean ordered){
+        this.consumer = new IntegerConsumer();
+        this.producer = new IntegerProducer(ordered);
+        this.rand     = new Random();
     }
     
-    /**
-     * Fuege ein neuer Artikel im Lager hinzu. Main anlegen
-     * 
-     * @param neuerArtikel Der Artikel, der gelagert wird
-     */
-    public void anlegen(Artikel neuerArtikel){
-        Helpers.check(this.totalItems < this.lager.length, 
-                      ERR_LAGER_VOLL, 
-                      Helpers.ARRAY_OUT_OF_BOUND_EXCEPTION);
-        // Check if an artikel has the same ID
-        for(int i = 0; i < this.totalItems; i++){
-            if(lager[i].getNummer() == neuerArtikel.getNummer())
-                throw new ArrayStoreException("Diese Kennung ist schoen benutzt.");
-        }             
-        this.lager[this.totalItems++] = neuerArtikel;
-    }
-    
-    /**
-     * Fuege ein neuer Artikel im Lager hinzu
-     * 
-     * @param nummer      Nummer des Artikels
-     * @param bezeichnung Nummer des Artikels
-     * @param bestand     Bestand des Artikels
-     * @param preis       Preis des Artikels
-     */
-    public void anlegen(int nummer, String bezeichnung, int bestand, double preis){
-        anlegen(new Artikel(nummer, bezeichnung, bestand, preis));
-    }
-    public void anlegen(int nummer, String bezeichnung){
-        anlegen(new Artikel(nummer, bezeichnung));
-    }
-    public void anlegen(int nummer, String bezeichnung, int bestand){
-        anlegen(new Artikel(nummer, bezeichnung, bestand));
-    }
-    public void anlegen(int nummer, String bezeichnung, double preis){
-        anlegen(new Artikel(nummer, bezeichnung, preis));
-    }
-
-    
-    /**
-     * Loescht den bestimmten Artikel und setzt sich die Indexe 
-     * von @start bis das Ende des Lagers weiter.
-     * 
-     * @param tab der Lager
-     * @param start 
-     * @return tab der Lager
-     */
-    private Artikel[] removeArtikel(Artikel[] tab, int start){
-        for(int i=start; i < tab.length-1; i++){
-            tab[i] = tab[i+1];
-        }
-        tab[tab.length-1] = null;
-        this.totalItems -= 1;
-        return tab;
-    }
-    
-    /**
-     * Loescht einen Artikel des Lagers
-     * 
-     * @param id_artikel die Kennung des Artikels
-     * @throws ArrayStoreException wenn @id_artikel nicht gefunden
-     */
-    public void loeschen(int id_artikel){
-        int index = searchPositionById(id_artikel);
-        if (index >= 0)
-            this.lager = removeArtikel(this.lager, index);
-        else
-            throw new ArrayStoreException(ERR_ARTIKEL_NICHT_GEFUNDEN);
-    }
-    
-    /**
-     * Fuegue der Abstatz zum Artikel mit der Kennung hinzu
-     * 
-     * @param id_artikel die Kennung des Artikels (o. Nummer)
-     * @param absatz     dem Absatz den Bestand hinzufuegen
-     */
-    public void artikelZugang(int id_artikel, int zusatz){
-        int index = searchPositionById(id_artikel);
-        if(index != -1)
-            this.lager[index].zugang(zusatz);
-        else
-            throw new ArrayStoreException(ERR_ARTIKEL_NICHT_GEFUNDEN);
-    }
-    
-    /**
-     * Loescht der Absatz von einem Artikel mit der Kennung.
-     *
-     * @param id_artikel die Kennung des Artikels (o. Nummer)
-     * @param absatz     dem Absatz den Bestand hinzufuegen
-     */
-    public void artikelAbgang(int id_artikel, int absatz){
-        int index = searchPositionById(id_artikel);
-        if(index != -1)
-            this.lager[index].abgang(absatz);
-        else
-            throw new ArrayStoreException(ERR_ARTIKEL_NICHT_GEFUNDEN);
-    }
-    
-    /**
-     * Veraendert den Preis eines Artikels mit einem prozentsatz
-     * 
-     * @param id_artikel die Kennung des Artikels (o. Nummer)
-     * @param prozensatz 
-     */
-    public void artikelPreisAendern(int id_artikel, double prozentsatz){
-        int index = searchPositionById(id_artikel);
-        if(index != -1)
-            this.lager[index].changePreis(prozentsatz);
-        else
-            throw new ArrayStoreException(ERR_ARTIKEL_NICHT_GEFUNDEN);
-    }
-    
-    /**
-     * Gibt der aktuell Anzahl der Artikel im Lager zurueck
-     */
-    public int getArtikelNumber(){
-        return this.totalItems;
-    }
-    
-    /**
-     * Darstellung des Lagers
-     * 
-     * @return String Ein Objekt des Lagers pro Zeile
-     */
-    public String toString(){
-        StringBuffer strBuffer = new StringBuffer(DEFAULT_BUFFER_STR_SIZE);
-        
-        
-        strBuffer.append("Lagerort: " + this.lagerOrt + '\n')
-                 .append('\n')
-                 .append(String.format("%-4s  %-50s  %-5s  %-7s  %6s \n", 
-                         "ArtNr", "Beschreibung", "Preis", "Bestand", "Gesamt"))
-                 .append(String.format(Helpers.repeat("-",ZEILE_FORMAT_SIZE) + '\n'));
-             
-        for(int i = 0; i < this.totalItems; i++)
-            strBuffer.append(this.lager[i] + "\n");
-        
-        strBuffer.append(String.format(Helpers.repeat("-", ZEILE_FORMAT_SIZE) + '\n'))
-                 .append(String.format("Gesamtwert: %69.2f\n", lagerSumme()));
-            
-        strBuffer.trimToSize();
-        return strBuffer.toString();
-    }
-    
-    /**
-     * @return der Preis der gesamten Produkte
-     */
-    private double lagerSumme(){
-        double summe = 0;
-        for(int i=0; i<totalItems; i++)
-            summe += this.lager[i].getPreis() * this.lager[i].getBestand();
-        return summe;
-    }
-
-    // ----------------------------------------------------------------------
-    //  18-2.a implementation sort
-    // ----------------------------------------------------------------------
-    private Artikel[] getSorted(BiPredicate<Artikel, Artikel> predicate, Artikel[] arr){                
-        int size = arr.length-1;
-        Artikel swapArtikel = null;
-        for(int i=1; i<size; i++){
-            if(arr[i] == null)
-                    return arr;
-            for(int j=0; j<size; j++){
-                if(arr[j+1] == null)
-                    break;
-                if(predicate.test(arr[j+1], arr[j])){
-                    swapArtikel = arr[j];
-                    arr[j] = arr[j+1];
-                    arr[j+1] = swapArtikel;
+    public void init(){
+        for(int i = 0; i<10000; i++){
+            if(rand.nextInt(2) > 0){
+                producer.produce();
+            }
+            else{
+                try{
+                    consumer.consume(producer.getNextInt());      
+                } catch(NoSuchElementException e){
+                    i--;
                 }
             }
-        }      
-        return arr;
+        }
+    }
+    
+    public void printState(){
+        System.out.println("Number of different results: " + consumer.numberOfDifferentResults());
+        System.out.println("=================================");
+        for(int i=0; i<consumer.numberOfDifferentResults(); i++){
+            System.out.println();
+            System.out.println("Number " + i);
+            System.out.println("Number of occurences:      " + 
+                                consumer.numberOfOccurences(i));
+            // Warning : a heap will be printed, not a sorted queue
+            System.out.println("Get cross total ascending: " + 
+                                consumer.getCrossTotalsAscending(i));
+            // Warning : a heap will be printed, not a sorted queue
+            System.out.println("And reversed:              " + 
+                                consumer.getCrossTotalsDescending(i));
+        }
+    }
+    
+    public void run(){
+        init();
+        printState();
+    }
+    
+    public static void main(String[] args){
+        new DialogTest(args.length > 0).run();
+    }
+}
+
+
+
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.PriorityQueue;
+import java.util.Collections;
+/**
+ * @author Alexandre Guidoux
+ * @version 1.0
+ */
+public class IntegerConsumer
+{
+    private HashMap<Integer, HashSet<Long>> results;
+    private static final HashSet<Long> emptySet = new HashSet<>();
+    
+    public IntegerConsumer(){
+        this.results = new HashMap<Integer, HashSet<Long>>();
     }
     
     /**
-     * Sortiert des Lagers nach dem Bipraedikat. 
-     * Das BubbleSort Algorithmus wird benutzt.
-     * The Bipredicate return true if the first argument is "smaller".
-     * 
-     * @param BiPredicate<Artikel, Artikel> Das Sortierkriteriums fuer 2 Artikels
-     * @return List<Artikel> Sortierte Lager
+     * Add the elapsed argument to the PriorityQueue accessed by the key
+     * quersumme.
+     * If the key doesn't have a queue, it will be created
      */
-    public Artikel[] getSorted(BiPredicate<Artikel, Artikel> predicate){
-        return getSorted(predicate, lager.clone());
+    private void addToResults(int quersumme, long elapsed){
+        results.putIfAbsent(quersumme, new HashSet<Long>());
+        results.get(quersumme).add(elapsed);
     }
     
-    // ----------------------------------------------------------------------
-    //  18-2.b implementation filter
-    // ----------------------------------------------------------------------
-    public Artikel[] filter(Predicate<Artikel> rule) {
-        ArrayList<Artikel> filtered = new ArrayList<Artikel>();
-        int artikelInLager = getArtikelNumber();
-        for(int i=0; i<artikelInLager; i++){
-            if(rule.test(lager[i]))
-                filtered.add(lager[i]);
+    public void consume(int n){
+        int quersumme = 0;
+        long startTimer = System.currentTimeMillis();
+        while(n > 0){
+           quersumme += n%10;
+           n /= 10;
         }
-        return filtered.toArray(new Artikel[filtered.size()]);
+        long elapsedTime = System.currentTimeMillis() - startTimer;
+        addToResults(quersumme, startTimer);
     }
     
-    private Artikel[] filter(Predicate<Artikel> rule, Artikel[] arr) {
-        ArrayList<Artikel> filtered = new ArrayList<Artikel>();
-        for(int i=0; i<arr.length; i++){
-            if(arr[i] == null)
-                return filtered.toArray(new Artikel[filtered.size()]);
-            if(rule.test(arr[i]))
-                filtered.add(arr[i]);
-        }
-        return filtered.toArray(new Artikel[filtered.size()]);
+    public int numberOfDifferentResults(){
+        return results.size();
     }
     
-    // ----------------------------------------------------------------------
-    //  18-2.c implementation ApplyToArticles
-    // ----------------------------------------------------------------------
-    public void applyToArticles(Consumer<Artikel> c){
-        int artikelInLager = getArtikelNumber();
-        for(int i=0; i<artikelInLager; i++){
-            c.accept(lager[i]);
-        }
+    public int numberOfOccurences(int quersumme){
+        if(!results.containsKey(quersumme))
+            return 0;
+        return results.get(quersumme).size();
     }
     
-    // ----------------------------------------------------------------------
-    // 18-2.e implementation applyToSomeArticle
-    // ---------------------------------------------------------------------
-    public void applyToSomeArticle(Predicate predicate, Consumer consumer){
-        int artikelInLager = getArtikelNumber();
-        for(int i=0; i<artikelInLager; i++){
-            if(predicate.test(lager[i]))
-                consumer.accept(lager[i]);
-        }
+    public PriorityQueue<Long> getCrossTotalsAscending(int quersumme){
+        return new PriorityQueue<Long>(
+            getTimestampsForResult(quersumme)
+        );
     }
     
-    // ----------------------------------------------------------------------
-    // 18-2.f implementation getArticles 
-    // ---------------------------------------------------------------------
-    public Artikel[] getArticles(Predicate<Artikel> filterCriterion,
-                                BiPredicate sortCriterion){
-        return getSorted(sortCriterion, filter(filterCriterion));
+    public PriorityQueue<Long> getCrossTotalsDescending(int quersumme){
+        PriorityQueue<Long> sortedQueue = getCrossTotalsAscending(quersumme);
+        PriorityQueue<Long> reversedQueue = new PriorityQueue<>(
+                                                   sortedQueue.size(),
+                                                   Collections.reverseOrder());
+        for(long el: sortedQueue)
+            reversedQueue.add(el);
+        return reversedQueue;
     }
     
-    // ----------------------------------------------------------------------
-    // 18-2.g implementation filterAll
-    // ---------------------------------------------------------------------
-    public Artikel[] filterAll(Predicate<Artikel> ...filterCriteria){
-        Artikel[] arr = lager.clone();
-        for(Predicate<Artikel> criterion: filterCriteria){
-            arr = filter(criterion, arr);
-        }
-        return arr;
+    /**
+     * Return the collected timestamps, or an empty HashSet if the quersumme
+     * is not in the HashMap
+     */
+    public HashSet<Long> getTimestampsForResult(int quersumme){
+        return results.getOrDefault(quersumme, emptySet);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -527,1051 +197,61 @@ public class ArtikelLager
 
 
 import java.util.Random;
+import java.util.Queue;
+import java.util.NoSuchElementException;
+import java.util.LinkedList;
+import java.util.PriorityQueue;
 
 /**
- * Implement the Aufgabe 1
- *
- * @author Guidoux Alexandre & Chopin Johann
- * @version 1.0.0
- */
-public class Aufgabe1
-{
-    protected static double rndDouble = new Random().nextDouble();
-    
-    public double iterate(double x0, int n, FunctionInterface fn) {
-        double result = x0;
-        
-        for(int i = 0; i < n; i++){
-            result = fn.apply(x0);
-            x0 = result;}
-
-        return result;
-    }
-    
-    public FunctionInterface iLambda() {
-        return (double n) -> 2 * n;
-    }
-    
-    public FunctionInterface iiLambda() {
-        return (double n) -> 0.5 * n;
-    }
-    
-    public FunctionInterface iiiLambda() {
-        double a = rndDouble;
-        return (double n) -> a * n * (n - 1);
-    }
-    
-    protected void run() {
-        System.out.println("\niLambda (2x) with x0=2.0 and n=2 :");
-        System.out.println(this.iterate(2.0, 2, this.iLambda()));
-        
-        System.out.println("\niiLambda (0.5x) with x0=2.0 and n=2 :");
-        System.out.println(this.iterate(2.0, 2, this.iiLambda()));
-        
-        System.out.println("\niiiLambda (ax(x − 1)) || a = " + rndDouble + " with x0=2.0 and n=2 :");
-        System.out.println(this.iterate(2.0, 2, this.iiiLambda()));
-    }
-    
-    public static void main(String[] args) {
-       Aufgabe1 test = new Aufgabe1();
-       test.run();
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**
- * Unterklasse Buch der Obereklasse Artikel
- *
- * @author Alexandre Guidoux && Johann Chopin
- * @version 1.0
- */
-public class Buch extends Artikel
-{
-   private String autor;
-   private String verlag;
-   
-   /**
-    * @see Artikel#Artikel(int, String, int, double)
-    * @param autor Autor des Buchs
-    * @param verlag Verlag des Buchs
-    */
-   Buch(int nummer, String titel, int bestand, double preis, String autor, String verlag){
-       super(nummer, titel, bestand, preis);
-       this.autor = autor;
-       this.verlag = verlag;
-   }
-      
-   public String getAuthor(){
-       return this.autor;
-   }
-   
-   public String getBeschreibung(){
-       return this.autor + " : " + this.bezeichnung;
-   }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**
- * Unterklasse CD der Klasse Artikel
- *
- * @author Alexandre Guidoux && Johann Chopin
- * @version 1.0
- */
-public class CD extends Artikel
-{
-    private String interpret;
-    private int    anzahlMusiktitel;
-    
-    CD(int nummer, String bezeichnung, int bestand, double preis, String interpret, int anzahlMusiktitel){
-        super(nummer, bezeichnung, bestand, preis);
-        this.interpret = interpret;
-        this.anzahlMusiktitel = anzahlMusiktitel;
-    }
-    
-    public String getBeschreibung(){
-        return this.interpret + " : " + this.bezeichnung;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**
- * Top-level class
- * 
- * @author W. Pauly
- * @version 1.0
- */
-public class FakultaetTopLevel
-  {
-    public int berechne(int x){
-        int erg = 1;
-        for ( int i = 2; i<=x; i++ ){
-            erg *= i;
-        }
-        return erg;
-    }
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**
- * FunctionInterface
- *
- * @author  Guidoux Alexandre && Chopin Johann
- * @version 1.0.0
- */
-
-public interface FunctionInterface
-{
-    public double apply(double n);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import java.util.Scanner;
-import java.util.InputMismatchException;
-
-/**
- * nuetzilche Methoden fuer die Lager-und Artikel Klassen.
+ * Gibt integer zurueck and wird entweder in einer Queue oder in einem 
+ * PriorityQueue gespeichert.
  *
  * @author Alexandre Guidoux
  * @version 1.0
  */
-public class Helpers
-{   
-    // error constants
-    public final static int ILLEGAL_ARGUMENT_EXCEPTION = 1;
-    public final static int ARRAY_OUT_OF_BOUND_EXCEPTION = 2;
-   
-    public static void check(boolean bedigung, String nachricht) {
-        check(bedigung, nachricht, ILLEGAL_ARGUMENT_EXCEPTION);
-    }
-    public static void check(boolean bedigung, String nachricht, int exceptionId){
-        if (!bedigung){
-            switch(exceptionId){
-                case ILLEGAL_ARGUMENT_EXCEPTION:
-                    throw new IllegalArgumentException(nachricht);
-                
-                case ARRAY_OUT_OF_BOUND_EXCEPTION:
-                    throw new ArrayIndexOutOfBoundsException(nachricht);
-            }
-        }
-    }
-    
-    /*
-     * SCANNER Helpers
-     */
-    public static int readInt(Scanner sc, String nachricht){
-        while(true){
-            System.out.println(nachricht);
-            try{
-                int rv = sc.nextInt(); sc.nextLine();
-                return rv;
-            } catch(InputMismatchException e){
-                sc.nextLine();
-                System.out.println(e + " : Ein Integer ist erwartet.\n");
-            }
-        }
-    }
-    
-    public static double readDouble(Scanner sc, String nachricht){
-        while(true){
-            System.out.println(nachricht);
-            try{
-                double rv = sc.nextDouble(); sc.nextLine();
-                return rv;
-            } catch(InputMismatchException e){
-                sc.nextLine();
-                System.out.println(e + ": ein Dezimalzahl ist erwartet.\n");
-            }
-        }
-    }
-    
-    public static String readLine(Scanner sc, String nachricht){
-        while(true){
-            System.out.println(nachricht);
-            try{
-                String rv = sc.nextLine();
-                return rv;
-            } catch(InputMismatchException e){
-                sc.nextLine();
-                System.out.println(e + ": eine Zeichenkette ist erwartet.\n");
-            }
-        } 
-    }
-    
-    public static boolean isInputTrue(Scanner sc, String nachricht, char is_true){
-        while(true){
-            System.out.println(nachricht);
-            try{
-                char read = sc.nextLine().charAt(0);
-                return read == is_true;
-            } catch (InputMismatchException e){
-                sc.nextLine();
-                System.out.println(e + ": ein character ist erwartet\n");
-            }
-        }
-    }
-    public static boolean isInputTrue(Scanner sc, String nachricht){
-        return isInputTrue(sc, nachricht, 'j');
-    }
-    
-    public static String repeat(String s, int n){
-        return new String(new char[n]).replace("\0", s);
-    }
-    
-    public static int max(int... integers){
-        int bestSoFar = Integer.MIN_VALUE;
-        for(int integer: integers){
-            if(integer > bestSoFar)
-                bestSoFar = integer;
-        }
-        return bestSoFar;
-    }
-    
-    public static void printArtikelArray(Artikel[] arr){
-        for(Artikel a: arr){
-            if(a != null)
-                System.out.println(a);
-        }
-        System.out.println();
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import java.util.Random;
-
-/**
- * Useful to manipulate the LagerDialog
- *
- * @author  Alexandre Guidoux
- * @version 1.0
- */
-public class LagerFabric
+public class IntegerProducer
 {
-    private Artikel artikel;
-    private Buch buch; 
-    private CD cd; 
-    private Video video;
-    private int maxSize;
-    Random randomThat;
-    
+    private Random intGen;
+    private Queue<Integer> storage;
+
     /**
-     * Create a full Lager with products
+     * Constructor for objects of class IntegerGenerator
+     * @param ordered check if the generated integer must be sorted in 
+     * the collection
      */
-    public LagerFabric(int size)
+    public IntegerProducer(boolean ordered)
     {
-        randomThat = new Random();
-        maxSize = size;
+        this.intGen = new Random();
+        this.storage  = (ordered)? new PriorityQueue(): new LinkedList();
     }
-    
-    public ArtikelLager generateLager(){
-                int lagerSize = Helpers.max(randomThat.nextInt(this.maxSize), 10);
-        int itemsInStore = Helpers.max(randomThat.nextInt(lagerSize), 1);
-        int dice; // Store a random number like a dice
-        int typeNumber = 3; // Buch, CD, Video + Artikel as default
-        
-        ArtikelLager magicStore = new ArtikelLager(lagerSize);
-        Artikel currentArtikel;
-        for(int i=0; i < itemsInStore; i++){
-            dice = randomThat.nextInt(typeNumber);
-            switch(dice){    
-                case 0:
-                    currentArtikel = choiceArtikel(library);
-                    break;
-                
-                case 1:
-                    currentArtikel = choiceArtikel(musik);
-                    break;
-                    
-                case 2:
-                    currentArtikel = choiceArtikel(videotek);
-                    break;
-                    
-                default:
-                    currentArtikel = choiceArtikel(newspapers);
-            }
-            try{
-                magicStore.anlegen(currentArtikel);
-            } catch(Exception e){
-                i--;
-            }
-        } 
-        return magicStore;
+
+    /**
+     * Return and store an integer between 0 and 1000
+     */
+    public int produce(){
+        int product = intGen.nextInt(1000);
+        this.storage.add(product);
+        return product;
     }
     
     /**
-     * Choice a random artikel in the store, then remove this article
+     * Shortcut to generate many numbers
+     * Warning : produce return a int, produceMany return nothing
      */
-    private Artikel choiceArtikel(Artikel[] store){
-        return store[randomThat.nextInt(store.length)];
+    public void produceMany(int n){
+        while(n-- > 0)
+            produce();
     }
-    private Artikel[] removeElement(Artikel[] tab, int itemIndex){
-        Artikel[] newTab = new Artikel[tab.length-1];
-        for(int i=0; i < itemIndex; i++)
-            newTab[i] = tab[i];
-        for(int i = itemIndex+1; i < tab.length -1; i++)
-            newTab[i] = tab[i];
-        return newTab;  
-    }
-    
-    // Pattern : nummer bezeichnung bestand preis
-    private Artikel[] newspapers = {
-        new Artikel(1000, "Schuhe", 10, 20),
-        new Artikel(1001, "Hose", 10, 42),
-        new Artikel(1002, "Jacke", 10, 64),
-        new Artikel(1003, "Schtrumpf", 10, 38),
-        new Artikel(1004, "NotizHeft", 20, 27),
-        new Artikel(1005, "Stift", 30, 20),
-    };
-    // Pattern : nummer bezeichnung bestand preis autor verlag
-    private Buch[] library = {
-        new Buch(2000, "Harry Potter und der Stein der Weisen", 10, 10, "J.K. Rowling", "unbekannt"),
-        new Buch(2001, "Harry Potter und die Kammer des Shreckens", 10, 11, "J.K. Rowling", "unbekannt"),
-        new Buch(2002, "Harry Potter und der Gefangene von Askaban", 10, 12, "J.K. Rowling", "unbekannt"),
-        new Buch(2003, "Harry Potter und der Feuerkelch", 10, 13, "J.K. Rowling", "unbekannt"),
-        new Buch(2004, "Harry Potter und der Orden des Phoenix", 10, 14, "J.K. Rowling", "unbekannt"),
-        new Buch(2005, "Harry Potter und der der Halbblutprinz", 10, 15, "J.K. Rowling", "unbekannt"),
-        new Buch(2006, "Harry Potter und die Heiligtuemer des Todes", 10, 16, "J.K. Rowling", "unbekannt"),
-        new Buch(2007, "Datenbankentwicklung lernernen mit SQL Server 2007", 10, 17, "Robert Panther", "O'REILLY"),
-    };
-    // Pattern : nummer bezeichnung bestand preis interpret anzahlMusikTitel
-    private CD[] musik = {
-        new CD(3001, "Thunder", 10, 50, "Imagine Dragons", 14),
-        new CD(3002, "Believer", 10, 51, "Imagine Dragons", 14),
-        new CD(3003, "Bad Liar", 10, 10, "Imagine Dragons", 14),
-        new CD(3004, "Radioactive", 10, 10, "Imagine Dragons", 14),
-        new CD(3005, "Whatever It Takes", 10, 54, "Imagine Dragons", 14),
-        new CD(3006, "Venom Theme", 10, 10, "Eminem", 14),
-        new CD(3007, "Darkside", 10, 10, "Alan Walker", 14),
-        new CD(3008, "Faded", 10, 10, "Alan Walker", 14),
-        new CD(3009, "Alone", 10, 58, "Alan Walker", 14),
-        new CD(3010, "The Spectre", 10, 59, "Alan Walker", 14),
-    };
-    // Pattern : nummer, bezeichnung bestand preis spieldauer erscheinungsjahr
-    private Video[] videotek = {
-        new Video(4001, "Lolcat", 3, 84, 66.6, 2014),
-        new Video(4001, "BattleStar Galactica S01E0.mkv", 3, 85, 66.6, 2002),
-        new Video(4008, "BattleStar Galactica S01E1.mkv", 3, 86, 66.6, 2002),
-        new Video(4015, "BattleStar Galactica S01E2.mkv", 3, 87, 66.6, 2002),
-        new Video(4022, "BattleStar Galactica S01E3.mkv", 3, 88, 66.6, 2002),
-        new Video(4029, "BattleStar Galactica S01E4.mkv", 3, 89, 66.6, 2002),
-        new Video(4036, "BattleStar Galactica S01E5.mkv", 3, 90, 66.6, 2002),
-        new Video(4043, "BattleStar Galactica S01E6.mkv", 3, 91, 66.6, 2002),
-        new Video(4050, "BattleStar Galactica S01E7.mkv", 3, 92, 66.6, 2002),
-        new Video(4057, "BattleStar Galactica S01E8.mkv", 3, 96, 66.6, 2002),
-        new Video(4064, "BattleStar Galactica S01E9.mkv", 3, 97, 66.6, 2002),
-        new Video(4071, "BattleStar Galactica S01E10.mkv", 3, 99, 66.6, 2002),
-        new Video(4078, "BattleStar Galactica S01E11.mkv", 3, 100, 66.6, 2002),
-        new Video(4085, "BattleStar Galactica S01E12.mkv", 3, 101, 83.6, 2002),
-        new Video(4092, "BattleStar Galactica S01E13.mkv", 3, 104, 66.6, 2002),
-        new Video(4099, "BattleStar Galactica S01E14.mkv", 3, 108, 66.6, 2002),
-        new Video(4106, "BattleStar Galactica S01E15.mkv", 3, 110, 66.6, 2002),
-        new Video(4113, "BattleStar Galactica S01E16.mkv", 3, 112, 66.6, 2002),
-        new Video(4120, "BattleStar Galactica S01E17.mkv", 3, 114, 66.6, 2002),
-        new Video(4127, "BattleStar Galactica S01E18.mkv", 3, 117, 66.6, 2002),
-        new Video(4134, "BattleStar Galactica S01E19.mkv", 3, 119, 66.6, 2002),
-        new Video(4002, "BattleStar Galactica S02E0.mkv", 3, 124, 66.6, 2004),
-        new Video(4009, "BattleStar Galactica S02E1.mkv", 3, 121, 66.6, 2004),
-        new Video(4016, "BattleStar Galactica S02E2.mkv", 3, 126, 66.6, 2004),
-        new Video(4023, "BattleStar Galactica S02E3.mkv", 3, 130, 66.6, 2004),
-        new Video(4030, "BattleStar Galactica S02E4.mkv", 3, 129, 66.6, 2004),
-        new Video(4037, "BattleStar Galactica S02E5.mkv", 3, 127, 66.6, 2004),
-        new Video(4044, "BattleStar Galactica S02E6.mkv", 3, 132, 66.6, 2004),
-        new Video(4051, "BattleStar Galactica S02E7.mkv", 3, 131, 66.6, 2004),
-        new Video(4058, "BattleStar Galactica S02E8.mkv", 3, 138, 66.6, 2004),
-        new Video(4065, "BattleStar Galactica S02E9.mkv", 3, 134, 66.6, 2004),
-        new Video(4072, "BattleStar Galactica S02E10.mkv", 3, 95, 66.6, 2004),
-        new Video(4079, "BattleStar Galactica S02E11.mkv", 3, 94, 66.6, 2004),
-        new Video(4086, "BattleStar Galactica S02E12.mkv", 3, 94, 66.6, 2004),
-        new Video(4093, "BattleStar Galactica S02E13.mkv", 3, 94, 66.6, 2004),
-        new Video(4100, "BattleStar Galactica S02E14.mkv", 3, 94, 66.6, 2004),
-        new Video(4107, "BattleStar Galactica S02E15.mkv", 3, 96, 66.6, 2004),
-        new Video(4114, "BattleStar Galactica S02E16.mkv", 3, 94, 66.6, 2004),
-        new Video(4121, "BattleStar Galactica S02E17.mkv", 3, 94, 66.6, 2004),
-        new Video(4128, "BattleStar Galactica S02E18.mkv", 3, 105, 66.6, 2004),
-        new Video(4135, "BattleStar Galactica S02E19.mkv", 3, 99, 66.6, 2004),
-        new Video(4003, "BattleStar Galactica S03E0.mkv", 3, 89, 66.6, 2006),
-        new Video(4010, "BattleStar Galactica S03E1.mkv", 3, 85, 66.6, 2006),
-        new Video(4017, "BattleStar Galactica S03E2.mkv", 3, 85, 66.6, 2006),
-        new Video(4024, "BattleStar Galactica S03E3.mkv", 3, 85, 66.6, 2006),
-        new Video(4031, "BattleStar Galactica S03E4.mkv", 3, 85, 66.6, 2006),
-        new Video(4038, "BattleStar Galactica S03E5.mkv", 3, 85, 66.6, 2006),
-        new Video(4045, "BattleStar Galactica S03E6.mkv", 3, 85, 66.6, 2006),
-        new Video(4052, "BattleStar Galactica S03E7.mkv", 3, 85, 66.6, 2006),
-        new Video(4059, "BattleStar Galactica S03E8.mkv", 3, 85, 66.6, 2006),
-        new Video(4066, "BattleStar Galactica S03E9.mkv", 3, 84, 66.6, 2006),
-        new Video(4073, "BattleStar Galactica S03E10.mkv", 3, 84, 66.6, 2006),
-        new Video(4080, "BattleStar Galactica S03E11.mkv", 3, 84, 66.6, 2006),
-        new Video(4087, "BattleStar Galactica S03E12.mkv", 3, 84, 66.6, 2006),
-        new Video(4094, "BattleStar Galactica S03E13.mkv", 3, 84, 66.6, 2006),
-        new Video(4101, "BattleStar Galactica S03E14.mkv", 3, 84, 66.6, 2006),
-        new Video(4108, "BattleStar Galactica S03E15.mkv", 3, 84, 66.6, 2006),
-        new Video(4115, "BattleStar Galactica S03E16.mkv", 3, 84, 66.6, 2006),
-        new Video(4122, "BattleStar Galactica S03E17.mkv", 3, 84, 66.6, 2006),
-        new Video(4129, "BattleStar Galactica S03E18.mkv", 3, 84, 66.6, 2006),
-        new Video(4136, "BattleStar Galactica S03E19.mkv", 3, 84, 66.6, 2006),
-        new Video(4004, "BattleStar Galactica S04E0.mkv", 3, 84, 66.6, 2008),
-        new Video(4011, "BattleStar Galactica S04E1.mkv", 3, 84, 66.6, 2008),
-        new Video(4018, "BattleStar Galactica S04E2.mkv", 3, 84, 66.6, 2008),
-        new Video(4025, "BattleStar Galactica S04E3.mkv", 3, 84, 66.6, 2008),
-        new Video(4032, "BattleStar Galactica S04E4.mkv", 3, 84, 66.6, 2008),
-        new Video(4039, "BattleStar Galactica S04E5.mkv", 3, 84, 66.6, 2008),
-        new Video(4046, "BattleStar Galactica S04E6.mkv", 3, 84, 66.6, 2008),
-        new Video(4053, "BattleStar Galactica S04E7.mkv", 3, 84, 66.6, 2008),
-        new Video(4060, "BattleStar Galactica S04E8.mkv", 3, 84, 66.6, 2008),
-        new Video(4067, "BattleStar Galactica S04E9.mkv", 3, 84, 66.6, 2008),
-        new Video(4074, "BattleStar Galactica S04E10.mkv", 3, 70, 66.6, 2008),
-        new Video(4081, "BattleStar Galactica S04E11.mkv", 3, 72, 66.6, 2008),
-        new Video(4088, "BattleStar Galactica S04E12.mkv", 3, 67, 66.6, 2008),
-        new Video(4095, "BattleStar Galactica S04E13.mkv", 3, 79, 66.6, 2008),
-        new Video(4102, "BattleStar Galactica S04E14.mkv", 3, 80, 66.6, 2008),
-        new Video(4109, "BattleStar Galactica S04E15.mkv", 3, 79, 66.6, 2008),
-        new Video(4116, "BattleStar Galactica S04E16.mkv", 3, 77, 66.6, 2008),
-        new Video(4123, "BattleStar Galactica S04E17.mkv", 3, 79, 66.6, 2008),
-        new Video(4130, "BattleStar Galactica S04E18.mkv", 3, 91, 66.6, 2008),
-        new Video(4137, "BattleStar Galactica S04E19.mkv", 3, 82, 66.6, 2008),
-    };
-}
-
-
-
-
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
-
-/**
- * A implementation for the Aufgabe 2.d bis 2.h
- *
- * @author Guidoux Alexandre
- * @version 1.0
- */
-public class LagerTest
-{
-    public ArtikelLager lager;
-    private final static int DEFAULT_LAGER_SIZE = 20;
     
     /**
-     * Constructor
-     * @param size groesse des Lagers
+     * This method remove the int of the queue.
+     * @return the next int in the queue or null if the queue is empty
+     * @throw NoSuchElementException if the queue is empty
      */
-    public LagerTest(int size)
-    {
-        LagerFabric lb = new LagerFabric(size);
-        lager = lb.generateLager();
-    }
-
-    //-----------------------------------------------------------------------
-    // 18-2.d
-    //-----------------------------------------------------------------------
-    public void actions1(){
-        // i
-        BiPredicate<Artikel, Artikel> byBezeichnung  = (x, y) -> x.getBezeichnung().compareTo(y.getBezeichnung()) <= 0;
-        BiPredicate<Artikel, Artikel> byBestand      = (x, y) -> x.getBestand() <= y.getBestand();
-        BiPredicate<Artikel, Artikel> byPreis        = (x, y) -> x.getPreis() <= y.getPreis();
-        // Test i
-        System.out.println("****Nach dem Preis sortiert"); 
-        Helpers.printArtikelArray(lager.getSorted(byPreis));
-        
-        // ii
-        Consumer<Artikel> rabatt10       = x -> x.changePreis(-0.10);
-        // iii
-        Consumer<Artikel> markAngebot    = x -> x.setBezeichnung("(Sonderangebot)" + x.getBezeichnung());
-        // iv
-        Consumer<Artikel> angebotAufAlle = rabatt10.andThen(markAngebot);
-        // Test iv (+ ii + iii)
-        lager.applyToArticles(angebotAufAlle);
-        System.out.println("****-10% Rabatt auf alle Artikeln");
-        System.out.println(lager + "\n");
-    }
-    
-    //-----------------------------------------------------------------------
-    // 18-2.h
-    //-----------------------------------------------------------------------
-    public void actions2(){
-        // i
-        Predicate<Artikel> isCD = x -> x instanceof CD;
-        Consumer<CD>       cdRabatt = x -> x.changePreis(-0.10);
-        // Test i
-        System.out.println("****-10% Rabatt auf alle CDs");
-        lager.applyToSomeArticle(isCD, cdRabatt);
-        System.out.println(lager + "\n");
-        
-        // ii
-        Predicate<Artikel> remainMoreThanOne = x -> x.getBestand() > 1;
-        Consumer<Artikel>  rabatt5 = x -> x.changePreis(-0.05);
-        // Test ii
-        System.out.println("****-5% Rabatt auf Artikel mit mehr als 2 im Lager");
-        lager.applyToSomeArticle(remainMoreThanOne, rabatt5);
-        System.out.println(lager + "\n");
-        
-        // iii
-        Predicate<Buch> isAuthorRowling = x -> x.getAuthor().equals("J.K. Rowling");
-        // Test iii
-        System.out.println("****-5% Rabatt auf J.K. Rowlings Buecher");
-        lager.applyToSomeArticle(remainMoreThanOne, rabatt5);
-        System.out.println(lager + "\n");
-        
-        // iv (implemented as a procedure)
-        Procedure iAndii = () -> {
-            lager.applyToSomeArticle(isCD, cdRabatt);
-            lager.applyToSomeArticle(remainMoreThanOne, rabatt5);
-        };
-        // Test iv
-        System.out.println("****-10% Rabatt auf alle CDs\n" +
-                           "****-5% Rabatt auf Artikel mit mehr als 2 im Lager");
-        iAndii.invoke();
-        System.out.println(lager + "\n");
-        
-        // v
-        Predicate<Artikel> isBuch = x -> x instanceof Buch;
-        BiPredicate<Buch, Buch> byAuthor = 
-                 (x, y) -> x.getAuthor().compareTo(y.getAuthor()) == 1;
-        // Test v
-        System.out.println("****Liste aller Buecher und nach Autor sortiert\n");
-        Helpers.printArtikelArray(lager.getArticles(isBuch, byAuthor));
-        System.out.println();
-        
-        // vi
-        Predicate<Artikel> minimumPrice10 = x -> x.getPreis() >= 10;
-        // Test vi
-        System.out.println("****Filterkriterien: ist eine CD, mindestPreis ist 10€ " +
-                               "und bleibt mehr als ein CD uebrig \n");
-        Helpers.printArtikelArray(lager.filterAll(isCD, minimumPrice10, remainMoreThanOne));
-    }
-    
-    
-    public static void main(String[] args){
-        LagerTest shop = new LagerTest(DEFAULT_LAGER_SIZE);
-        System.out.println("****Urspruengliches Lager\n" + shop.lager + "\n"); 
-        shop.actions1();
-        shop.actions2();
+    public int getNextInt(){
+        return storage.remove();
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**
- * A simple fonctionnal interface
- * 
- * @author Alexandre Guidoux & Johann Chopin
- * @version 1.0
- */
-public interface MyFunction
-  {
-    public int apply(int i);
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**
- * Implement MyFunction
- *
- * @author W.Pauly
- * @version 1.0
- */
-public class MyFunctionImplementation
-{
-   public void applyAndPrint(MyFunction myFunction, int i, int j)
-   {
-      for (int lauf = i; lauf <= j; lauf++){
-         System.out.println(lauf + " -> " + myFunction.apply(lauf) );
-      }
-   }
-   
-   public static class NestedFakultaet {
-      public static int rechne(int x){
-          int erg = 1;
-          for ( int i = 2; i<=x; i++ )
-            {
-             erg *= i;
-            }
-          return erg;
-      }
-   }
-   
-   public static void run(){
-       MyFunctionImplementation mf = new MyFunctionImplementation();
-       FakultaetTopLevel factorial = new FakultaetTopLevel();
-       
-       System.out.println("Aufgabe 3.a:");
-       mf.applyAndPrint(factorial::berechne, 1, 15);
-
-       System.out.println("Aufgabe 3.b:");
-       mf.applyAndPrint(NestedFakultaet::rechne, 1, 15);
-   }
-   
-   public static void main(String[] args){
-       MyFunctionImplementation.run(); 
-   }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**
- * Fonctionnal interface. Take no arguments and return nothing, juste use side-effects.
- *
- * @author Alexandre Guidoux && Johann Chopin
- * @version 1.0
- */
-public interface Procedure
-{
-    void invoke();
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**
- * Unterklasse Video der Obereklasse Artikel
- *
- * @author Alexandre Guidoux && Johann Chopin
- * @version 1.0
- */
-public class Video extends Artikel
-{
-    private final static String MSG_ERSCHEINUNGSJAHR =
-            "Die Erscheinungsjahr muss zwischen 1950 und 2014 sein.";
-    private final static String MSG_SPIELDAUER = 
-            "Der Spieldauer muss >= 1 sein.";
-    
-    private double spieldauer;
-    private int erscheinungsjahr;
-            
-    /**
-     * @see Artikel#Artikel(int, String, int, double)
-     * @param spieldauer in Minuten und muss >= 1 sein.
-     * @param erscheinungsjahr muss zwischen 1950 und 2014 sein.
-     */
-    public Video(int nummer, String titel, int bestand, double preis, double spieldauer, int erscheinungsjahr)
-    {
-        // The bezeichnung is the title
-        super(nummer, titel, bestand, preis);
-        
-        Helpers.check((spieldauer >= 1),
-                       MSG_SPIELDAUER);
-        Helpers.check((1950 <= erscheinungsjahr) && (erscheinungsjahr <= 2014),
-                      MSG_ERSCHEINUNGSJAHR);
-        
-        this.spieldauer = spieldauer;
-        this.erscheinungsjahr = erscheinungsjahr;
-    }
-    
-    public String getBeschreibung(){
-        return this.bezeichnung;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
