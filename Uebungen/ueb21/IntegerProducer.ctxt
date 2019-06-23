@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=IntegerProducer
+comment0.text=\n\ Gibt\ integer\ zurueck\ and\ wird\ entweder\ in\ einer\ Queue\ oder\ in\ einem\ \n\ PriorityQueue\ gespeichert.\n\n\ @author\ Alexandre\ Guidoux\n\ @version\ 1.0\n
+comment1.params=ordered
+comment1.target=IntegerProducer(boolean)
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ IntegerGenerator\n\ @param\ ordered\ check\ if\ the\ generated\ integer\ must\ be\ sorted\ in\ \n\ the\ collection\n
+comment2.params=
+comment2.target=int\ produce()
+comment2.text=\n\ Return\ and\ store\ an\ integer\ between\ 0\ and\ 1000\n
+comment3.params=n
+comment3.target=void\ produceMany(int)
+comment3.text=\n\ Shortcut\ to\ generate\ many\ numbers\n\ Warning\ \:\ produce\ return\ a\ int,\ produceMany\ return\ nothing\n
+comment4.params=
+comment4.target=int\ getNextInt()
+comment4.text=\n\ This\ method\ remove\ the\ int\ of\ the\ queue.\n\ @return\ the\ next\ int\ in\ the\ queue\ or\ null\ if\ the\ queue\ is\ empty\n\ @throw\ NoSuchElementException\ if\ the\ queue\ is\ empty\n
+numComments=5

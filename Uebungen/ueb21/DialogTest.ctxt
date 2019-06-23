@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=DialogTest
+comment0.text=\n\ A\ Test\ class\ for\ the\ Integer\ Producer\ and\ Consumer\n\n\ @author\ Alexandre\ Guidoux\n\ @version\ 1.0\n
+comment1.params=ordered
+comment1.target=DialogTest(boolean)
+comment2.params=
+comment2.target=void\ init()
+comment3.params=
+comment3.target=void\ printState()
+comment4.params=
+comment4.target=void\ run()
+comment5.params=args
+comment5.target=void\ main(java.lang.String[])
+numComments=6

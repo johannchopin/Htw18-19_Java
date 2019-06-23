@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=IntegerConsumer
+comment0.text=\n\ @author\ Alexandre\ Guidoux\n\ @version\ 1.0\n
+comment1.params=
+comment1.target=IntegerConsumer()
+comment2.params=quersumme\ elapsed
+comment2.target=void\ addToResults(int,\ long)
+comment2.text=\n\ Add\ the\ elapsed\ argument\ to\ the\ PriorityQueue\ accessed\ by\ the\ key\n\ quersumme.\n\ If\ the\ key\ doesn't\ have\ a\ queue,\ it\ will\ be\ created\n
+comment3.params=n
+comment3.target=void\ consume(int)
+comment4.params=
+comment4.target=int\ numberOfDifferentResults()
+comment5.params=quersumme
+comment5.target=int\ numberOfOccurences(int)
+comment6.params=quersumme
+comment6.target=java.util.PriorityQueue\ getCrossTotalsAscending(int)
+comment7.params=quersumme
+comment7.target=java.util.PriorityQueue\ getCrossTotalsDescending(int)
+comment8.params=quersumme
+comment8.target=java.util.HashSet\ getTimestampsForResult(int)
+numComments=9
