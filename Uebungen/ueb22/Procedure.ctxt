@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Procedure
+comment0.text=\n\ Fonctionnal\ interface.\ Take\ no\ arguments\ and\ return\ nothing,\ juste\ use\ side-effects.\n\n\ @author\ Alexandre\ Guidoux\ &&\ Johann\ Chopin\n\ @version\ 1.0\n
+comment1.params=
+comment1.target=void\ invoke()
+numComments=2
