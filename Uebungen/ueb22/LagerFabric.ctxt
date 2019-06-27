@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=LagerFabric
+comment0.text=\n\ Useful\ to\ manipulate\ the\ LagerDialog\n\n\ @author\ \ Alexandre\ Guidoux\n\ @version\ 1.0\n
+comment1.params=size
+comment1.target=LagerFabric(int)
+comment1.text=\n\ Create\ a\ full\ Lager\ with\ products\n
+comment2.params=
+comment2.target=ArtikelLager\ generateLager()
+comment3.params=store
+comment3.target=Artikel\ choiceArtikel(Artikel[])
+comment3.text=\n\ Choice\ a\ random\ artikel\ in\ the\ store,\ then\ remove\ this\ article\n
+numComments=4

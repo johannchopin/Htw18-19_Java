@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=Helpers
+comment0.text=\n\ nuetzilche\ Methoden\ fuer\ die\ Lager-und\ Artikel\ Klassen.\n\n\ @author\ Alexandre\ Guidoux\n\ @version\ 1.0\n
+comment1.params=bedigung\ nachricht
+comment1.target=void\ check(boolean,\ java.lang.String)
+comment10.params=arr
+comment10.target=void\ printArtikelArray(Artikel[])
+comment2.params=bedigung\ nachricht\ exceptionId
+comment2.target=void\ check(boolean,\ java.lang.String,\ int)
+comment3.params=sc\ nachricht
+comment3.target=int\ readInt(java.util.Scanner,\ java.lang.String)
+comment3.text=\n\ SCANNER\ Helpers\n
+comment4.params=sc\ nachricht
+comment4.target=double\ readDouble(java.util.Scanner,\ java.lang.String)
+comment5.params=sc\ nachricht
+comment5.target=java.lang.String\ readLine(java.util.Scanner,\ java.lang.String)
+comment6.params=sc\ nachricht\ is_true
+comment6.target=boolean\ isInputTrue(java.util.Scanner,\ java.lang.String,\ char)
+comment7.params=sc\ nachricht
+comment7.target=boolean\ isInputTrue(java.util.Scanner,\ java.lang.String)
+comment8.params=s\ n
+comment8.target=java.lang.String\ repeat(java.lang.String,\ int)
+comment9.params=integers
+comment9.target=int\ max(int[])
+numComments=11
