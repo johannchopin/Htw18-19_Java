@@ -266,7 +266,8 @@ public class ArtikelLager
     // 18-2.g implementation filterAll
     // ---------------------------------------------------------------------
     public List<Artikel> filterAll(Predicate<Artikel> ...filterCriteria){
-        Predicate<Artikel> accPredicate =  x->true;
+        // A list can be used instead.
+        Predicate<Artikel> accPredicate = x->true; // Lack of performance because of this initialization
         return lager.stream()
                 .filter(
                     Arrays.asList(filterCriteria).stream().reduce(
