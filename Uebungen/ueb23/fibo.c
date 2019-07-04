@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*
+ * Return the nth number of the fibonacci's suit
+ */
 int fibo(int n){
     if(n <= 1)
         return n;
@@ -21,6 +24,6 @@ int main(int argc, char *argv[]){
         printf("Arg must be an integer and > 0.\n");
         return -1;
     }
-    printf("%d\n", fibo(n));
+    printf("Returned: %d\n", fibo(n));
     return 0;
 }
