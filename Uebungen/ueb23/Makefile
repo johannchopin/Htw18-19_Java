@@ -1,7 +1,7 @@
 compile: ausgabenbeleg.c fibo.c myLimits.c
-	gcc ausgabenbeleg.c -o ausgabenbeleg
-	gcc fibo.c -o fibo
-	gcc myLimits.c -o myLimits
+	gcc ausgabenbeleg.c -o bin/ausgabenbeleg
+	gcc fibo.c -o bin/fibo
+	gcc myLimits.c -o bin/myLimits
 
 clear:
 	rm ausgabenbeleg myLimits fibo
