@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <limits.h>
 
+/*
+ * Print the bound given in limits.h
+ */
 void printLimitsH(){
     printf("\nPredefined limits in limits.h\n");
     printf("CHAR_MIN   :   %d\n", CHAR_MIN);
@@ -22,6 +25,11 @@ void printLimitsH(){
     printf("UCHAR_MAX  :   %d\n", UCHAR_MAX);
 }
 
+
+/* =============================
+ * Search the bound of each type
+ * =============================
+ */
 void guessChar(){
     char i = 1;
     int prev;
