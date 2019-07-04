@@ -18,10 +18,14 @@ void ausgabeBeleg(double nettopreis){
 
 int main(int argc, char* argv[]){
     char *nptr;
+    if(argc < 2){   
+        printf("One positive number must be provided\n");
+        exit(2);
+    }
     double n = strtod(argv[1], &nptr);
     if(n < 0){
         printf("Arg must be an integer and > 0.\n");
-        return -1;
+        exit(1);
     }
     ausgabeBeleg(n);
     return 0;
