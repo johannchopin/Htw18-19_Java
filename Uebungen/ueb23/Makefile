@@ -4,10 +4,10 @@ compile: ausgabenbeleg.c fibo.c myLimits.c
 	gcc myLimits.c -o bin/myLimits
 
 clear:
-	rm ausgabenbeleg myLimits fibo
+	rm bin/*
 
 test: compile
-	echo "\n=== 1. Aufgabe (input: 100) ===\n"
+	echo "\n=== 1. Aufgabe ===\n"
 	bin/ausgabenbeleg 100
 	echo "\n=== 2. Aufgabe (input: 5) ===\n"
 	bin/fibo 5
