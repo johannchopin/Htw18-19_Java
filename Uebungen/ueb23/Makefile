@@ -1,4 +1,4 @@
-compile:
+compile: ausgabenbeleg.c fibo.c myLimits.c
 	gcc ausgabenbeleg.c -o ausgabenbeleg
 	gcc fibo.c -o fibo
 	gcc myLimits.c -o myLimits
