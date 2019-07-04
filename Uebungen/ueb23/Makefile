@@ -7,9 +7,9 @@ clear:
 	rm ausgabenbeleg myLimits fibo
 
 test: compile
-	echo "\n=== 1. Aufgabe ===\n"
-	./ausgabenbeleg 100
-	echo "\n=== 2. Aufgabe ===\n"
-	./fibo 5
+	echo "\n=== 1. Aufgabe (input: 100) ===\n"
+	bin/ausgabenbeleg 100
+	echo "\n=== 2. Aufgabe (input: 5) ===\n"
+	bin/fibo 5
 	echo "\n=== 3. Aufgabe ===\n"
-	./myLimits
+	bin/myLimits
