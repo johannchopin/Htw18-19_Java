@@ -30,6 +30,7 @@ void printLimitsH(){
  * Search the bound of each type
  * =============================
  */
+// TODO : better while((i << 1) != prev){prev = i;}
 void guessChar(){
     char i = 1;
     int prev;
