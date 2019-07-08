@@ -5,16 +5,25 @@
  * Return the nth number of the fibonacci's suit
  */
 int fibo(int n){
-    if(n <= 1)
-        return n;
-    int a = 0, b = 1, c;
-    int aux;
-    while(n-- >= 2){
-        c = a + b;
-        a = b;
-        b = c;
+    int first = 0, second = 1, next, c;
+
+    printf("Erste %d-Begriffe der Fibonacci-Serie sind:\n", n);
+
+    for (c = 0; c < n; c++)
+    {
+        if (c <= 1)
+            next = c;
+        else
+        {
+            next = first + second;
+            first = second;
+            second = next;
+        }
+
+        printf("%d\n", next);
     }
-    return c;
+
+    return 0;
 }
 
 int main(int argc, char *argv[]){
@@ -24,6 +33,7 @@ int main(int argc, char *argv[]){
         printf("Arg must be an integer and > 0.\n");
         return -1;
     }
-    printf("Returned: %d\n", fibo(n));
+    fibo(n);
+
     return 0;
 }
