@@ -16,7 +16,7 @@ void ausgabeBeleg(double nettopreis){
     printf("Rechnungbetrag           Euros %6.2f\n", rechnungbetrag);
 }
 
-double argvToLong(int argc, char** argv){
+double argvToDouble(int argc, char** argv){
     char *nptr;
     if(argc != 2){   
         printf("Just one positive number must be provided\n");
@@ -31,6 +31,6 @@ double argvToLong(int argc, char** argv){
 }
  
 int main(int argc, char* argv[]){
-    ausgabeBeleg(argvToLong(argc, argv));
+    ausgabeBeleg(argvToDouble(argc, argv));
     return 0;
 }
