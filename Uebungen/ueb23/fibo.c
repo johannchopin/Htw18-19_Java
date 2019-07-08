@@ -2,19 +2,24 @@
 #include <stdlib.h>
 
 /*
- * Return the nth number of the fibonacci's suit
+ * Print the fibonnaci numbers until n
  */
 int fibo(int n){
-    if(n <= 1)
-        return n;
-    int a = 0, b = 1, c;
-    int aux;
-    while(n-- >= 2){
-        c = a + b;
-        a = b;
-        b = c;
+    int first = 0, second = 1, next, c;
+    printf("Erste %d-Begriffe der Fibonacci-Serie sind:\n", n);
+
+    printf("0\n");
+    if (c >= 1)
+        printf("1\n");
+        
+    for (c = 2; c < n; c++){
+        next = first + second;
+        first = second;
+        second = next;
+
+        printf("%d\n", next);
     }
-    return c;
+    return 0;
 }
 
 int main(int argc, char *argv[]){
