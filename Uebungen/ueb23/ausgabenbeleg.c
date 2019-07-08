@@ -27,6 +27,7 @@ double argvToLong(int argc, char** argv){
         printf("Arg must be an integer and > 0.\n");
         exit(1);
     }
+    return n;
 }
  
 int main(int argc, char* argv[]){
